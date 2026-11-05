@@ -724,12 +724,271 @@ html[data-theme="dark"] {
   }
 }
 
+/* ——— Blog: practice category (replaces article) ——— */
+:root {
+  --practice-bg: rgba(16, 185, 129, 0.12);
+}
+
+html[data-theme="dark"] {
+  --practice-bg: rgba(16, 185, 129, 0.22);
+}
+
+.legend-color.practice {
+  background: rgba(16, 185, 129, 0.3);
+  border-color: rgba(16, 185, 129, 0.45);
+}
+
+.blog-entry.practice .blog-title {
+  background: var(--practice-bg);
+}
+
+/* ——— Compact nav for five links ——— */
+.site-nav {
+  gap: 0.65rem;
+}
+
+@media (max-width: 768px) {
+  .site-nav {
+    gap: 0.45rem;
+    flex-wrap: wrap;
+  }
+}
+
+/* ——— Agent layering (projects) ——— */
+.section-heading {
+  font-family: var(--serif-font);
+  font-size: 1.1rem;
+  font-weight: 500;
+  margin: 0 0 0.75rem;
+  color: var(--color);
+  letter-spacing: 0.01em;
+}
+
+.agent-layer {
+  margin: 0 0 2rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--project-card-border);
+}
+
+.agent-layer-prose {
+  margin: 0 0 1rem;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--blog-text-secondary);
+}
+
+.agent-layer-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  counter-reset: agent-layer;
+}
+
+.agent-layer-list > li {
+  position: relative;
+  padding-left: 1.75em;
+  margin-bottom: 0.55em;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: var(--color);
+}
+
+.agent-layer-list > li::before {
+  counter-increment: agent-layer;
+  content: counter(agent-layer);
+  color: var(--project-tag-color);
+  font-family: var(--sans-font);
+  font-size: 0.78rem;
+  font-weight: 500;
+  position: absolute;
+  left: 0;
+  top: 0.15em;
+  width: 1.35em;
+  height: 1.35em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--project-tag-bg);
+  border-radius: 999px;
+  line-height: 1;
+}
+
+.agent-layer-list > li strong {
+  font-weight: 500;
+}
+
+/* Live project cards (article, not single link) */
+.project-card--live {
+  cursor: default;
+}
+
+.project-card--live:hover {
+  transform: none;
+}
+
 .project-links {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.35rem 1.15rem;
-  margin: 0.75rem 0 0;
+  gap: 0.85rem;
+  margin-top: 0.75rem;
+}
+
+.project-links a {
   font-family: var(--sans-font);
   font-size: 0.82rem;
+  font-weight: 400;
   letter-spacing: 0.02em;
+  color: var(--link-color);
+  border-bottom: 0.1em solid var(--link-background-color);
+  text-decoration: none;
+}
+
+.project-links a:hover {
+  color: var(--color);
+  border-bottom-color: var(--color);
+}
+
+/* ——— Tools + Notes shared layout ——— */
+.stack-page {
+  min-height: calc(100vh - 100px);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  z-index: 1;
+}
+
+.stack-layout {
+  max-width: 650px;
+  margin: 0 auto;
+  padding: 1.5rem 1.25rem 0;
+  width: 100%;
+  box-sizing: border-box;
+  flex: 1;
+}
+
+.stack-intro {
+  margin: 0 0 1.75rem;
+  color: var(--blog-text-secondary);
+  font-size: 0.98rem;
+}
+
+.tools-group {
+  margin: 0 0 1.85rem;
+}
+
+.tools-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.tools-list > li {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.35rem 0.75rem;
+  padding: 0.45rem 0;
+  padding-left: 0;
+  margin-bottom: 0;
+  border-bottom: 1px solid var(--project-card-border);
+}
+
+.tools-list > li::before {
+  content: none;
+}
+
+.tool-name {
+  font-family: var(--sans-font);
+  font-size: 0.92rem;
+  font-weight: 500;
+  color: var(--color);
+  min-width: 7.5rem;
+}
+
+.tool-blurb {
+  font-size: 0.9rem;
+  color: var(--blog-text-secondary);
+  line-height: 1.45;
+  flex: 1;
+  min-width: 12rem;
+}
+
+/* ——— Garden / notes map ——— */
+.garden-map {
+  margin: 0 0 2rem;
+}
+
+.garden-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.garden-card {
+  display: block;
+  padding: 1rem 0.85rem;
+  text-decoration: none !important;
+  color: inherit;
+  border-bottom: 1px solid var(--project-card-border) !important;
+  transition: background 280ms ease;
+}
+
+.garden-card:hover {
+  background: var(--project-card-hover-bg);
+  color: inherit;
+  border-bottom-color: var(--project-card-border) !important;
+}
+
+.garden-card:focus-visible {
+  outline: 2px solid rgba(166, 128, 166, 0.55);
+  outline-offset: 2px;
+}
+
+.garden-card-title {
+  font-family: var(--serif-font);
+  font-size: 1.05rem;
+  font-weight: 500;
+  margin: 0 0 0.3rem;
+  color: var(--color);
+  line-height: 1.35;
+}
+
+.garden-card-blurb {
+  margin: 0;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: var(--blog-text-secondary);
+}
+
+.further-reading {
+  margin: 0 0 1rem;
+  padding-top: 0.5rem;
+}
+
+.further-note {
+  margin: 0 0 0.75rem;
+  font-size: 0.9rem;
+  color: var(--blog-text-secondary);
+}
+
+.further-list {
+  margin-bottom: 0;
+}
+
+.further-list a {
+  font-size: 0.95rem;
+}
+
+@media (max-width: 768px) {
+  .stack-layout {
+    padding: 1rem 1rem 0;
+  }
+
+  .tool-name {
+    min-width: 100%;
+  }
+
+  .garden-card {
+    padding: 0.85rem 0.35rem;
+  }
 }
