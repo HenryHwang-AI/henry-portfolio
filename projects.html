@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="zh" data-lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Projects — Henry Huang</title>
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem('theme');
+        if (t === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
+        else if (t === 'light') document.documentElement.setAttribute('data-theme', 'light');
+        var lang = localStorage.getItem('lang');
+        if (lang === 'en' || lang === 'zh') {
+          document.documentElement.setAttribute('data-lang', lang);
+          document.documentElement.setAttribute('lang', lang === 'zh' ? 'zh' : 'en');
+        }
+      } catch (e) {}
+    })();
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,300;0,400;0,500;1,400&family=Spectral:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div id="particles-js" aria-hidden="true"></div>
+
+  <header class="site-nav-wrapper">
+    <a href="index.html" class="site-name">henry huang</a>
+    <div class="nav-right">
+      <nav class="site-nav" aria-label="Primary">
+        <a href="index.html"><span class="lang-zh">关于</span><span class="lang-en">About</span></a>
+        <a href="blog.html"><span class="lang-zh">博客</span><span class="lang-en">Blog</span></a>
+        <a href="projects.html" class="active"><span class="lang-zh">项目</span><span class="lang-en">Projects</span></a>
+      </nav>
+      <div class="social-icons" aria-label="Social">
+        <a href="#" aria-label="X / Twitter" title="X"><i class="fab fa-x-twitter"></i></a>
+        <a href="https://github.com/HenryHwang-AI" aria-label="GitHub" title="GitHub"><i class="fab fa-github"></i></a>
+        <a href="#" aria-label="LinkedIn" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+      </div>
+      <button type="button" class="icon-btn" id="lang-toggle" aria-label="Switch language">EN</button>
+      <button type="button" class="icon-btn" id="theme-toggle" aria-label="Toggle dark mode">
+        <span class="theme-label-to-dark">
+          <span class="lang-zh">深色</span><span class="lang-en">Dark</span>
+        </span>
+        <span class="theme-label-to-light">
+          <span class="lang-zh">浅色</span><span class="lang-en">Light</span>
+        </span>
+      </button>
+    </div>
+  </header>
+
+  <main class="projects-page fade-up" id="projects-page">
+    <div class="projects-layout">
+      <p class="projects-intro lang-zh">三个可直接打开的独立 Demo，纯前端。</p>
+      <p class="projects-intro lang-en">three standalone demos you can open — frontend only.</p>
+
+      <div class="projects-list" id="projects-list">
+        <article class="project-card">
+          <h2 class="project-title">
+            <span class="lang-zh">广告 Agent 评测台</span>
+            <span class="lang-en">Ad Agent eval lab</span>
+          </h2>
+          <p class="project-blurb">
+            <span class="lang-zh">对比多套投放 Agent；win-rate / 引用覆盖 / 合规闸门；3 天迭代复盘与 CSV 导出。纯前端、无 API Key。</span>
+            <span class="lang-en">Compare ad-ops agents on win-rate, citation coverage, and a compliance gate, with a 3-day iteration recap and CSV export. Frontend only, no API key.</span>
+          </p>
+          <div class="project-tags">
+            <span class="project-tag">win-rate</span>
+            <span class="project-tag"><span class="lang-zh">引用覆盖</span><span class="lang-en">citation coverage</span></span>
+            <span class="project-tag"><span class="lang-zh">合规闸门</span><span class="lang-en">compliance gate</span></span>
+          </div>
+          <p class="project-links">
+            <a href="https://henryhwang-ai.github.io/ad-agent-eval-lab/" target="_blank" rel="noopener noreferrer">Demo</a>
+            <a href="https://github.com/HenryHwang-AI/ad-agent-eval-lab" target="_blank" rel="noopener noreferrer">GitHub</a>
+          </p>
+        </article>
+
+        <article class="project-card">
+          <h2 class="project-title">
+            <span class="lang-zh">引溯 · 带引用的行业 RAG 顾问</span>
+            <span class="lang-en">引溯 · cited industry RAG advisor</span>
+          </h2>
+          <p class="project-blurb">
+            <span class="lang-zh">本地 BM25 检索广告 SOP/合规知识库；编号引用可点开原文；库外问题拒答。纯前端。</span>
+            <span class="lang-en">Local BM25 over ad SOP and compliance notes. Numbered citations open the source. Out-of-corpus questions are refused. Frontend only.</span>
+          </p>
+          <div class="project-tags">
+            <span class="project-tag">BM25</span>
+            <span class="project-tag"><span class="lang-zh">引用溯源</span><span class="lang-en">citations</span></span>
+            <span class="project-tag"><span class="lang-zh">拒答</span><span class="lang-en">refusal</span></span>
+          </div>
+          <p class="project-links">
+            <a href="https://henryhwang-ai.github.io/citation-rag-advisor/" target="_blank" rel="noopener noreferrer">Demo</a>
+            <a href="https://github.com/HenryHwang-AI/citation-rag-advisor" target="_blank" rel="noopener noreferrer">GitHub</a>
+          </p>
+        </article>
+
+        <article class="project-card">
+          <h2 class="project-title">
+            <span class="lang-zh">多 Agent 投放作战室</span>
+            <span class="lang-en">Multi-agent ad war room</span>
+          </h2>
+          <p class="project-blurb">
+            <span class="lang-zh">洞察→创意→人工闸门→合规→实验任务包；可注入合规失败回环。纯前端。</span>
+            <span class="lang-en">Insight, creative, a human gate, compliance, then an experiment pack — with a compliance-failure loop you can inject. Frontend only.</span>
+          </p>
+          <div class="project-tags">
+            <span class="project-tag"><span class="lang-zh">洞察</span><span class="lang-en">insight</span></span>
+            <span class="project-tag"><span class="lang-zh">合规闸门</span><span class="lang-en">compliance gate</span></span>
+            <span class="project-tag"><span class="lang-zh">实验</span><span class="lang-en">experiment</span></span>
+          </div>
+          <p class="project-links">
+            <a href="https://henryhwang-ai.github.io/multi-agent-ad-war-room/" target="_blank" rel="noopener noreferrer">Demo</a>
+            <a href="https://github.com/HenryHwang-AI/multi-agent-ad-war-room" target="_blank" rel="noopener noreferrer">GitHub</a>
+          </p>
+        </article>
+      </div>
+    </div>
+
+    <footer class="blog-footer">
+      <a href="index.html" id="home-footer-link">
+        <span class="lang-zh">主页</span><span class="lang-en">Home</span>
+      </a>
+    </footer>
+  </main>
+
+  <script src="js/particles.min.js"></script>
+  <script>
+    (function () {
+      var root = document.documentElement;
+      var langBtn = document.getElementById('lang-toggle');
+      var themeBtn = document.getElementById('theme-toggle');
+
+      function currentLang() {
+        return root.getAttribute('data-lang') === 'en' ? 'en' : 'zh';
+      }
+
+      function setLang(lang) {
+        root.setAttribute('data-lang', lang);
+        root.setAttribute('lang', lang === 'zh' ? 'zh' : 'en');
+        langBtn.textContent = lang === 'zh' ? 'EN' : '中文';
+        try { localStorage.setItem('lang', lang); } catch (e) {}
+      }
+
+      function isDark() {
+        return root.getAttribute('data-theme') === 'dark';
+      }
+
+      function setTheme(dark) {
+        if (dark) root.setAttribute('data-theme', 'dark');
+        else root.setAttribute('data-theme', 'light');
+        try { localStorage.setItem('theme', dark ? 'dark' : 'light'); } catch (e) {}
+      }
+
+      setLang(currentLang());
+      if (!root.getAttribute('data-theme')) {
+        root.setAttribute('data-theme', 'light');
+      }
+
+      langBtn.addEventListener('click', function () {
+        setLang(currentLang() === 'zh' ? 'en' : 'zh');
+      });
+
+      themeBtn.addEventListener('click', function () {
+        setTheme(!isDark());
+      });
+
+      document.addEventListener('DOMContentLoaded', function () {
+        var page = document.getElementById('projects-page');
+        if (page) {
+          requestAnimationFrame(function () {
+            page.classList.add('is-visible');
+          });
+        }
+        var items = document.querySelectorAll('#projects-list .project-card');
+        items.forEach(function (item, idx) {
+          item.style.opacity = '0';
+          item.style.transform = 'translateY(10px)';
+          item.style.transition = 'opacity 420ms ease, transform 420ms ease';
+          setTimeout(function () {
+            item.style.opacity = '1';
+            item.style.transform = 'none';
+          }, 80 + idx * 40);
+        });
+      });
+
+      function initParticles() {
+        if (typeof particlesJS !== 'function') return;
+        particlesJS('particles-js', {
+          particles: {
+            number: { value: 8, density: { enable: true, value_area: 300 } },
+            color: { value: '#A680A6' },
+            shape: { type: 'triangle' },
+            opacity: {
+              value: 0.8,
+              random: true,
+              anim: { enable: true, speed: 1, opacity_min: 0.1, sync: false }
+            },
+            size: {
+              value: 5,
+              random: true,
+              anim: { enable: true, speed: 4, size_min: 0.3, sync: false }
+            },
+            line_linked: {
+              enable: true,
+              distance: 150,
+              color: '#A680A6',
+              opacity: 0.4,
+              width: 1
+            },
+            move: {
+              enable: true,
+              speed: 1.4,
+              direction: 'none',
+              random: false,
+              straight: false,
+              out_mode: 'bounce',
+              bounce: false
+            }
+          },
+          interactivity: {
+            detect_on: 'canvas',
+            events: {
+              onhover: { enable: true, mode: 'repulse' },
+              onclick: { enable: true, mode: 'push' },
+              resize: true
+            }
+          },
+          retina_detect: true
+        });
+      }
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initParticles);
+      } else {
+        initParticles();
+      }
+    })();
+  </script>
+</body>
+</html>
