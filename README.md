@@ -19,7 +19,7 @@ python3 -m http.server 8899
 ├── projects.html       # Agent 分层 + 三个 Demo
 ├── tools.html          # 工具栈
 ├── notes.html          # 笔记地图（卡片连到文章）
-├── posts/              # 六篇双语文章
+├── posts/              # 十篇双语文章
 ├── css/style.css       # Spectral + Jost，浅色默认，可切深色
 ├── js/particles.min.js # 本地 particles.js（三角形粒子）
 └── CNAME
@@ -28,7 +28,7 @@ python3 -m http.server 8899
 ## 功能
 
 - **关于** — 中文默认，可切英文；信念 / 喜欢 / 不喜欢
-- **博客** — 六篇可打开的文章，技术 / 实践 / 随笔筛选，再点一次恢复全部
+- **博客** — 十篇可打开的文章，技术 / 实践 / 随笔筛选，再点一次恢复全部
 - **项目** — Agent 分层说明，三个可打开的 Demo（评测台、引溯、投放作战室），另有占位卡片
 - **工具** — 效率、开发、知识、AI 清单
 - **笔记** — 第二大脑主题地图；四张卡片连到站内文章，延伸阅读是公开站点
