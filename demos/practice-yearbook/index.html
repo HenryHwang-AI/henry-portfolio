@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="zh" data-lang="zh" class="notranslate" translate="no">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="google" content="notranslate">
+  <title>实践年报 · Agent 工作复盘 — Henry Huang</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Spectral:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #f7f6f3;
+      --ink: #171513;
+      --muted: #6e6760;
+      --line: rgba(23,21,19,0.1);
+      --card: #fff;
+      --accent: #4a6fa5;
+      --accent-2: #c17b4a;
+      --accent-3: #5a8f6b;
+      --accent-soft: rgba(74,111,165,0.12);
+      --shadow: 0 16px 48px rgba(23,21,19,0.07);
+      --radius: 16px;
+    }
+    [data-theme="dark"] {
+      --bg: #10100f;
+      --ink: #f1ece6;
+      --muted: #a59c93;
+      --line: rgba(241,236,230,0.12);
+      --card: #1a1917;
+      --accent: #8fb0e0;
+      --accent-2: #e0a87a;
+      --accent-3: #8fc4a0;
+      --accent-soft: rgba(143,176,224,0.14);
+      --shadow: 0 16px 48px rgba(0,0,0,0.4);
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+    body {
+      font-family: Jost, system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+      line-height: 1.55;
+      min-height: 100vh;
+    }
+    .lang-en { display: none; }
+    [data-lang="en"] .lang-zh { display: none; }
+    [data-lang="en"] .lang-en { display: inline; }
+    [data-lang="en"] p.lang-en, [data-lang="en"] div.lang-en, [data-lang="en"] span.block-en { display: block; }
+    [data-lang="zh"] p.lang-en, [data-lang="zh"] div.lang-en { display: none; }
+    [data-lang="en"] p.lang-zh, [data-lang="en"] div.lang-zh { display: none; }
+
+    .topbar {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1rem 1.5rem; border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 10;
+      backdrop-filter: blur(12px);
+      background: color-mix(in srgb, var(--bg) 86%, transparent);
+    }
+    .brand { text-decoration: none; color: inherit; display: flex; align-items: baseline; gap: .65rem; }
+    .brand-mark { font-family: Spectral, Georgia, serif; font-weight: 600; font-size: 1.15rem; }
+    .brand-sub { font-size: .75rem; color: var(--muted); }
+    .top-actions { display: flex; gap: .5rem; }
+    .chip-btn {
+      border: 1px solid var(--line); background: transparent; color: var(--ink);
+      border-radius: 999px; padding: .35rem .85rem; font: inherit; font-size: .8rem; cursor: pointer;
+      text-decoration: none;
+    }
+    .chip-btn:hover { border-color: var(--accent); color: var(--accent); }
+
+    .wrap { max-width: 1100px; margin: 0 auto; padding: 2.5rem 1.5rem 3.5rem; }
+    .eyebrow { font-size: .72rem; letter-spacing: .16em; text-transform: uppercase; color: var(--accent); margin: 0 0 .75rem; }
+    h1 {
+      font-family: Spectral, Georgia, serif; font-weight: 500;
+      font-size: clamp(1.9rem, 3.8vw, 2.9rem); line-height: 1.15; margin: 0 0 .85rem;
+    }
+    .lede { color: var(--muted); max-width: 40rem; margin: 0 0 1.75rem; }
+
+    .kpi-grid {
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: .75rem; margin-bottom: 1.5rem;
+    }
+    @media (max-width: 800px) { .kpi-grid { grid-template-columns: repeat(2, 1fr); } }
+    .kpi {
+      background: var(--card); border: 1px solid var(--line); border-radius: var(--radius);
+      padding: 1rem 1.1rem; box-shadow: var(--shadow);
+    }
+    .kpi em { display: block; font-style: normal; font-size: .72rem; color: var(--muted); margin-bottom: .25rem; }
+    .kpi strong { font-family: Spectral, serif; font-size: 1.7rem; font-weight: 500; }
+    .kpi span.delta { display: block; font-size: .72rem; color: var(--accent-3); margin-top: .2rem; }
+
+    .filters {
+      display: flex; flex-wrap: wrap; gap: .45rem; margin-bottom: 1.25rem; align-items: center;
+    }
+    .filters .label { font-size: .75rem; color: var(--muted); margin-right: .25rem; }
+    .filter {
+      border: 1px solid var(--line); background: transparent; color: var(--muted);
+      border-radius: 999px; padding: .3rem .75rem; font: inherit; font-size: .75rem; cursor: pointer;
+    }
+    .filter.active, .filter:hover {
+      background: var(--accent-soft); color: var(--accent); border-color: transparent;
+    }
+
+    .layout {
+      display: grid; grid-template-columns: 1.15fr .85fr; gap: 1.1rem;
+    }
+    @media (max-width: 900px) { .layout { grid-template-columns: 1fr; } }
+
+    .panel {
+      background: var(--card); border: 1px solid var(--line); border-radius: var(--radius);
+      padding: 1.2rem 1.3rem; box-shadow: var(--shadow);
+    }
+    .panel h2 {
+      font-family: Spectral, serif; font-size: 1.2rem; font-weight: 500; margin: 0 0 .85rem;
+    }
+
+    .timeline { position: relative; padding-left: 1.1rem; }
+    .timeline::before {
+      content: ""; position: absolute; left: .28rem; top: .2rem; bottom: .2rem; width: 2px;
+      background: linear-gradient(var(--accent), var(--accent-2), var(--accent-3));
+      opacity: .45; border-radius: 2px;
+    }
+    .event {
+      position: relative; padding: 0 0 1.15rem 1rem;
+      opacity: 0; transform: translateY(8px);
+      transition: opacity .35s ease, transform .35s ease;
+    }
+    .event.show { opacity: 1; transform: none; }
+    .event.hidden { display: none; }
+    .event::before {
+      content: ""; position: absolute; left: -.95rem; top: .35rem; width: .65rem; height: .65rem;
+      border-radius: 50%; background: var(--card); border: 2px solid var(--accent);
+    }
+    .event[data-theme-tag="eval"]::before { border-color: var(--accent); }
+    .event[data-theme-tag="rag"]::before { border-color: var(--accent-3); }
+    .event[data-theme-tag="ops"]::before { border-color: var(--accent-2); }
+    .event[data-theme-tag="writing"]::before { border-color: #9a7bb8; }
+    .event-meta {
+      display: flex; flex-wrap: wrap; gap: .4rem; align-items: center; margin-bottom: .25rem;
+    }
+    .month {
+      font-size: .72rem; letter-spacing: .08em; text-transform: uppercase; color: var(--muted);
+    }
+    .pill {
+      font-size: .65rem; letter-spacing: .04em; text-transform: uppercase;
+      padding: .15rem .45rem; border-radius: 999px; background: var(--accent-soft); color: var(--accent);
+    }
+    .event h3 { margin: 0 0 .25rem; font-size: .98rem; font-weight: 500; }
+    .event p { margin: 0; font-size: .86rem; color: var(--muted); }
+    .event .metric {
+      margin-top: .45rem; font-size: .78rem; color: var(--ink);
+      display: inline-flex; gap: .75rem; flex-wrap: wrap;
+    }
+    .event .metric b { font-weight: 500; }
+
+    .chart-block { margin-bottom: 1.25rem; }
+    .chart-block:last-child { margin-bottom: 0; }
+    .chart-label {
+      display: flex; justify-content: space-between; font-size: .78rem; color: var(--muted); margin-bottom: .45rem;
+    }
+    .bars { display: grid; grid-template-columns: repeat(12, 1fr); gap: 4px; align-items: end; height: 110px; }
+    .bar-col { display: flex; flex-direction: column; align-items: center; height: 100%; justify-content: flex-end; gap: 4px; }
+    .bar {
+      width: 100%; border-radius: 4px 4px 2px 2px; background: var(--accent);
+      min-height: 4px; transition: height .4s ease, opacity .2s;
+      cursor: pointer; opacity: .85;
+    }
+    .bar:hover, .bar.active { opacity: 1; background: var(--accent-2); }
+    .bar-col span { font-size: .58rem; color: var(--muted); }
+
+    .donut-wrap { display: flex; align-items: center; gap: 1.1rem; }
+    .donut { width: 120px; height: 120px; flex-shrink: 0; }
+    .legend { list-style: none; margin: 0; padding: 0; font-size: .82rem; }
+    .legend li { display: flex; align-items: center; gap: .45rem; margin: .3rem 0; color: var(--muted); }
+    .swatch { width: .65rem; height: .65rem; border-radius: 2px; flex-shrink: 0; }
+
+    .insight {
+      margin-top: 1rem; padding: .85rem 1rem; border-radius: 12px;
+      background: var(--bg); border: 1px dashed var(--line); font-size: .86rem; color: var(--muted);
+    }
+    .insight strong { color: var(--ink); font-weight: 500; }
+
+    .empty-filter {
+      padding: 1.5rem; text-align: center; color: var(--muted); font-size: .9rem;
+      border: 1px dashed var(--line); border-radius: 12px;
+    }
+
+    .foot {
+      margin-top: 1.75rem; display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap;
+      font-size: .78rem; color: var(--muted);
+    }
+    .foot a { color: inherit; }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="../../projects.html">
+      <span class="brand-mark">实践年报</span>
+      <span class="brand-sub"><span class="lang-zh">Agent 工作复盘 · 2025</span><span class="lang-en">Agent practice yearbook · 2025</span></span>
+    </a>
+    <div class="top-actions">
+      <button type="button" class="chip-btn" id="lang-toggle">EN</button>
+      <button type="button" class="chip-btn" id="theme-toggle"><span class="lang-zh">深色</span><span class="lang-en">Dark</span></button>
+      <a class="chip-btn" href="../../projects.html"><span class="lang-zh">← 项目</span><span class="lang-en">← Projects</span></a>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <p class="eyebrow">Interactive yearbook · sample data</p>
+    <h1>
+      <span class="lang-zh">一年 Agent 实践，一张可筛选的时间线。</span>
+      <span class="lang-en">One year of agent practice — a filterable timeline.</span>
+    </h1>
+    <p class="lede lang-zh">把评测台、引溯 RAG、投放作战室、博客写作串成「实践年报」。数字是示例，交互是真的：按月份 / 主题筛选，看柱状与占比。</p>
+    <p class="lede lang-en">Eval lab, citation RAG, ad war room, and writing — woven into a yearbook. Stats are sample; filters and charts are live (pure CSS/SVG).</p>
+
+    <div class="kpi-grid" id="kpis">
+      <div class="kpi"><em><span class="lang-zh">落地 Demo</span><span class="lang-en">Shipped demos</span></em><strong id="kpi-demos">5</strong><span class="delta">+3 vs H1</span></div>
+      <div class="kpi"><em><span class="lang-zh">评测用例</span><span class="lang-en">Eval cases</span></em><strong id="kpi-cases">128</strong><span class="delta">coverage ↑</span></div>
+      <div class="kpi"><em><span class="lang-zh">带引用回答</span><span class="lang-en">Cited answers</span></em><strong id="kpi-cites">86%</strong><span class="delta">grounded</span></div>
+      <div class="kpi"><em><span class="lang-zh">实践周记</span><span class="lang-en">Practice notes</span></em><strong id="kpi-notes">41</strong><span class="delta">blog + notes</span></div>
+    </div>
+
+    <div class="filters" id="filters" role="toolbar" aria-label="filters">
+      <span class="label"><span class="lang-zh">月份</span><span class="lang-en">Month</span></span>
+      <button type="button" class="filter active" data-month="all">All</button>
+      <button type="button" class="filter" data-month="1">Jan</button>
+      <button type="button" class="filter" data-month="3">Mar</button>
+      <button type="button" class="filter" data-month="5">May</button>
+      <button type="button" class="filter" data-month="7">Jul</button>
+      <button type="button" class="filter" data-month="9">Sep</button>
+      <button type="button" class="filter" data-month="10">Oct</button>
+      <button type="button" class="filter" data-month="11">Nov</button>
+      <span class="label" style="margin-left:.5rem"><span class="lang-zh">主题</span><span class="lang-en">Theme</span></span>
+      <button type="button" class="filter active" data-theme-filter="all">All</button>
+      <button type="button" class="filter" data-theme-filter="eval">Eval</button>
+      <button type="button" class="filter" data-theme-filter="rag">RAG</button>
+      <button type="button" class="filter" data-theme-filter="ops">Ops</button>
+      <button type="button" class="filter" data-theme-filter="writing">Writing</button>
+    </div>
+
+    <div class="layout">
+      <section class="panel">
+        <h2><span class="lang-zh">实践时间线</span><span class="lang-en">Practice timeline</span></h2>
+        <div class="timeline" id="timeline"></div>
+        <div class="empty-filter" id="empty" hidden>
+          <span class="lang-zh">这个筛选下没有事件，换个月份或主题试试。</span>
+          <span class="lang-en">No events for this filter — try another month or theme.</span>
+        </div>
+      </section>
+
+      <aside class="panel">
+        <div class="chart-block">
+          <h2><span class="lang-zh">每月实践强度</span><span class="lang-en">Monthly intensity</span></h2>
+          <div class="chart-label">
+            <span><span class="lang-zh">相对活跃度（示例）</span><span class="lang-en">Relative activity (sample)</span></span>
+            <span id="bar-hint">2025</span>
+          </div>
+          <div class="bars" id="bars" aria-label="monthly bars"></div>
+        </div>
+
+        <div class="chart-block">
+          <h2><span class="lang-zh">主题占比</span><span class="lang-en">Theme mix</span></h2>
+          <div class="donut-wrap">
+            <svg class="donut" viewBox="0 0 42 42" aria-hidden="true">
+              <circle cx="21" cy="21" r="15.915" fill="transparent" stroke="var(--line)" stroke-width="4"></circle>
+              <circle id="arc-eval" cx="21" cy="21" r="15.915" fill="transparent" stroke="var(--accent)" stroke-width="4"
+                stroke-dasharray="28 72" stroke-dashoffset="25"></circle>
+              <circle id="arc-rag" cx="21" cy="21" r="15.915" fill="transparent" stroke="var(--accent-3)" stroke-width="4"
+                stroke-dasharray="22 78" stroke-dashoffset="-3"></circle>
+              <circle id="arc-ops" cx="21" cy="21" r="15.915" fill="transparent" stroke="var(--accent-2)" stroke-width="4"
+                stroke-dasharray="30 70" stroke-dashoffset="-25"></circle>
+              <circle id="arc-writing" cx="21" cy="21" r="15.915" fill="transparent" stroke="#9a7bb8" stroke-width="4"
+                stroke-dasharray="20 80" stroke-dashoffset="-55"></circle>
+            </svg>
+            <ul class="legend">
+              <li><span class="swatch" style="background:var(--accent)"></span>Eval <b id="pct-eval">28%</b></li>
+              <li><span class="swatch" style="background:var(--accent-3)"></span>RAG <b id="pct-rag">22%</b></li>
+              <li><span class="swatch" style="background:var(--accent-2)"></span>Ops <b id="pct-ops">30%</b></li>
+              <li><span class="swatch" style="background:#9a7bb8"></span>Writing <b id="pct-writing">20%</b></li>
+            </ul>
+          </div>
+          <div class="insight" id="insight">
+            <span class="lang-zh"><strong>洞察：</strong>下半年把「先评再上线」固化成默认路径；写作从教程转向可复用的决策记录。</span>
+            <span class="lang-en"><strong>Insight:</strong> H2 locked “eval before ship” as default; writing shifted from tutorials to reusable decision logs.</span>
+          </div>
+        </div>
+      </aside>
+    </div>
+
+    <div class="foot">
+      <span><span class="lang-zh">本地 Demo · 示例数据 · Henry Huang</span><span class="lang-en">Local demo · sample data · Henry Huang</span></span>
+      <a href="../../projects.html"><span class="lang-zh">返回项目页</span><span class="lang-en">Back to projects</span></a>
+    </div>
+  </main>
+
+  <script>
+    (function () {
+      var root = document.documentElement;
+      var events = [
+        { m: 1, theme: 'writing', zhTitle: 'Inbox 工作流草稿', enTitle: 'Inbox workflow draft', zh: '把点子收集压到「打开即写」——快捷指令 + 滴答清单雏形。', en: 'Low-friction capture: shortcuts + todo inbox prototype.', metricZh: '笔记 6', metricEn: '6 notes' },
+        { m: 3, theme: 'eval', zhTitle: '广告 Agent 评测台 v0', enTitle: 'Ad Agent Eval Lab v0', zh: '第一批用例与打分卡；对照「能跑」和「能交付」。', en: 'First cases & scorecards — runnable vs shippable.', metricZh: '用例 24', metricEn: '24 cases' },
+        { m: 3, theme: 'rag', zhTitle: '引溯 RAG 原型', enTitle: 'Citation RAG prototype', zh: '强制回答带出处；没引用就不展示结论。', en: 'Answers must cite; no citation, no claim.', metricZh: '引用率 61%', metricEn: '61% cited' },
+        { m: 5, theme: 'ops', zhTitle: '多 Agent 投放作战室', enTitle: 'Multi-agent ad war room', zh: '拆角色：目标 / 指标 / 动作；API 优先读数。', en: 'Roles for goals, metrics, actions; API-first reads.', metricZh: '角色 4', metricEn: '4 roles' },
+        { m: 5, theme: 'eval', zhTitle: '评测基线对比', enTitle: 'Eval baseline compare', zh: '同一批用例跑两套 Agent，看回归而不是 demo 感。', en: 'Same suite, two agents — watch regressions, not vibes.', metricZh: '用例 64', metricEn: '64 cases' },
+        { m: 7, theme: 'rag', zhTitle: '引溯顾问可演示版', enTitle: 'Citation advisor demo', zh: '行业问答钉回原文段落；失败时显式说「不够证据」。', en: 'Pin answers to source spans; say “not enough evidence” aloud.', metricZh: '引用率 79%', metricEn: '79% cited' },
+        { m: 7, theme: 'writing', zhTitle: '实践文：API 优先', enTitle: 'Essay: API-first agents', zh: '把集成原则写成可引用的决策，而不是教程流水线。', en: 'Documented integration principles as decisions, not tutorial SEO.', metricZh: '博客 1', metricEn: '1 post' },
+        { m: 9, theme: 'ops', zhTitle: '作战室节奏复盘', enTitle: 'War-room cadence review', zh: '固定「晨会式」汇总：异常指标 → 假设 → 下一步。', en: 'Standup-shaped summary: anomaly → hypothesis → next step.', metricZh: '周报 8', metricEn: '8 digests' },
+        { m: 10, theme: 'eval', zhTitle: '评测台公开 Demo', enTitle: 'Eval lab public demo', zh: '把评测台挂到个人站；访客可点用例看分数。', en: 'Shipped eval lab to the portfolio — clickable cases & scores.', metricZh: '用例 128', metricEn: '128 cases' },
+        { m: 10, theme: 'writing', zhTitle: '博客矩阵铺开', enTitle: 'Blog matrix shipped', zh: '技术 / 实践 / 随笔分类；多 Agent、RAG、评测成系列。', en: 'Tech / practice / essay lanes; multi-agent + RAG + eval series.', metricZh: '文章 10', metricEn: '10 posts' },
+        { m: 11, theme: 'ops', zhTitle: '白底站 + 项目分层', enTitle: 'White site + agent layering', zh: '个人站重组：协调 / 场景 / 工具三层写进项目页。', en: 'Portfolio rewrite: coordinator / scene / tools on Projects.', metricZh: 'Demo 5', metricEn: '5 demos' },
+        { m: 11, theme: 'rag', zhTitle: '第二大脑式导航', enTitle: 'Second-brain navigation', zh: '笔记入口少建库、多写链接；和 RAG 同一套「可追溯」习惯。', en: 'Notes hub: fewer vaults, more links — same grounding habit as RAG.', metricZh: '节点 ~40', metricEn: '~40 nodes' }
+      ];
+
+      var monthly = [12, 18, 34, 22, 48, 30, 52, 28, 40, 58, 46, 20];
+      var monthFilter = 'all';
+      var themeFilter = 'all';
+
+      function currentLang() { return root.getAttribute('data-lang') === 'en' ? 'en' : 'zh'; }
+      function setLang(lang) {
+        root.setAttribute('data-lang', lang);
+        root.setAttribute('lang', lang === 'zh' ? 'zh' : 'en');
+        document.getElementById('lang-toggle').textContent = lang === 'zh' ? 'EN' : '中文';
+        renderTimeline();
+        renderInsight();
+      }
+      function setTheme(dark) {
+        root.setAttribute('data-theme', dark ? 'dark' : 'light');
+        document.getElementById('theme-toggle').innerHTML = dark
+          ? '<span class="lang-zh">浅色</span><span class="lang-en">Light</span>'
+          : '<span class="lang-zh">深色</span><span class="lang-en">Dark</span>';
+      }
+      setLang(currentLang());
+      if (!root.getAttribute('data-theme')) root.setAttribute('data-theme', 'light');
+
+      document.getElementById('lang-toggle').addEventListener('click', function () {
+        setLang(currentLang() === 'zh' ? 'en' : 'zh');
+      });
+      document.getElementById('theme-toggle').addEventListener('click', function () {
+        setTheme(root.getAttribute('data-theme') !== 'dark');
+      });
+
+      function monthName(m) {
+        var en = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+        var zh = ['1 月','2 月','3 月','4 月','5 月','6 月','7 月','8 月','9 月','10 月','11 月','12 月'];
+        return currentLang() === 'en' ? en[m - 1] : zh[m - 1];
+      }
+
+      function themeLabel(t) {
+        if (currentLang() === 'en') return t;
+        return ({ eval: '评测', rag: 'RAG', ops: '投放/Ops', writing: '写作' })[t] || t;
+      }
+
+      function filtered() {
+        return events.filter(function (e) {
+          var okM = monthFilter === 'all' || String(e.m) === String(monthFilter);
+          var okT = themeFilter === 'all' || e.theme === themeFilter;
+          return okM && okT;
+        });
+      }
+
+      function renderTimeline() {
+        var list = filtered();
+        var el = document.getElementById('timeline');
+        var empty = document.getElementById('empty');
+        if (!list.length) {
+          el.innerHTML = '';
+          empty.hidden = false;
+          updateDonut([]);
+          return;
+        }
+        empty.hidden = true;
+        el.innerHTML = list.map(function (e) {
+          var title = currentLang() === 'en' ? e.enTitle : e.zhTitle;
+          var body = currentLang() === 'en' ? e.en : e.zh;
+          var metric = currentLang() === 'en' ? e.metricEn : e.metricZh;
+          return '<article class="event" data-theme-tag="' + e.theme + '" data-month="' + e.m + '">' +
+            '<div class="event-meta"><span class="month">' + monthName(e.m) + ' 2025</span>' +
+            '<span class="pill">' + themeLabel(e.theme) + '</span></div>' +
+            '<h3>' + title + '</h3><p>' + body + '</p>' +
+            '<div class="metric"><b>' + metric + '</b></div></article>';
+        }).join('');
+        requestAnimationFrame(function () {
+          el.querySelectorAll('.event').forEach(function (node, i) {
+            setTimeout(function () { node.classList.add('show'); }, 40 + i * 50);
+          });
+        });
+        updateDonut(list);
+        updateKpis(list);
+      }
+
+      function updateKpis(list) {
+        var demos = list.filter(function (e) { return /demo|公开|站点|作战室|评测台|顾问/i.test(e.zhTitle + e.enTitle); }).length;
+        document.getElementById('kpi-demos').textContent = Math.max(demos, monthFilter === 'all' && themeFilter === 'all' ? 5 : demos || 1);
+        var cases = list.some(function (e) { return e.theme === 'eval'; }) ? (monthFilter === 'all' ? 128 : 24 + list.length * 8) : (themeFilter === 'all' ? 128 : 0);
+        document.getElementById('kpi-cases').textContent = cases;
+        var cite = list.some(function (e) { return e.theme === 'rag'; }) ? (monthFilter === 'all' ? '86%' : '72%') : (themeFilter === 'all' ? '86%' : '—');
+        document.getElementById('kpi-cites').textContent = cite;
+        var notes = list.filter(function (e) { return e.theme === 'writing'; }).length;
+        document.getElementById('kpi-notes').textContent = monthFilter === 'all' && themeFilter === 'all' ? 41 : Math.max(notes * 3, notes);
+      }
+
+      function updateDonut(list) {
+        var source = list.length ? list : events;
+        var counts = { eval: 0, rag: 0, ops: 0, writing: 0 };
+        source.forEach(function (e) { counts[e.theme]++; });
+        var total = source.length || 1;
+        var order = ['eval', 'rag', 'ops', 'writing'];
+        var pcts = order.map(function (k) { return Math.round(counts[k] / total * 100); });
+        // fix rounding
+        var sum = pcts.reduce(function (a, b) { return a + b; }, 0);
+        pcts[pcts.length - 1] += (100 - sum);
+        var ids = ['pct-eval', 'pct-rag', 'pct-ops', 'pct-writing'];
+        var arcs = ['arc-eval', 'arc-rag', 'arc-ops', 'arc-writing'];
+        var offset = 25;
+        pcts.forEach(function (p, i) {
+          document.getElementById(ids[i]).textContent = p + '%';
+          var circ = document.getElementById(arcs[i]);
+          circ.setAttribute('stroke-dasharray', p + ' ' + (100 - p));
+          circ.setAttribute('stroke-dashoffset', String(offset));
+          offset -= p;
+        });
+      }
+
+      function renderBars() {
+        var el = document.getElementById('bars');
+        el.innerHTML = monthly.map(function (v, i) {
+          var h = Math.max(6, Math.round(v / 60 * 100));
+          var m = i + 1;
+          var active = monthFilter !== 'all' && String(monthFilter) === String(m) ? ' active' : '';
+          return '<div class="bar-col"><div class="bar' + active + '" data-month="' + m + '" style="height:' + h + '%" title="' + monthName(m) + ': ' + v + '"></div><span>' + (i + 1) + '</span></div>';
+        }).join('');
+        el.querySelectorAll('.bar').forEach(function (bar) {
+          bar.addEventListener('click', function () {
+            monthFilter = bar.getAttribute('data-month');
+            document.querySelectorAll('[data-month]').forEach(function (b) {
+              if (b.classList.contains('filter')) b.classList.toggle('active', b.getAttribute('data-month') === monthFilter);
+            });
+            document.getElementById('bar-hint').textContent = monthName(Number(monthFilter)) + ' 2025';
+            renderTimeline();
+            renderBars();
+          });
+        });
+      }
+
+      function renderInsight() {
+        // content uses lang spans already in HTML; re-assert visibility via data-lang
+      }
+
+      document.querySelectorAll('.filter[data-month]').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          monthFilter = btn.getAttribute('data-month');
+          document.querySelectorAll('.filter[data-month]').forEach(function (b) { b.classList.toggle('active', b === btn); });
+          document.getElementById('bar-hint').textContent = monthFilter === 'all' ? '2025' : monthName(Number(monthFilter)) + ' 2025';
+          renderTimeline();
+          renderBars();
+        });
+      });
+      document.querySelectorAll('.filter[data-theme-filter]').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          themeFilter = btn.getAttribute('data-theme-filter');
+          document.querySelectorAll('.filter[data-theme-filter]').forEach(function (b) { b.classList.toggle('active', b === btn); });
+          renderTimeline();
+        });
+      });
+
+      renderBars();
+      renderTimeline();
+    })();
+  </script>
+</body>
+</html>

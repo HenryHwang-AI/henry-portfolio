@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="zh" data-lang="zh" class="notranslate" translate="no">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="google" content="notranslate">
+  <title>Projects — Henry Huang</title>
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem('theme');
+        if (t === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
+        else if (t === 'light') document.documentElement.setAttribute('data-theme', 'light');
+        var lang = localStorage.getItem('lang');
+        if (lang === 'en' || lang === 'zh') {
+          document.documentElement.setAttribute('data-lang', lang);
+          document.documentElement.setAttribute('lang', lang === 'zh' ? 'zh' : 'en');
+        }
+      } catch (e) {}
+    })();
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,300;0,400;0,500;1,400&family=Spectral:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div id="particles-js" aria-hidden="true"></div>
+
+  <header class="site-nav-wrapper">
+    <a href="index.html" class="site-name">henry huang</a>
+    <div class="nav-right">
+      <nav class="site-nav" aria-label="Primary">
+        <a href="index.html"><span class="lang-zh">关于</span><span class="lang-en">About</span></a>
+        <a href="blog.html"><span class="lang-zh">博客</span><span class="lang-en">Blog</span></a>
+        <a href="projects.html" class="active"><span class="lang-zh">项目</span><span class="lang-en">Projects</span></a>
+        <a href="tools.html"><span class="lang-zh">工具</span><span class="lang-en">Tools</span></a>
+        <a href="notes.html"><span class="lang-zh">笔记</span><span class="lang-en">Notes</span></a>
+      </nav>
+      <div class="social-icons" aria-label="Social">
+        <a href="#" aria-label="X / Twitter" title="X"><i class="fab fa-x-twitter"></i></a>
+        <a href="https://github.com/HenryHwang-AI" aria-label="GitHub" title="GitHub"><i class="fab fa-github"></i></a>
+        <a href="#" aria-label="LinkedIn" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+      </div>
+      <button type="button" class="icon-btn" id="lang-toggle" aria-label="Switch language">EN</button>
+      <button type="button" class="icon-btn" id="theme-toggle" aria-label="Toggle dark mode">
+        <span class="theme-label-to-dark">
+          <span class="lang-zh">深色</span><span class="lang-en">Dark</span>
+        </span>
+        <span class="theme-label-to-light">
+          <span class="lang-zh">浅色</span><span class="lang-en">Light</span>
+        </span>
+      </button>
+    </div>
+  </header>
+
+  <main class="projects-page fade-up" id="projects-page">
+    <div class="projects-layout">
+      <p class="projects-intro lang-zh">广告与 Agent 方向的可运行 Demo——评测、带引用的 RAG、多 Agent 投放，以及创意教练与实践年报。下面是我怎么拆层的。<span style="display:block;margin-top:.55rem;opacity:.78;font-size:.92em">选题灵感来自 nathanchen.me 公开项目，实现与文案为原创。</span></p>
+      <p class="projects-intro lang-en">runnable demos around ads &amp; agents — eval, citation RAG, multi-agent war room, plus a creative coach and practice yearbook. below: how i layer them.<span style="display:block;margin-top:.55rem;opacity:.78;font-size:.92em">themes inspired by public projects on nathanchen.me; implementation &amp; copy are original.</span></p>
+
+      <section class="agent-layer" aria-labelledby="agent-layer-heading">
+        <h2 id="agent-layer-heading" class="section-heading">
+          <span class="lang-zh">Agent 分层</span>
+          <span class="lang-en">Agent layering</span>
+        </h2>
+        <p class="agent-layer-prose lang-zh">我把工作拆成三层：上面协调，中间按场景干活，底下优先走 API，GUI 只做兜底。这样评测台、投放室和 RAG 顾问可以共用同一套工具，又各自独立迭代。</p>
+        <p class="agent-layer-prose lang-en">three layers: a coordinator on top, scene bots in the middle, and a tools layer that prefers APIs with GUI as fallback. eval lab, war room, and citation RAG share tools but ship on their own cadence.</p>
+        <ol class="agent-layer-list">
+          <li>
+            <span class="lang-zh"><strong>管理 / 协调 Bot</strong> — 拆任务、路由、汇总结果</span>
+            <span class="lang-en"><strong>manager / coordinator</strong> — decompose, route, summarize</span>
+          </li>
+          <li>
+            <span class="lang-zh"><strong>场景 Bot</strong> — 广告评测 · 投放作战 · 行业 RAG</span>
+            <span class="lang-en"><strong>scene bots</strong> — ad eval · media buying · industry RAG</span>
+          </li>
+          <li>
+            <span class="lang-zh"><strong>工具层</strong> — API 优先，GUI 兜底</span>
+            <span class="lang-en"><strong>tools</strong> — API first, GUI as fallback</span>
+          </li>
+        </ol>
+      </section>
+
+      <div class="projects-list" id="projects-list">
+
+        <article class="project-card project-card--live">
+          <h2 class="project-title">
+            <span class="lang-zh">镜语 · 广告视觉创意教练</span>
+            <span class="lang-en">Lens Note — Creative Coach</span>
+          </h2>
+          <p class="project-blurb">
+            <span class="lang-zh">把投放 Brief 变成构图 / CTA / 品牌语气三维教练意见——可点的本地创意产品 Demo。</span>
+            <span class="lang-en">turn a campaign brief into composition / CTA / brand-tone critique — interactive local product demo.</span>
+          </p>
+          <div class="project-tags">
+            <span class="project-tag"><span class="lang-zh">创意</span><span class="lang-en">Creative</span></span>
+            <span class="project-tag">Ads</span>
+            <span class="project-tag">Agent</span>
+          </div>
+          <div class="project-links">
+            <a href="demos/creative-coach/index.html">Demo</a>
+            <span class="project-tag" style="opacity:.7"><span class="lang-zh">本地 Demo</span><span class="lang-en">Local demo</span></span>
+          </div>
+        </article>
+
+        <article class="project-card project-card--live">
+          <h2 class="project-title">
+            <span class="lang-zh">实践年报 · Agent 工作复盘</span>
+            <span class="lang-en">Practice Yearbook</span>
+          </h2>
+          <p class="project-blurb">
+            <span class="lang-zh">一年 Agent 实践时间线：评测台、引溯 RAG、作战室与写作——按月 / 主题筛选，纯 CSS/SVG 图。</span>
+            <span class="lang-en">a year of agent practice — eval, citation RAG, war room, writing — filter by month/theme; pure CSS/SVG charts.</span>
+          </p>
+          <div class="project-tags">
+            <span class="project-tag"><span class="lang-zh">复盘</span><span class="lang-en">Review</span></span>
+            <span class="project-tag">Agent</span>
+            <span class="project-tag">Viz</span>
+          </div>
+          <div class="project-links">
+            <a href="demos/practice-yearbook/index.html">Demo</a>
+            <span class="project-tag" style="opacity:.7"><span class="lang-zh">本地 Demo</span><span class="lang-en">Local demo</span></span>
+          </div>
+        </article>
+        <article class="project-card project-card--live">
+          <h2 class="project-title">
+            <span class="lang-zh">广告 Agent 评测台</span>
+            <span class="lang-en">Ad Agent Eval Lab</span>
+          </h2>
+          <p class="project-blurb">
+            <span class="lang-zh">给广告 Agent 跑用例、打分、对照基线——先评再上线。</span>
+            <span class="lang-en">run cases, score agents, compare baselines — eval before you ship ads agents.</span>
+          </p>
+          <div class="project-tags">
+            <span class="project-tag">Agent</span>
+            <span class="project-tag"><span class="lang-zh">评测</span><span class="lang-en">Eval</span></span>
+            <span class="project-tag">Ads</span>
+          </div>
+          <div class="project-links">
+            <a href="https://henryhwang-ai.github.io/ad-agent-eval-lab/" target="_blank" rel="noopener noreferrer">Demo</a>
+            <a href="https://github.com/HenryHwang-AI/ad-agent-eval-lab" target="_blank" rel="noopener noreferrer">GitHub</a>
+          </div>
+        </article>
+
+        <article class="project-card project-card--live">
+          <h2 class="project-title">
+            <span class="lang-zh">引溯 · 带引用的行业 RAG 顾问</span>
+            <span class="lang-en">Citation RAG Advisor</span>
+          </h2>
+          <p class="project-blurb">
+            <span class="lang-zh">行业问答必须带出处：检索、生成、把引用钉回原文。</span>
+            <span class="lang-en">industry Q&amp;A with citations pinned back to sources — retrieve, generate, ground.</span>
+          </p>
+          <div class="project-tags">
+            <span class="project-tag">RAG</span>
+            <span class="project-tag"><span class="lang-zh">引用</span><span class="lang-en">Citation</span></span>
+            <span class="project-tag">Agent</span>
+          </div>
+          <div class="project-links">
+            <a href="https://henryhwang-ai.github.io/citation-rag-advisor/" target="_blank" rel="noopener noreferrer">Demo</a>
+            <a href="https://github.com/HenryHwang-AI/citation-rag-advisor" target="_blank" rel="noopener noreferrer">GitHub</a>
+          </div>
+        </article>
+
+        <article class="project-card project-card--live">
+          <h2 class="project-title">
+            <span class="lang-zh">多 Agent 投放作战室</span>
+            <span class="lang-en">Multi-Agent Ad War Room</span>
+          </h2>
+          <p class="project-blurb">
+            <span class="lang-zh">多角色 Agent 一起看投放：拆目标、盯指标、给出下一步动作。</span>
+            <span class="lang-en">multiple agent roles in one war room — goals, metrics, next actions.</span>
+          </p>
+          <div class="project-tags">
+            <span class="project-tag">Multi-Agent</span>
+            <span class="project-tag"><span class="lang-zh">投放</span><span class="lang-en">Ads</span></span>
+            <span class="project-tag">Ops</span>
+          </div>
+          <div class="project-links">
+            <a href="https://henryhwang-ai.github.io/multi-agent-ad-war-room/" target="_blank" rel="noopener noreferrer">Demo</a>
+            <a href="https://github.com/HenryHwang-AI/multi-agent-ad-war-room" target="_blank" rel="noopener noreferrer">GitHub</a>
+          </div>
+        </article>
+
+        <a class="project-card" href="#" aria-disabled="true" title="占位项目 / Placeholder">
+          <h2 class="project-title">
+            <span class="lang-zh">Talking Tom 落地页</span>
+            <span class="lang-en">Talking Tom landing page</span>
+          </h2>
+          <p class="project-blurb">
+            <span class="lang-zh">角色 IP 活动页：叙事、CTA 与移动端体验（占位）。</span>
+            <span class="lang-en">character-IP campaign landing — narrative, CTA, mobile UX (placeholder).</span>
+          </p>
+          <div class="project-tags">
+            <span class="project-tag">Web</span>
+            <span class="project-tag"><span class="lang-zh">增长</span><span class="lang-en">Growth</span></span>
+          </div>
+        </a>
+
+        <a class="project-card" href="#" aria-disabled="true" title="占位项目 / Placeholder">
+          <h2 class="project-title">
+            <span class="lang-zh">个人站</span>
+            <span class="lang-en">Personal site</span>
+          </h2>
+          <p class="project-blurb">
+            <span class="lang-zh">白底极简双语站：Spectral、粒子、深浅色与博客分类（本站）。</span>
+            <span class="lang-en">white minimal bilingual site — Spectral, particles, theme toggle, this site.</span>
+          </p>
+          <div class="project-tags">
+            <span class="project-tag">Web</span>
+            <span class="project-tag"><span class="lang-zh">设计</span><span class="lang-en">Design</span></span>
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <footer class="blog-footer">
+      <a href="index.html" id="home-footer-link">
+        <span class="lang-zh">主页</span><span class="lang-en">Home</span>
+      </a>
+    </footer>
+  </main>
+
+  <script src="js/particles.min.js"></script>
+  <script>
+    (function () {
+      var root = document.documentElement;
+      var langBtn = document.getElementById('lang-toggle');
+      var themeBtn = document.getElementById('theme-toggle');
+
+      function currentLang() {
+        return root.getAttribute('data-lang') === 'en' ? 'en' : 'zh';
+      }
+
+      function setLang(lang) {
+        root.setAttribute('data-lang', lang);
+        root.setAttribute('lang', lang === 'zh' ? 'zh' : 'en');
+        langBtn.textContent = lang === 'zh' ? 'EN' : '中文';
+        try { localStorage.setItem('lang', lang); } catch (e) {}
+      }
+
+      function isDark() {
+        return root.getAttribute('data-theme') === 'dark';
+      }
+
+      function setTheme(dark) {
+        if (dark) root.setAttribute('data-theme', 'dark');
+        else root.setAttribute('data-theme', 'light');
+        try { localStorage.setItem('theme', dark ? 'dark' : 'light'); } catch (e) {}
+      }
+
+      setLang(currentLang());
+      if (!root.getAttribute('data-theme')) {
+        root.setAttribute('data-theme', 'light');
+      }
+
+      langBtn.addEventListener('click', function () {
+        setLang(currentLang() === 'zh' ? 'en' : 'zh');
+      });
+
+      themeBtn.addEventListener('click', function () {
+        setTheme(!isDark());
+      });
+
+      document.querySelectorAll('.project-card[aria-disabled="true"]').forEach(function (el) {
+        el.addEventListener('click', function (e) {
+          e.preventDefault();
+        });
+      });
+
+      document.addEventListener('DOMContentLoaded', function () {
+        var page = document.getElementById('projects-page');
+        if (page) {
+          requestAnimationFrame(function () {
+            page.classList.add('is-visible');
+          });
+        }
+        var items = document.querySelectorAll('#projects-list .project-card');
+        items.forEach(function (item, idx) {
+          item.style.opacity = '0';
+          item.style.transform = 'translateY(10px)';
+          item.style.transition = 'opacity 420ms ease, transform 420ms ease';
+          setTimeout(function () {
+            item.style.opacity = '1';
+            item.style.transform = 'none';
+          }, 80 + idx * 40);
+        });
+      });
+
+      function initParticles() {
+        if (typeof particlesJS !== 'function') return;
+        particlesJS('particles-js', {
+          particles: {
+            number: { value: 8, density: { enable: true, value_area: 300 } },
+            color: { value: '#A680A6' },
+            shape: { type: 'triangle' },
+            opacity: {
+              value: 0.8,
+              random: true,
+              anim: { enable: true, speed: 1, opacity_min: 0.1, sync: false }
+            },
+            size: {
+              value: 5,
+              random: true,
+              anim: { enable: true, speed: 4, size_min: 0.3, sync: false }
+            },
+            line_linked: {
+              enable: true,
+              distance: 150,
+              color: '#A680A6',
+              opacity: 0.4,
+              width: 1
+            },
+            move: {
+              enable: true,
+              speed: 1.4,
+              direction: 'none',
+              random: false,
+              straight: false,
+              out_mode: 'bounce',
+              bounce: false
+            }
+          },
+          interactivity: {
+            detect_on: 'canvas',
+            events: {
+              onhover: { enable: true, mode: 'repulse' },
+              onclick: { enable: true, mode: 'push' },
+              resize: true
+            }
+          },
+          retina_detect: true
+        });
+      }
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initParticles);
+      } else {
+        initParticles();
+      }
+    })();
+  </script>
+</body>
+</html>

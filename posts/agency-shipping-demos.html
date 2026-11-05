@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="zh" data-lang="zh" class="notranslate" translate="no">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="google" content="notranslate">
+  <title>“Be yourself” is incomplete: agency means shipping the demos — Henry Huang</title>
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem('theme');
+        if (t === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
+        else if (t === 'light') document.documentElement.setAttribute('data-theme', 'light');
+        var lang = localStorage.getItem('lang');
+        if (lang === 'en' || lang === 'zh') {
+          document.documentElement.setAttribute('data-lang', lang);
+          document.documentElement.setAttribute('lang', lang === 'zh' ? 'zh' : 'en');
+        }
+      } catch (e) {}
+    })();
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,300;0,400;0,500;1,400&family=Spectral:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <div id="particles-js" aria-hidden="true"></div>
+
+  <header class="site-nav-wrapper">
+    <a href="../index.html" class="site-name">henry huang</a>
+    <div class="nav-right">
+      <nav class="site-nav" aria-label="Primary">
+        <a href="../index.html"><span class="lang-zh">关于</span><span class="lang-en">About</span></a>
+        <a href="../blog.html" class="active"><span class="lang-zh">博客</span><span class="lang-en">Blog</span></a>
+        <a href="../projects.html"><span class="lang-zh">项目</span><span class="lang-en">Projects</span></a>
+        <a href="../tools.html"><span class="lang-zh">工具</span><span class="lang-en">Tools</span></a>
+        <a href="../notes.html"><span class="lang-zh">笔记</span><span class="lang-en">Notes</span></a>
+      </nav>
+      <div class="social-icons" aria-label="Social">
+        <a href="#" aria-label="X / Twitter" title="X"><i class="fab fa-x-twitter"></i></a>
+        <a href="https://github.com/HenryHwang-AI" aria-label="GitHub" title="GitHub"><i class="fab fa-github"></i></a>
+        <a href="#" aria-label="LinkedIn" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+      </div>
+      <button type="button" class="icon-btn" id="lang-toggle" aria-label="Switch language">EN</button>
+      <button type="button" class="icon-btn" id="theme-toggle" aria-label="Toggle dark mode">
+        <span class="theme-label-to-dark">
+          <span class="lang-zh">深色</span><span class="lang-en">Dark</span>
+        </span>
+        <span class="theme-label-to-light">
+          <span class="lang-zh">浅色</span><span class="lang-en">Light</span>
+        </span>
+      </button>
+    </div>
+  </header>
+
+  <main class="post-page fade-up" id="post-page">
+    <article class="post-article">
+      <p class="post-meta">
+        <a class="post-back" href="../blog.html"><span class="lang-zh">← 博客</span><span class="lang-en">← Blog</span></a>
+        <span class="post-meta-sep" aria-hidden="true">·</span>
+        <time datetime="2026-11-05">2026-11-05</time>
+        <span class="post-meta-sep" aria-hidden="true">·</span>
+        <span class="post-cat"><span class="lang-zh">随笔</span><span class="lang-en">Reflection</span></span>
+      </p>
+      <h1 class="post-title">
+        <span class="lang-zh">「做自己」不够：Agency 在于把 Demo 真正交出去</span>
+        <span class="lang-en">“Be yourself” is incomplete: agency means shipping the demos</span>
+      </h1>
+
+      <div class="post-body lang-zh">
+        <p>很多人把 agency 说成口号：大胆、真实、别在意别人怎么看。对我来说这只说对了一半。产品与 Agent 工作里，agency 不是自我感觉，而是<strong>你是否把未完成的想法压成可演示的东西</strong>——有路径、有失败面、别人能点开玩。</p>
+        <h2>简历剧场 vs 真构建</h2>
+        <p>「简历剧场」很诱人：堆关键词、截几张图、写「熟悉 Multi-Agent / RAG」。它看起来像在行动，其实在优化别人眼里的标签。真构建更难看：你得选一个窄场景，把接口、权限、评测和兜底都钉死，还得承认哪里脆。</p>
+        <p>我选了三条线——多 Agent 投放作战室、带引用的 RAG、广告 Agent 评测台——不是因为它们好听，而是因为它们逼我做选择：角色怎么拆、引用怎么挂、什么叫「好不好用」。环境（可跑的 Demo、可点的 GitHub）会反过来塑造你；光喊「做自己」却不改环境，agency 会停在想象里。</p>
+        <h2>行动塑造身份</h2>
+        <p>发完三个 Demo 之后，我才更清楚自己想站在哪一侧：不是「讲 Agent 的人」，而是「能把 Agent 交到别人手里试」的人。身份跟在交付后面。下一轮如果只补文案不补可跑物，那就是退回剧场。</p>
+        <p>所以我把 agency 写成一条工作纪律：每周至少推进一件能被外人验证的产物。口号留给海报；日历留给构建。</p>
+              <h2>环境比口号硬</h2>
+        <p>把三个 Demo 挂上可点的入口之后，我发现自己说话方式变了：少吹「多智能体未来」，多问「这一步失败怎么看」。朋友点开评测台，会直接问指标是否对业务有意义——这种外部压力，是简历剧场给不了的。Agency 也体现在你敢把半成品放进真实环境，让环境修理你。</p>
+        <p>若下周只剩「还在构思第四个想法」，没有可验证物，我就当自己在偷懒，而不是在「保持开放」。开放要有载体；载体就是交出去的 Demo。</p>
+      </div>
+
+      <div class="post-body lang-en">
+        <p>People often turn agency into a slogan: be bold, be authentic, ignore the crowd. That’s only half right for product and agent work. Agency isn’t a feeling—it’s whether you <strong>compress unfinished ideas into something demonstrable</strong>: a path, failure modes, something others can click.</p>
+        <h2>Resume theater vs real builds</h2>
+        <p>Resume theater is tempting: keyword stacks, a few screenshots, “familiar with multi-agent / RAG.” It looks like motion while optimizing for labels. Real builds are uglier: pick a narrow scene, nail APIs, auth, eval, and fallbacks—and admit what’s brittle.</p>
+        <p>I shipped three lines—an ads war room, citation RAG, an ads-agent eval lab—not because the titles sound good, but because they force choices: how roles split, how citations attach, what “usable” means. Environment (runnable demos, clickable GitHub) shapes you back; chanting “be yourself” without changing the environment leaves agency imaginary.</p>
+        <h2>Action precedes identity</h2>
+        <p>Only after those demos left my laptop did I know which side I want: not “someone who talks about agents,” but someone who can hand an agent to others to try. Identity follows delivery. If the next cycle is copy without runnable artifacts, that’s theater again.</p>
+        <p>So I write agency as discipline: each week, advance at least one thing outsiders can verify. Slogans for posters; the calendar for builds.</p>
+              <h2>Environment beats slogans</h2>
+        <p>Once the three demos had clickable entries, how I talk changed: less “multi-agent future,” more “how do we see this failure.” Friends open the eval lab and ask whether metrics matter to the business—pressure resume theater never supplies. Agency also means putting half-finished work in a real environment and letting it correct you.</p>
+        <p>If next week is only “still ideating a fourth idea” with nothing verifiable, I treat that as laziness, not openness. Openness needs a carrier; the carrier is a demo you actually handed over.</p>
+      </div>
+    </article>
+    <footer class="blog-footer">
+      <p class="post-inspired" style="margin:0 0 0.75rem;font-size:0.85rem;opacity:0.7;">
+        <span class="lang-zh">选题启发自 nathanchen.me 上的若干主题；正文为本人实践改写。</span>
+        <span class="lang-en">Inspired by themes on nathanchen.me; rewritten from my own practice.</span>
+      </p>
+      <a href="../blog.html" id="home-footer-link">
+        <span class="lang-zh">返回博客</span><span class="lang-en">Back to blog</span>
+      </a>
+    </footer>
+  </main>
+
+  <script src="../js/particles.min.js"></script>
+  <script>
+    (function () {
+      var root = document.documentElement;
+      var langBtn = document.getElementById('lang-toggle');
+      var themeBtn = document.getElementById('theme-toggle');
+
+      function currentLang() {
+        return root.getAttribute('data-lang') === 'en' ? 'en' : 'zh';
+      }
+
+      function setLang(lang) {
+        root.setAttribute('data-lang', lang);
+        root.setAttribute('lang', lang === 'zh' ? 'zh' : 'en');
+        langBtn.textContent = lang === 'zh' ? 'EN' : '中文';
+        try { localStorage.setItem('lang', lang); } catch (e) {}
+      }
+
+      function isDark() {
+        return root.getAttribute('data-theme') === 'dark';
+      }
+
+      function setTheme(dark) {
+        if (dark) root.setAttribute('data-theme', 'dark');
+        else root.setAttribute('data-theme', 'light');
+        try { localStorage.setItem('theme', dark ? 'dark' : 'light'); } catch (e) {}
+      }
+
+      setLang(currentLang());
+      if (!root.getAttribute('data-theme')) {
+        root.setAttribute('data-theme', 'light');
+      }
+
+      langBtn.addEventListener('click', function () {
+        setLang(currentLang() === 'zh' ? 'en' : 'zh');
+      });
+
+      themeBtn.addEventListener('click', function () {
+        setTheme(!isDark());
+      });
+
+      document.addEventListener('DOMContentLoaded', function () {
+        var page = document.getElementById('post-page');
+        if (page) {
+          requestAnimationFrame(function () {
+            page.classList.add('is-visible');
+          });
+        }
+      });
+
+      function initParticles() {
+        if (typeof particlesJS !== 'function') return;
+        particlesJS('particles-js', {
+          particles: {
+            number: { value: 8, density: { enable: true, value_area: 300 } },
+            color: { value: '#A680A6' },
+            shape: { type: 'triangle' },
+            opacity: {
+              value: 0.8,
+              random: true,
+              anim: { enable: true, speed: 1, opacity_min: 0.1, sync: false }
+            },
+            size: {
+              value: 5,
+              random: true,
+              anim: { enable: true, speed: 4, size_min: 0.3, sync: false }
+            },
+            line_linked: {
+              enable: true,
+              distance: 150,
+              color: '#A680A6',
+              opacity: 0.4,
+              width: 1
+            },
+            move: {
+              enable: true,
+              speed: 1.4,
+              direction: 'none',
+              random: false,
+              straight: false,
+              out_mode: 'bounce',
+              bounce: false
+            }
+          },
+          interactivity: {
+            detect_on: 'canvas',
+            events: {
+              onhover: { enable: true, mode: 'repulse' },
+              onclick: { enable: true, mode: 'push' },
+              resize: true
+            }
+          },
+          retina_detect: true
+        });
+      }
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initParticles);
+      } else {
+        initParticles();
+      }
+    })();
+  </script>
+</body>
+</html>
