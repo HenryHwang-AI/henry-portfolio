@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="zh" data-lang="zh" class="notranslate" translate="no">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="google" content="notranslate">
+  <title>Second-brain notes: fewer databases, more links — Henry Huang</title>
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem('theme');
+        if (t === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
+        else if (t === 'light') document.documentElement.setAttribute('data-theme', 'light');
+        var lang = localStorage.getItem('lang');
+        if (lang === 'en' || lang === 'zh') {
+          document.documentElement.setAttribute('data-lang', lang);
+          document.documentElement.setAttribute('lang', lang === 'zh' ? 'zh' : 'en');
+        }
+      } catch (e) {}
+    })();
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,300;0,400;0,500;1,400&family=Spectral:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <div id="particles-js" aria-hidden="true"></div>
+
+  <header class="site-nav-wrapper">
+    <a href="../index.html" class="site-name">henry huang</a>
+    <div class="nav-right">
+      <nav class="site-nav" aria-label="Primary">
+        <a href="../index.html"><span class="lang-zh">关于</span><span class="lang-en">About</span></a>
+        <a href="../blog.html" class="active"><span class="lang-zh">博客</span><span class="lang-en">Blog</span></a>
+        <a href="../projects.html"><span class="lang-zh">项目</span><span class="lang-en">Projects</span></a>
+        <a href="../tools.html"><span class="lang-zh">工具</span><span class="lang-en">Tools</span></a>
+        <a href="../notes.html"><span class="lang-zh">笔记</span><span class="lang-en">Notes</span></a>
+      </nav>
+      <div class="social-icons" aria-label="Social">
+        <a href="#" aria-label="X / Twitter" title="X"><i class="fab fa-x-twitter"></i></a>
+        <a href="https://github.com/HenryHwang-AI" aria-label="GitHub" title="GitHub"><i class="fab fa-github"></i></a>
+        <a href="#" aria-label="LinkedIn" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+      </div>
+      <button type="button" class="icon-btn" id="lang-toggle" aria-label="Switch language">EN</button>
+      <button type="button" class="icon-btn" id="theme-toggle" aria-label="Toggle dark mode">
+        <span class="theme-label-to-dark">
+          <span class="lang-zh">深色</span><span class="lang-en">Dark</span>
+        </span>
+        <span class="theme-label-to-light">
+          <span class="lang-zh">浅色</span><span class="lang-en">Light</span>
+        </span>
+      </button>
+    </div>
+  </header>
+
+    <main class="post-page fade-up" id="post-page">
+    <article class="post-article">
+      <p class="post-meta">
+        <a class="post-back" href="../blog.html"><span class="lang-zh">← 博客</span><span class="lang-en">← Blog</span></a>
+        <span class="post-meta-sep" aria-hidden="true">·</span>
+        <time datetime="2026-05-18">2026-05-18</time>
+        <span class="post-meta-sep" aria-hidden="true">·</span>
+        <span class="post-cat"><span class="lang-zh">随笔</span><span class="lang-en">Reflection</span></span>
+      </p>
+      <h1 class="post-title">
+        <span class="lang-zh">第二大脑式笔记：少建库，多写链接</span>
+        <span class="lang-en">Second-brain notes: fewer databases, more links</span>
+      </h1>
+
+      <div class="post-body lang-zh">
+        <p>我试过把一切丢进华丽的数据库字段，结果维护字段比写内容还累。现在站内的<a href="../notes.html">笔记入口</a>故意很轻：地图式导航，连向实践主题，而不是再造一个 CMS。库可以以后再长，链接必须现在就有。</p>
+        <h2>我怎么组织</h2>
+        <p>节点按「问题」而不是按「工具名」：评测、引用、多 Agent 协作、集成原则、捕获流。一篇实践文、一个 Demo、一条 Inbox 钩子，尽量互相指认。链接失败了也没关系——断链比空库诚实，至少告诉你这里曾经想接通。</p>
+        <p>我也不追求节点数量。宁可二十个高频回访的问题，也不要两千个只收藏不回流的网页剪藏。</p>
+        <h2>和博客的关系</h2>
+        <p>笔记是毛坯，博客是对外抛光后的切片。同一主题可以先在笔记里堆矛盾，等结论稳了再写成双语文章挂到博客分类里。评测台、引溯、作战室这几篇，都是先在笔记里吵清楚，再搬到博客的「技术 / 实践 / 随笔」。</p>
+        <h2>我学到什么</h2>
+        <p>第二大脑的密度来自<strong>回流</strong>：从 Demo 打回笔记，从笔记长出文章，从文章反改 Agent 契约。建库很爽，写链接很烦——但我选烦的那个，因为它真的复合利息。若你也在搭个人站，先把笔记页做成入口，再慢慢填自己的 URL，比一上来设计完美本体更接近能用。链接写得越多，Inbox 里那些半句话才知道该流向哪一篇实践。</p>
+        <p class="post-links">站内入口：<a href="../notes.html">笔记</a> · 相关文：<a href="ad-agent-eval.html">评测台</a> · <a href="citation-rag.html">引溯</a> · <a href="multi-agent-war-room.html">作战室</a></p>
+
+      </div>
+
+      <div class="post-body lang-en">
+        <p>I tried stuffing everything into fancy database properties and ended up maintaining schema instead of writing. The site’s <a href="../notes.html">notes entry</a> stays light on purpose: a map of practice themes, not another CMS. Databases can grow later; links have to exist now.</p>
+        <h2>How I organize</h2>
+        <p>Nodes are named by problems, not tool brands: eval, citation, multi-agent collaboration, integration rules, capture flow. A practice essay, a demo, and an inbox hook should point at each other. Broken links beat empty databases—they at least admit a connection was intended.</p>
+        <p>I do not chase node count. Twenty problems I revisit beat two thousand clippings that never loop back.</p>
+        <h2>Relation to the blog</h2>
+        <p>Notes are raw stock; blog posts are polished slices for others. I stockpile contradictions in notes, then cut a bilingual essay once the claim stabilizes. The eval, citation, and war-room pieces all argued with themselves in notes before landing under Technical / Practice / Reflection.</p>
+        <h2>What I learned</h2>
+        <p>Second-brain density comes from <strong>loops</strong>: demos feed notes, notes grow essays, essays rewrite agent contracts. Building databases feels great; writing links feels annoying—I pick annoying, because that is where the interest compounds. If you are building a personal site, ship a notes door first and fill URLs slowly; that beats designing a perfect ontology up front.</p>
+        <p class="post-links">On this site: <a href="../notes.html">Notes</a> · Related: <a href="ad-agent-eval.html">Eval lab</a> · <a href="citation-rag.html">Citation RAG</a> · <a href="multi-agent-war-room.html">War room</a></p>
+
+      </div>
+    </article>
+    <footer class="blog-footer">
+      <a href="../blog.html" id="home-footer-link">
+        <span class="lang-zh">返回博客</span><span class="lang-en">Back to blog</span>
+      </a>
+    </footer>
+  </main>
+
+  <script src="../js/particles.min.js"></script>
+  <script>
+    (function () {
+      var root = document.documentElement;
+      var langBtn = document.getElementById('lang-toggle');
+      var themeBtn = document.getElementById('theme-toggle');
+
+      function currentLang() {
+        return root.getAttribute('data-lang') === 'en' ? 'en' : 'zh';
+      }
+
+      function setLang(lang) {
+        root.setAttribute('data-lang', lang);
+        root.setAttribute('lang', lang === 'zh' ? 'zh' : 'en');
+        langBtn.textContent = lang === 'zh' ? 'EN' : '中文';
+        try { localStorage.setItem('lang', lang); } catch (e) {}
+      }
+
+      function isDark() {
+        return root.getAttribute('data-theme') === 'dark';
+      }
+
+      function setTheme(dark) {
+        if (dark) root.setAttribute('data-theme', 'dark');
+        else root.setAttribute('data-theme', 'light');
+        try { localStorage.setItem('theme', dark ? 'dark' : 'light'); } catch (e) {}
+      }
+
+      setLang(currentLang());
+      if (!root.getAttribute('data-theme')) {
+        root.setAttribute('data-theme', 'light');
+      }
+
+      langBtn.addEventListener('click', function () {
+        setLang(currentLang() === 'zh' ? 'en' : 'zh');
+      });
+
+      themeBtn.addEventListener('click', function () {
+        setTheme(!isDark());
+      });
+
+      document.addEventListener('DOMContentLoaded', function () {
+        var page = document.getElementById('post-page');
+        if (page) {
+          requestAnimationFrame(function () {
+            page.classList.add('is-visible');
+          });
+        }
+      });
+
+      function initParticles() {
+        if (typeof particlesJS !== 'function') return;
+        particlesJS('particles-js', {
+          particles: {
+            number: { value: 8, density: { enable: true, value_area: 300 } },
+            color: { value: '#A680A6' },
+            shape: { type: 'triangle' },
+            opacity: {
+              value: 0.8,
+              random: true,
+              anim: { enable: true, speed: 1, opacity_min: 0.1, sync: false }
+            },
+            size: {
+              value: 5,
+              random: true,
+              anim: { enable: true, speed: 4, size_min: 0.3, sync: false }
+            },
+            line_linked: {
+              enable: true,
+              distance: 150,
+              color: '#A680A6',
+              opacity: 0.4,
+              width: 1
+            },
+            move: {
+              enable: true,
+              speed: 1.4,
+              direction: 'none',
+              random: false,
+              straight: false,
+              out_mode: 'bounce',
+              bounce: false
+            }
+          },
+          interactivity: {
+            detect_on: 'canvas',
+            events: {
+              onhover: { enable: true, mode: 'repulse' },
+              onclick: { enable: true, mode: 'push' },
+              resize: true
+            }
+          },
+          retina_detect: true
+        });
+      }
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initParticles);
+      } else {
+        initParticles();
+      }
+    })();
+  </script>
+</body>
+</html>
