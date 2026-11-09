@@ -57,8 +57,8 @@
 
   <main class="projects-page fade-up" id="projects-page">
     <div class="projects-layout">
-      <p class="projects-intro lang-zh">广告与 Agent 方向的可运行 Demo——评测、带引用的 RAG、多 Agent 投放，以及创意教练与实践年报。下面是我怎么拆层的。<span style="display:block;margin-top:.55rem;opacity:.78;font-size:.92em">选题灵感来自 nathanchen.me 公开项目，实现与文案为原创。</span></p>
-      <p class="projects-intro lang-en">runnable demos around ads &amp; agents — eval, citation RAG, multi-agent war room, plus a creative coach and practice yearbook. below: how i layer them.<span style="display:block;margin-top:.55rem;opacity:.78;font-size:.92em">themes inspired by public projects on nathanchen.me; implementation &amp; copy are original.</span></p>
+      <p class="projects-intro lang-zh">AI 产品工作的可运行 Demo：编排、评测与人工把关、情报周报，以及创意教练和实践年报。外部还有评测台、带引用的 RAG、多 Agent 投放。下面是我怎么拆层的。<span style="display:block;margin-top:.55rem;opacity:.78;font-size:.92em">选题灵感来自公开的 Vibe Coding 雷达与 nathanchen.me，实现与文案为原创。</span></p>
+      <p class="projects-intro lang-en">runnable demos for AI product work — orchestration, evaluation and human gates, and a weekly intel brief — plus a creative coach and practice yearbook. external labs cover eval, citation RAG, and a multi-agent war room. below: how i layer them.<span style="display:block;margin-top:.55rem;opacity:.78;font-size:.92em">themes inspired by the public Vibe Coding Radar and nathanchen.me; implementation and copy are original.</span></p>
 
       <section class="agent-layer" aria-labelledby="agent-layer-heading">
         <h2 id="agent-layer-heading" class="section-heading">
@@ -84,6 +84,66 @@
       </section>
 
       <div class="projects-list" id="projects-list">
+
+        <article class="project-card project-card--live">
+          <h2 class="project-title">
+            <span class="lang-zh">编排台 · Agent 工作流画布</span>
+            <span class="lang-en">Flow Bench</span>
+          </h2>
+          <p class="project-blurb">
+            <span class="lang-zh">把 Brief 到媒介计划画成可拖拽的节点。改指令、跑一遍，抽屉里是从 Brief 推出来的模拟交付。</span>
+            <span class="lang-en">a draggable brief-to-media graph. edit instructions, run it, and read a simulated handoff derived from the brief.</span>
+          </p>
+          <div class="project-tags">
+            <span class="project-tag"><span class="lang-zh">编排</span><span class="lang-en">Orchestration</span></span>
+            <span class="project-tag">Agent</span>
+            <span class="project-tag">PM</span>
+          </div>
+          <div class="project-links">
+            <a href="demos/flow-bench/index.html">Demo</a>
+            <span class="project-tag" style="opacity:.7"><span class="lang-zh">本地 Demo</span><span class="lang-en">Local demo</span></span>
+          </div>
+        </article>
+
+        <article class="project-card project-card--live">
+          <h2 class="project-title">
+            <span class="lang-zh">审批台 · Agent 跟进与人工把关</span>
+            <span class="lang-en">Approval Desk</span>
+          </h2>
+          <p class="project-blurb">
+            <span class="lang-zh">投放动作进队列：目标、证据、风险、为什么要人点头。预算、暂停、外发不能自动执行。</span>
+            <span class="lang-en">a queue of campaign actions with goal, evidence, and risk. budget, pause, and send never auto-run.</span>
+          </p>
+          <div class="project-tags">
+            <span class="project-tag"><span class="lang-zh">把关</span><span class="lang-en">Gates</span></span>
+            <span class="project-tag"><span class="lang-zh">评测</span><span class="lang-en">Eval</span></span>
+            <span class="project-tag">Ads</span>
+          </div>
+          <div class="project-links">
+            <a href="demos/approval-desk/index.html">Demo</a>
+            <span class="project-tag" style="opacity:.7"><span class="lang-zh">本地 Demo</span><span class="lang-en">Local demo</span></span>
+          </div>
+        </article>
+
+        <article class="project-card project-card--live">
+          <h2 class="project-title">
+            <span class="lang-zh">情报周报台 · 信息雷达</span>
+            <span class="lang-en">Intel Weekly</span>
+          </h2>
+          <p class="project-blurb">
+            <span class="lang-zh">给广告与 Agent 实践的模拟来源打分、标优先级，生成可发布的一周简报。</span>
+            <span class="lang-en">score simulated ads-and-agent sources, set priority, and export a weekly brief.</span>
+          </p>
+          <div class="project-tags">
+            <span class="project-tag"><span class="lang-zh">情报</span><span class="lang-en">Intel</span></span>
+            <span class="project-tag">PM</span>
+            <span class="project-tag"><span class="lang-zh">写作</span><span class="lang-en">Writing</span></span>
+          </div>
+          <div class="project-links">
+            <a href="demos/intel-weekly/index.html">Demo</a>
+            <span class="project-tag" style="opacity:.7"><span class="lang-zh">本地 Demo</span><span class="lang-en">Local demo</span></span>
+          </div>
+        </article>
 
         <article class="project-card project-card--live">
           <h2 class="project-title">
