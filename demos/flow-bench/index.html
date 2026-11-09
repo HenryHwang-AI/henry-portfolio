@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="zh" data-lang="zh" class="notranslate" translate="no">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="google" content="notranslate">
+  <title>编排台 · Agent 工作流画布 — Henry Huang</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Spectral:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #f7f6f3;
+      --ink: #1c1917;
+      --muted: #6f6862;
+      --line: rgba(28,25,23,0.12);
+      --card: #fff;
+      --accent: #3f5c4e;
+      --accent-soft: rgba(63,92,78,0.12);
+      --ok: #2f6b45;
+      --warn: #8a6230;
+      --shadow: 0 16px 40px rgba(28,25,23,0.06);
+    }
+    [data-theme="dark"] {
+      --bg: #121110;
+      --ink: #f3eee8;
+      --muted: #a79f96;
+      --line: rgba(243,238,232,0.14);
+      --card: #1c1b19;
+      --accent: #9dccb0;
+      --accent-soft: rgba(157,204,176,0.14);
+      --ok: #8dcea6;
+      --warn: #e0b56a;
+      --shadow: 0 16px 40px rgba(0,0,0,0.35);
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; }
+    body { font-family: Jost, system-ui, sans-serif; background: var(--bg); color: var(--ink); line-height: 1.5; min-height: 100vh; }
+    .lang-en { display: none; }
+    [data-lang="en"] .lang-zh { display: none; }
+    [data-lang="en"] .lang-en { display: inline; }
+    [data-lang="en"] p.lang-en, [data-lang="en"] div.lang-en { display: block; }
+    .topbar {
+      display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+      padding: .9rem 1.25rem; border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 20;
+      background: color-mix(in srgb, var(--bg) 88%, transparent);
+      backdrop-filter: blur(10px);
+    }
+    .brand { text-decoration: none; color: inherit; display: flex; align-items: baseline; gap: .6rem; }
+    .brand-mark { font-family: Spectral, Georgia, serif; font-weight: 600; font-size: 1.12rem; }
+    .brand-sub { font-size: .75rem; color: var(--muted); }
+    .top-actions { display: flex; gap: .45rem; flex-wrap: wrap; }
+    .chip-btn, .text-btn {
+      border: 1px solid var(--line); background: transparent; color: var(--ink);
+      border-radius: 999px; padding: .35rem .8rem; font: inherit; font-size: .78rem; cursor: pointer; text-decoration: none;
+    }
+    .chip-btn:hover, .text-btn:hover { border-color: var(--accent); color: var(--accent); }
+    .layout { max-width: 1180px; margin: 0 auto; padding: 1.25rem 1.25rem 3rem; display: grid; grid-template-columns: 280px 1fr; gap: 1rem; }
+    @media (max-width: 900px) { .layout { grid-template-columns: 1fr; } }
+    .panel { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 1rem 1.05rem; box-shadow: var(--shadow); }
+    .panel h2 { font-family: Spectral, serif; font-weight: 500; font-size: 1.2rem; margin: 0 0 .3rem; }
+    .note { color: var(--muted); font-size: .82rem; margin: 0 0 .8rem; }
+    label { display: block; font-size: .75rem; color: var(--muted); margin: .7rem 0 .3rem; }
+    textarea {
+      width: 100%; border: 1px solid var(--line); background: var(--bg); color: var(--ink);
+      border-radius: 12px; padding: .7rem .8rem; font: inherit; resize: vertical;
+    }
+    textarea:focus { outline: 2px solid var(--accent-soft); border-color: var(--accent); }
+    .primary {
+      width: 100%; margin-top: .8rem; border: 0; border-radius: 999px; padding: .75rem;
+      background: var(--ink); color: var(--bg); font: inherit; cursor: pointer;
+    }
+    .primary:disabled { opacity: .5; cursor: wait; }
+    .row-btns { display: flex; gap: .4rem; margin-top: .6rem; }
+    .row-btns .text-btn { flex: 1; text-align: center; }
+    .canvas-wrap { position: relative; min-height: 760px; overflow: hidden; }
+    #wires { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
+    .wire { fill: none; stroke: rgba(28,25,23,.28); stroke-width: 1.5; }
+    [data-theme="dark"] .wire { stroke: rgba(243,238,232,.3); }
+    .wire.done { stroke: var(--ok); }
+    .wire.hot { stroke: var(--accent); stroke-dasharray: 5 4; }
+    .node {
+      position: absolute; width: 210px; text-align: left; cursor: grab;
+      background: var(--card); border: 1px solid var(--line); border-radius: 14px;
+      padding: .65rem .75rem .7rem; box-shadow: var(--shadow); font: inherit; color: inherit;
+      user-select: none;
+    }
+    .node:active { cursor: grabbing; }
+    .node.is-selected { border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-soft); }
+    .node.st-running { border-color: var(--accent); }
+    .node.st-done { border-color: var(--ok); }
+    .node-kicker { display: flex; justify-content: space-between; font-size: .68rem; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+    .node strong { display: block; font-family: Spectral, serif; font-weight: 500; font-size: 1rem; margin: .15rem 0 .2rem; }
+    .node em { display: block; font-style: normal; font-size: .75rem; color: var(--muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .dot { width: .45rem; height: .45rem; border-radius: 50%; background: var(--line); display: inline-block; }
+    .st-running .dot { background: var(--accent); }
+    .st-done .dot { background: var(--ok); }
+    .drawer { margin-top: 1rem; }
+    .drawer h3 { font-family: Spectral, serif; font-weight: 500; margin: 0 0 .4rem; }
+    .out-block { border-top: 1px solid var(--line); padding: .65rem 0; }
+    .out-block h4 { margin: 0 0 .25rem; font-size: .82rem; font-weight: 500; }
+    .out-block p { margin: 0; font-size: .88rem; color: var(--muted); }
+    .foot { max-width: 1180px; margin: 0 auto; padding: 0 1.25rem 2.5rem; color: var(--muted); font-size: .78rem; display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
+    .foot a { color: inherit; }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="../../projects.html">
+      <span class="brand-mark"><span class="lang-zh">编排台</span><span class="lang-en">Flow Bench</span></span>
+      <span class="brand-sub"><span class="lang-zh">Agent 工作流画布</span><span class="lang-en">Agent workflow canvas</span></span>
+    </a>
+    <div class="top-actions">
+      <button type="button" class="chip-btn" id="lang-toggle">EN</button>
+      <button type="button" class="chip-btn" id="theme-toggle"><span class="lang-zh">深色</span><span class="lang-en">Dark</span></button>
+      <a class="chip-btn" href="../../projects.html"><span class="lang-zh">← 项目</span><span class="lang-en">← Projects</span></a>
+    </div>
+  </header>
+
+  <div class="layout">
+    <aside class="panel">
+      <h2><span class="lang-zh">这次要解决什么</span><span class="lang-en">The brief</span></h2>
+      <p class="note lang-zh">画布是产品流程，不是连线玩具。节点按顺序交接，跑完才有一页交付。</p>
+      <p class="note lang-en">A product pipeline, not a wiring toy. Nodes hand off in order. A run produces one page.</p>
+      <label for="brief"><span class="lang-zh">投放 Brief</span><span class="lang-en">Campaign brief</span></label>
+      <textarea id="brief" rows="6">受众：一线城市 25–40 岁护肤决策人。约束：不自动加预算，不外发。成功：7 日内 CTR 回到 0.45% 以上，频次不超过 3.5。主信息：夜间修护，语气克制。</textarea>
+      <div class="row-btns">
+        <button type="button" class="text-btn" id="add-node"><span class="lang-zh">加检查点</span><span class="lang-en">Add gate</span></button>
+        <button type="button" class="text-btn" id="remove-node"><span class="lang-zh">移除所选</span><span class="lang-en">Remove</span></button>
+      </div>
+      <label for="instruction"><span class="lang-zh">所选节点的指令</span><span class="lang-en">Selected instruction</span></label>
+      <textarea id="instruction" rows="4"></textarea>
+      <button type="button" class="primary" id="run-btn"><span class="lang-zh">跑一遍流程</span><span class="lang-en">Run the pipeline</span></button>
+    </aside>
+    <section class="panel canvas-wrap" id="canvas" aria-label="workflow canvas">
+      <svg id="wires"></svg>
+      <div id="nodes"></div>
+    </section>
+  </div>
+  <section class="layout" style="padding-top:0">
+    <div class="panel drawer" id="drawer" style="grid-column: 1 / -1">
+      <h3><span class="lang-zh">交付抽屉</span><span class="lang-en">Handoff drawer</span></h3>
+      <p class="note" id="drawer-empty"><span class="lang-zh">还没跑。结果会引用 Brief 和每个节点的指令。</span><span class="lang-en">Nothing ran yet. The result quotes the brief and each instruction.</span></p>
+      <div id="drawer-body"></div>
+    </section>
+  </section>
+  <footer class="foot">
+    <span><span class="lang-zh">本地模拟，没有外部请求。</span><span class="lang-en">Local simulation. No network calls.</span></span>
+    <a href="../../projects.html"><span class="lang-zh">返回项目页</span><span class="lang-en">Back to projects</span></a>
+  </footer>
+  <script>
+    (function () {
+      var root = document.documentElement;
+      var nodes = [
+        { id: 'brief', locked: true, x: 28, y: 24, zh: '问题框定', en: 'Brief', izh: '写清受众、约束和成功指标，不写执行细节。', ien: 'Name the audience, constraint, and success metric. No execution detail.' },
+        { id: 'research', locked: false, x: 300, y: 110, zh: '调研', en: 'Research', izh: '只收集会改变决策的事实：竞品说法、频次、可引用的数字。', ien: 'Only facts that change a decision: rival claims, frequency, citable numbers.' },
+        { id: 'copy', locked: false, x: 48, y: 220, zh: '文案', en: 'Copy', izh: '三条可评测的假设，每条只动一个变量。', ien: 'Three testable lines. One variable each.' },
+        { id: 'visual', locked: false, x: 320, y: 320, zh: '视觉评审', en: 'Visual gate', izh: '对照品牌语气放行或退回，不直接改图。', ien: 'Pass or return against brand tone. Do not edit the pixels.' },
+        { id: 'media', locked: false, x: 60, y: 430, zh: '媒介计划', en: 'Media plan', izh: '渠道、频次上限、预算边界。数字只提议，不执行。', ien: 'Channel, frequency cap, budget boundary. Propose numbers. Do not spend.' },
+        { id: 'output', locked: true, x: 300, y: 530, zh: '输出', en: 'Handoff', izh: '收成一页：问题、假设、门、下一步谁批。', ien: 'One page: problem, hypotheses, gate, and who approves next.' }
+      ];
+      var selected = 'brief';
+      var running = false;
+
+      function currentLang() { return root.getAttribute('data-lang') === 'en' ? 'en' : 'zh'; }
+      function setLang(lang) {
+        root.setAttribute('data-lang', lang);
+        root.setAttribute('lang', lang === 'zh' ? 'zh' : 'en');
+        document.getElementById('lang-toggle').textContent = lang === 'zh' ? 'EN' : '中文';
+        syncEditor();
+        render();
+      }
+      function setTheme(dark) {
+        root.setAttribute('data-theme', dark ? 'dark' : 'light');
+        document.getElementById('theme-toggle').innerHTML = dark
+          ? '<span class="lang-zh">浅色</span><span class="lang-en">Light</span>'
+          : '<span class="lang-zh">深色</span><span class="lang-en">Dark</span>';
+      }
+      setLang(currentLang());
+      if (!root.getAttribute('data-theme')) root.setAttribute('data-theme', 'light');
+      document.getElementById('lang-toggle').addEventListener('click', function () {
+        setLang(currentLang() === 'zh' ? 'en' : 'zh');
+      });
+      document.getElementById('theme-toggle').addEventListener('click', function () {
+        setTheme(root.getAttribute('data-theme') !== 'dark');
+      });
+
+      function find(id) { return nodes.filter(function (n) { return n.id === id; })[0]; }
+      function textOf(n) { return currentLang() === 'en' ? n.ien : n.izh; }
+      function titleOf(n) { return currentLang() === 'en' ? n.en : n.zh; }
+
+      function syncEditor() {
+        var n = find(selected);
+        var box = document.getElementById('instruction');
+        if (!n) { box.value = ''; return; }
+        if (document.activeElement !== box) box.value = textOf(n);
+      }
+
+      function render() {
+        var host = document.getElementById('nodes');
+        host.innerHTML = '';
+        nodes.forEach(function (n, i) {
+          var el = document.createElement('button');
+          el.type = 'button';
+          el.className = 'node' + (n.id === selected ? ' is-selected' : '') + ' st-' + (n.status || 'idle');
+          el.style.left = n.x + 'px';
+          el.style.top = n.y + 'px';
+          el.innerHTML = '<span class="node-kicker"><span>' + (i + 1) + '</span><i class="dot"></i></span><strong>' + titleOf(n) + '</strong><em>' + textOf(n) + '</em>';
+          el.addEventListener('pointerdown', function (e) { startDrag(e, n, el); });
+          host.appendChild(el);
+        });
+        drawWires();
+      }
+
+      function drawWires() {
+        var svg = document.getElementById('wires');
+        var html = '';
+        for (var i = 0; i < nodes.length - 1; i++) {
+          var a = nodes[i], b = nodes[i + 1];
+          var x1 = a.x + 105, y1 = a.y + 64;
+          var x2 = b.x + 105, y2 = b.y + 8;
+          var mid = (y1 + y2) / 2;
+          var cls = 'wire';
+          if (a.status === 'done' && b.status === 'running') cls += ' hot';
+          else if (a.status === 'done') cls += ' done';
+          html += '<path class="' + cls + '" d="M' + x1 + ' ' + y1 + ' C ' + x1 + ' ' + mid + ', ' + x2 + ' ' + mid + ', ' + x2 + ' ' + y2 + '"/>';
+        }
+        svg.innerHTML = html;
+      }
+
+      function markSelected() {
+        var buttons = document.querySelectorAll('#nodes .node');
+        buttons.forEach(function (el, idx) {
+          if (nodes[idx]) el.classList.toggle('is-selected', nodes[idx].id === selected);
+        });
+        syncEditor();
+      }
+
+      function startDrag(e, n, el) {
+        if (running) return;
+        e.preventDefault();
+        selected = n.id;
+        markSelected();
+        var sx = e.clientX, sy = e.clientY, ox = n.x, oy = n.y, moved = false;
+        try { el.setPointerCapture(e.pointerId); } catch (err) {}
+        function move(ev) {
+          var dx = ev.clientX - sx, dy = ev.clientY - sy;
+          if (Math.abs(dx) + Math.abs(dy) > 4) moved = true;
+          n.x = Math.max(8, Math.min(760, ox + dx));
+          n.y = Math.max(8, Math.min(680, oy + dy));
+          el.style.left = n.x + 'px';
+          el.style.top = n.y + 'px';
+          drawWires();
+        }
+        function up() {
+          el.removeEventListener('pointermove', move);
+          el.removeEventListener('pointerup', up);
+        }
+        el.addEventListener('pointermove', move);
+        el.addEventListener('pointerup', up);
+      }
+
+      document.getElementById('instruction').addEventListener('input', function () {
+        var n = find(selected);
+        if (!n) return;
+        if (currentLang() === 'en') n.ien = this.value; else n.izh = this.value;
+        var em = document.querySelector('.node.is-selected em');
+        if (em) em.textContent = this.value;
+      });
+
+      document.getElementById('add-node').addEventListener('click', function () {
+        if (running) return;
+        var id = 'gate-' + Date.now();
+        var out = nodes[nodes.length - 1];
+        var slot = out.y;
+        nodes.splice(nodes.length - 1, 0, {
+          id: id, locked: false, x: out.x > 160 ? 40 : 280, y: slot,
+          zh: '检查点', en: 'Gate',
+          izh: '写一条通过或退回的标准。', ien: 'Write a pass-or-return rule.'
+        });
+        out.y = Math.min(680, slot + 120);
+        selected = id;
+        syncEditor();
+        render();
+      });
+
+      document.getElementById('remove-node').addEventListener('click', function () {
+        if (running) return;
+        var n = find(selected);
+        if (!n || n.locked) return;
+        nodes = nodes.filter(function (item) { return item.id !== n.id; });
+        selected = nodes[0].id;
+        syncEditor();
+        render();
+      });
+
+      function fillDrawer() {
+        var brief = document.getElementById('brief').value.trim();
+        var lang = currentLang();
+        var html = '';
+        html += '<div class="out-block"><h4>' + (lang === 'en' ? 'Problem' : '问题') + '</h4><p>' + escapeHtml(brief) + '</p></div>';
+        nodes.forEach(function (n, i) {
+          if (n.id === 'brief') return;
+          var line = textOf(n);
+          var sim = simulate(n, brief, lang);
+          html += '<div class="out-block"><h4>' + (i) + '. ' + titleOf(n) + '</h4><p>' + escapeHtml(line) + ' — ' + sim + '</p></div>';
+        });
+        document.getElementById('drawer-empty').style.display = 'none';
+        document.getElementById('drawer-body').innerHTML = html;
+      }
+
+      function simulate(n, brief, lang) {
+        var metric = /ctr|频次|0\./i.test(brief) ? (lang === 'en' ? 'success metric kept visible' : '成功指标被留在页首') : (lang === 'en' ? 'no numeric target, flag the gap' : '没有数字目标，标成缺口');
+        var spend = /预算|budget/i.test(brief) ? (lang === 'en' ? 'spend stays a proposal' : '花费只作为提议') : (lang === 'en' ? 'no spend action invented' : '不发明花钱动作');
+        if (n.id === 'research') return metric;
+        if (n.id === 'media' || n.id === 'output') return spend;
+        if (n.id.indexOf('gate') === 0) return lang === 'en' ? 'gate added by you is now on the path' : '你加的检查点已经进入路径';
+        return lang === 'en' ? 'handed off in order' : '按顺序交接';
+      }
+
+      function escapeHtml(s) {
+        return String(s).replace(/[&<>]/g, function (c) { return ({ '&': '&amp;', '<': '&lt;', '>': '&gt;' })[c]; });
+      }
+
+      document.getElementById('run-btn').addEventListener('click', function () {
+        if (running) return;
+        running = true;
+        document.getElementById('run-btn').disabled = true;
+        nodes.forEach(function (n) { n.status = 'idle'; });
+        render();
+        var i = 0;
+        function step() {
+          if (i > 0) nodes[i - 1].status = 'done';
+          if (i >= nodes.length) {
+            running = false;
+            document.getElementById('run-btn').disabled = false;
+            fillDrawer();
+            render();
+            return;
+          }
+          nodes[i].status = 'running';
+          render();
+          i += 1;
+          setTimeout(step, 380);
+        }
+        step();
+      });
+
+      render();
+      syncEditor();
+    })();
+  </script>
+</body>
+</html>

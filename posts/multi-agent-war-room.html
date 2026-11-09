@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="zh" data-lang="zh" class="notranslate" translate="no">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="google" content="notranslate">
+  <title>Ad war room: splitting roles so agents actually collaborate — Henry Huang</title>
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem('theme');
+        if (t === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
+        else if (t === 'light') document.documentElement.setAttribute('data-theme', 'light');
+        var lang = localStorage.getItem('lang');
+        if (lang === 'en' || lang === 'zh') {
+          document.documentElement.setAttribute('data-lang', lang);
+          document.documentElement.setAttribute('lang', lang === 'zh' ? 'zh' : 'en');
+        }
+      } catch (e) {}
+    })();
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,300;0,400;0,500;1,400&family=Spectral:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <div id="particles-js" aria-hidden="true"></div>
+
+  <header class="site-nav-wrapper">
+    <a href="../index.html" class="site-name">henry huang</a>
+    <div class="nav-right">
+      <nav class="site-nav" aria-label="Primary">
+        <a href="../index.html"><span class="lang-zh">关于</span><span class="lang-en">About</span></a>
+        <a href="../blog.html" class="active"><span class="lang-zh">博客</span><span class="lang-en">Blog</span></a>
+        <a href="../projects.html"><span class="lang-zh">项目</span><span class="lang-en">Projects</span></a>
+        <a href="../tools.html"><span class="lang-zh">工具</span><span class="lang-en">Tools</span></a>
+        <a href="../notes.html"><span class="lang-zh">笔记</span><span class="lang-en">Notes</span></a>
+      </nav>
+      <div class="social-icons" aria-label="Social">
+        <a href="#" aria-label="X / Twitter" title="X"><i class="fab fa-x-twitter"></i></a>
+        <a href="https://github.com/HenryHwang-AI" aria-label="GitHub" title="GitHub"><i class="fab fa-github"></i></a>
+        <a href="#" aria-label="LinkedIn" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+      </div>
+      <button type="button" class="icon-btn" id="lang-toggle" aria-label="Switch language">EN</button>
+      <button type="button" class="icon-btn" id="theme-toggle" aria-label="Toggle dark mode">
+        <span class="theme-label-to-dark">
+          <span class="lang-zh">深色</span><span class="lang-en">Dark</span>
+        </span>
+        <span class="theme-label-to-light">
+          <span class="lang-zh">浅色</span><span class="lang-en">Light</span>
+        </span>
+      </button>
+    </div>
+  </header>
+
+    <main class="post-page fade-up" id="post-page">
+    <article class="post-article">
+      <p class="post-meta">
+        <a class="post-back" href="../blog.html"><span class="lang-zh">← 博客</span><span class="lang-en">← Blog</span></a>
+        <span class="post-meta-sep" aria-hidden="true">·</span>
+        <time datetime="2026-10-28">2026-10-28</time>
+        <span class="post-meta-sep" aria-hidden="true">·</span>
+        <span class="post-cat"><span class="lang-zh">实践</span><span class="lang-en">Practice</span></span>
+      </p>
+      <h1 class="post-title">
+        <span class="lang-zh">多 Agent 投放作战室：角色怎么拆、怎么协作</span>
+        <span class="lang-en">Ad war room: splitting roles so agents actually collaborate</span>
+      </h1>
+
+      <div class="post-body lang-zh">
+        <p>一个人盯投放，很容易陷入「看报表 → 猜原因 → 改预算」的单线程。我做<a href="https://henryhwang-ai.github.io/multi-agent-ad-war-room/" target="_blank" rel="noopener noreferrer">多 Agent 投放作战室</a>时，故意把这条线拆成几条并行的角色，而不是塞进一个万能提示词。舞台上人多没用，接口清晰才有用。</p>
+        <h2>为什么要拆</h2>
+        <p>投放里至少有三类矛盾：目标（花多少换多少）、诊断（哪条计划在漏）、动作（下一步改什么）。混在一个 Agent 里，它会平均化——话好听，但不敢下狠手，也不敢承认不确定。拆开之后，每个角色只对自己的输出负责，协调层再合并冲突，而不是让模型在内心偷偷投票。</p>
+        <p>我还发现：角色边界一旦写成契约（输入字段、禁止事项、成功标准），后续改提示词就不再是玄学。作战室 Demo 的价值，正是把这些契约摊在台面上。</p>
+        <h2>怎么协作</h2>
+        <p>我用三层：<strong>协调 Bot</strong>拆任务、定回合；中间是场景角色——目标官、诊断官、动作官；底下工具层优先打广告平台 API，GUI 只在没接口时兜底。一回合里：先对齐 KPI，再读指标异常，最后给出可执行的下一步，而不是再写一篇「建议关注」。</p>
+        <p>回合制很重要。没有回合，多 Agent 会变成同时刷屏；有了回合，你才能复盘「哪一步把结论带偏了」，也才能接到评测台上做回归。</p>
+        <h2>我学到什么</h2>
+        <p>多 Agent 的价值不在「人多」，而在<strong>接口清晰</strong>：谁说话、谁有最终拍板权、失败时回滚到哪一步。作战室 Demo 就是把这套回合感可视化——你能看见角色在交班，而不是一个黑盒吐结论。下一篇我会写评测台：没有分数，这套戏就只是好看。</p>
+        <p class="post-links">Demo：<a href="https://henryhwang-ai.github.io/multi-agent-ad-war-room/" target="_blank" rel="noopener noreferrer">multi-agent-ad-war-room</a> · GitHub：<a href="https://github.com/HenryHwang-AI/multi-agent-ad-war-room" target="_blank" rel="noopener noreferrer">仓库</a></p>
+
+      </div>
+
+      <div class="post-body lang-en">
+        <p>One person watching ads ops defaults to a single thread: read the board, guess, tweak budget. When I built the <a href="https://henryhwang-ai.github.io/multi-agent-ad-war-room/" target="_blank" rel="noopener noreferrer">multi-agent ad war room</a>, I refused the “one mega prompt” path and split the work into parallel roles. Headcount on stage is irrelevant; clear contracts are not.</p>
+        <h2>Why split</h2>
+        <p>Ads work has at least three tensions: goals (spend vs return), diagnosis (which plan is leaking), and action (what to change next). One agent averages them—polite, vague, unwilling to commit. Separate roles own separate outputs; a coordinator resolves conflicts instead of letting the model hold a private vote.</p>
+        <p>Once role boundaries are written as contracts (inputs, forbidden moves, success criteria), prompt edits stop being mysticism. The war-room demo exists to put those contracts on the table.</p>
+        <h2>How they collaborate</h2>
+        <p>Three layers: a <strong>coordinator</strong> decomposes turns; scene roles for goals, diagnosis, and actions; a tools layer that prefers platform APIs and only falls back to GUI. One turn: lock KPIs, flag metric anomalies, then emit an executable next step—not another “please monitor” essay.</p>
+        <p>Turns matter. Without them, multi-agent work becomes simultaneous spam; with them, you can replay which step derailed the conclusion and wire the same path into the eval lab.</p>
+        <h2>What I learned</h2>
+        <p>Multi-agent value is not headcount; it is <strong>clear contracts</strong>—who speaks, who decides, where you roll back on failure. The demo makes the handoff visible instead of hiding it in a black box. Next: the eval lab—without scores, this is just theater.</p>
+        <p class="post-links">Demo: <a href="https://henryhwang-ai.github.io/multi-agent-ad-war-room/" target="_blank" rel="noopener noreferrer">multi-agent-ad-war-room</a> · GitHub: <a href="https://github.com/HenryHwang-AI/multi-agent-ad-war-room" target="_blank" rel="noopener noreferrer">repo</a></p>
+
+      </div>
+    </article>
+    <footer class="blog-footer">
+      <a href="../blog.html" id="home-footer-link">
+        <span class="lang-zh">返回博客</span><span class="lang-en">Back to blog</span>
+      </a>
+    </footer>
+  </main>
+
+  <script src="../js/particles.min.js"></script>
+  <script>
+    (function () {
+      var root = document.documentElement;
+      var langBtn = document.getElementById('lang-toggle');
+      var themeBtn = document.getElementById('theme-toggle');
+
+      function currentLang() {
+        return root.getAttribute('data-lang') === 'en' ? 'en' : 'zh';
+      }
+
+      function setLang(lang) {
+        root.setAttribute('data-lang', lang);
+        root.setAttribute('lang', lang === 'zh' ? 'zh' : 'en');
+        langBtn.textContent = lang === 'zh' ? 'EN' : '中文';
+        try { localStorage.setItem('lang', lang); } catch (e) {}
+      }
+
+      function isDark() {
+        return root.getAttribute('data-theme') === 'dark';
+      }
+
+      function setTheme(dark) {
+        if (dark) root.setAttribute('data-theme', 'dark');
+        else root.setAttribute('data-theme', 'light');
+        try { localStorage.setItem('theme', dark ? 'dark' : 'light'); } catch (e) {}
+      }
+
+      setLang(currentLang());
+      if (!root.getAttribute('data-theme')) {
+        root.setAttribute('data-theme', 'light');
+      }
+
+      langBtn.addEventListener('click', function () {
+        setLang(currentLang() === 'zh' ? 'en' : 'zh');
+      });
+
+      themeBtn.addEventListener('click', function () {
+        setTheme(!isDark());
+      });
+
+      document.addEventListener('DOMContentLoaded', function () {
+        var page = document.getElementById('post-page');
+        if (page) {
+          requestAnimationFrame(function () {
+            page.classList.add('is-visible');
+          });
+        }
+      });
+
+      function initParticles() {
+        if (typeof particlesJS !== 'function') return;
+        particlesJS('particles-js', {
+          particles: {
+            number: { value: 8, density: { enable: true, value_area: 300 } },
+            color: { value: '#A680A6' },
+            shape: { type: 'triangle' },
+            opacity: {
+              value: 0.8,
+              random: true,
+              anim: { enable: true, speed: 1, opacity_min: 0.1, sync: false }
+            },
+            size: {
+              value: 5,
+              random: true,
+              anim: { enable: true, speed: 4, size_min: 0.3, sync: false }
+            },
+            line_linked: {
+              enable: true,
+              distance: 150,
+              color: '#A680A6',
+              opacity: 0.4,
+              width: 1
+            },
+            move: {
+              enable: true,
+              speed: 1.4,
+              direction: 'none',
+              random: false,
+              straight: false,
+              out_mode: 'bounce',
+              bounce: false
+            }
+          },
+          interactivity: {
+            detect_on: 'canvas',
+            events: {
+              onhover: { enable: true, mode: 'repulse' },
+              onclick: { enable: true, mode: 'push' },
+              resize: true
+            }
+          },
+          retina_detect: true
+        });
+      }
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initParticles);
+      } else {
+        initParticles();
+      }
+    })();
+  </script>
+</body>
+</html>
