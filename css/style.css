@@ -132,6 +132,14 @@ html[data-theme="dark"] .site-name:hover {
   justify-content: flex-end;
 }
 
+.hamburger {
+  display: none;
+  background: none;
+  border: 0;
+  padding: 10px;
+  cursor: pointer;
+}
+
 .site-nav {
   display: flex;
   align-items: center;
@@ -237,11 +245,17 @@ html[data-theme="dark"] .theme-label-to-light {
 
 /* ——— Content ——— */
 .container {
+  box-sizing: content-box;
+  width: 65%;
   max-width: 650px;
   margin: 0 auto;
-  padding: 1.5rem 1.25rem 4rem;
+  padding: 20px 20px 4rem;
   position: relative;
   z-index: 1;
+}
+
+.container > :first-child {
+  margin-top: 17px;
 }
 
 .container p {
@@ -321,22 +335,26 @@ ul > li::before {
 [data-lang="zh"] .lang-en { display: none !important; }
 [data-lang="en"] .lang-zh { display: none !important; }
 
-/* Mobile */
+/* Mobile: one 60px bar, name at 16,16, links behind a menu */
 @media (max-width: 768px) {
   body {
     font-size: 15px;
     line-height: 1.55;
-    padding-top: 108px;
+    padding-top: 60px;
   }
 
   .site-nav-wrapper {
     position: fixed;
-    height: auto;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 60px;
     min-height: 60px;
-    padding: 0.85rem 0 0.45rem;
-    flex-direction: column;
-    align-items: stretch;
+    padding: 0;
+    flex-direction: row;
+    align-items: center;
     background: var(--background-color);
+    z-index: 999;
   }
 
   .site-name {
@@ -351,25 +369,63 @@ ul > li::before {
     flex-basis: 20px;
   }
 
-  .nav-right {
+  .hamburger {
+    display: block;
+    position: absolute;
     right: 1rem;
     top: 0.7rem;
-    gap: 0.45rem;
+    z-index: 3;
   }
 
-  .site-nav {
-    width: 100%;
-    align-self: stretch;
-    margin-top: 2.15rem;
-    justify-content: center;
+  .hamburger span {
+    display: block;
+    width: 25px;
+    height: 2px;
+    margin: 5px 0;
+    background: #52525b;
   }
 
+  html[data-theme="dark"] .hamburger span {
+    background: #e6e6e6;
+  }
+
+  .site-nav,
   .nav-right {
-    gap: 0.6rem;
+    display: none;
   }
 
-  .site-nav a {
-    font-size: 13px;
+  .site-nav-wrapper.is-open {
+    height: auto;
+    flex-direction: column;
+    align-items: stretch;
+    padding-bottom: 0.75rem;
+  }
+
+  .site-nav-wrapper.is-open .site-nav {
+    display: flex;
+    position: static;
+    width: 100%;
+    margin: 60px 0 0;
+    padding: 0.75rem 0 0.25rem;
+    flex-direction: column;
+    align-items: center;
+    background: var(--background-color);
+    box-shadow: none;
+  }
+
+  .site-nav-wrapper.is-open .site-nav a {
+    display: block;
+    margin: 0.35rem 0;
+    padding: 0.35rem 1rem;
+    font-size: 16px;
+  }
+
+  .site-nav-wrapper.is-open .nav-right {
+    display: flex;
+    position: static;
+    justify-content: center;
+    gap: 0.85rem;
+    padding: 0.35rem 1rem 0;
   }
 
   .beliefs-list {
@@ -377,21 +433,38 @@ ul > li::before {
   }
 
   .container {
-    padding: 1rem 1rem 3rem;
+    box-sizing: content-box;
+    width: 65%;
+    margin-top: -35px;
+    padding: 20px 20px 3rem;
+    font-size: 15px;
+    line-height: 1.5;
+  }
+
+  .container > :first-child {
+    margin-top: 15px;
   }
 }
 
 @media (max-width: 480px) {
   body {
     font-size: 14px;
+    padding-top: 60px;
   }
 
   .site-name {
     font-size: 18px;
   }
 
-  .social-icons {
-    display: none;
+  .container {
+    width: 80%;
+    margin-top: 0;
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
+  .container > :first-child {
+    margin-top: 14px;
   }
 }
 
