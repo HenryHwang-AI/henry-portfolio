@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="zh" data-lang="zh" class="notranslate" translate="no">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="google" content="notranslate">
+  <title>Why I did not ship a generic chat box — Henry Huang</title>
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem('theme');
+        if (t === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
+        else if (t === 'light') document.documentElement.setAttribute('data-theme', 'light');
+        var lang = localStorage.getItem('lang');
+        if (lang === 'en' || lang === 'zh') {
+          document.documentElement.setAttribute('data-lang', lang);
+          document.documentElement.setAttribute('lang', lang === 'zh' ? 'zh' : 'en');
+        }
+      } catch (e) {}
+    })();
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,300;0,400;0,500;1,400&family=Spectral:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <div id="particles-js" aria-hidden="true"></div>
+
+  <header class="site-nav-wrapper">
+    <a href="../index.html" class="site-name"><svg class="site-mark" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="7.1" fill="none" stroke="currentColor" stroke-width="2.15" stroke-linecap="round" stroke-dasharray="36 9" stroke-dashoffset="8"/></svg><span>Henry Huang</span></a>
+    <button type="button" class="hamburger" aria-label="Menu" aria-expanded="false" onclick="var b=this;b.classList.toggle('active');var open=b.classList.contains('active');b.setAttribute('aria-expanded', open?'true':'false');b.parentElement.classList.toggle('is-open', open);"><span></span><span></span><span></span></button>
+    <nav class="site-nav" aria-label="Primary">
+        <a href="../index.html"><span class="lang-zh">关于</span><span class="lang-en">About</span></a>
+        <a href="../blog.html" class="active"><span class="lang-zh">博客</span><span class="lang-en">Blog</span></a>
+        <a href="../projects.html"><span class="lang-zh">项目</span><span class="lang-en">Projects</span></a>
+        <a href="../tools.html"><span class="lang-zh">工具</span><span class="lang-en">Tools</span></a>
+        <a href="../notes.html"><span class="lang-zh">笔记</span><span class="lang-en">Notes</span></a>
+      </nav>
+    <div class="nav-right">
+      <div class="social-icons" aria-label="Social">
+        <a href="#" aria-label="X / Twitter" title="X"><i class="fab fa-x-twitter"></i></a>
+        <a href="https://github.com/HenryHwang-AI" aria-label="GitHub" title="GitHub"><i class="fab fa-github"></i></a>
+        <a href="#" aria-label="LinkedIn" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+      </div>
+      <button type="button" class="icon-btn" id="lang-toggle" aria-label="Switch language">EN</button>
+      <button type="button" class="icon-btn" id="theme-toggle" aria-label="Toggle dark mode">
+        <span class="theme-label-to-dark">
+          <span class="lang-zh">深色</span><span class="lang-en">Dark</span>
+        </span>
+        <span class="theme-label-to-light">
+          <span class="lang-zh">浅色</span><span class="lang-en">Light</span>
+        </span>
+      </button>
+    </div>
+  </header>
+
+    <main class="post-page fade-up" id="post-page">
+    <article class="post-article">
+      <p class="post-meta">
+        <a class="post-back" href="../blog.html"><span class="lang-zh">← 博客</span><span class="lang-en">← Blog</span></a>
+        <span class="post-meta-sep" aria-hidden="true">·</span>
+        <time datetime="2026-11-18">2026-11-18</time>
+        <span class="post-meta-sep" aria-hidden="true">·</span>
+        <span class="post-cat"><span class="lang-zh">个人随想</span><span class="lang-en">Essays</span></span>
+      </p>
+      <h1 class="post-title">
+        <span class="lang-zh">为什么不做一个通用对话框</span>
+        <span class="lang-en">Why I did not ship a generic chat box</span>
+      </h1>
+      <div class="post-body lang-zh">
+        <p>对话框可以用来问事。按运营 SOP 稳定交出可投产的素材，或交出能复现的选品结论，要的是一条可编排、可校验的链路。我在这两个产品上选的是链路。</p>
+        <h2>内容生产缺的是域内知识和编排</h2>
+        <p>AllyNext 面对的是 Listing、主图、A+ 和视频。它们高度依赖人工协同，履约时间长，工具链是断开的。通用大模型缺少域内知识，也缺少可编排能力，不能按 SOP 稳定产出可投产的交付物。所以问题的定义不是「再加一个能聊天的入口」。场景先被拆开：一键成片、爆款复刻、产品图这类高频、高价值的多模态场景，排好优先级和成功指标。</p>
+        <p>对比过更自主的 Agent 等方案之后，原则是可控、可验收、成本低，采用的是 Workflow、单 Agent 和技能包。搜索量、竞争度、爆款结构和 COSMO 用户意图注入生成，输出限制在 Listing 标题和五点、脚本钩子、口播、分镜、视频提示词这些结构化结果上，并附修改理由。生成被数据约束，再经过结果校验，才进入交付。这是 2025 年 3 月到 12 月的工作。项目条目是 AI 产品负责人，工作经历是深度参与。见 <a href="../cases/allynext.html">AllyNext</a>。</p>
+        <h2>选品同样收成一条刊登链路</h2>
+        <p>商舟以 Workflow 编排采集、筛选、利润与合规评估、Listing 生成、刊登。知识库约束分析和生成，结论要能追溯到数据和规则条款。我用它说明产品形态是一条链路。我核对的是编排、知识约束和可追溯，不把界面上有没有聊天入口写成一项决定。我是 AI 产品负责人，时间从 2026 年 2 月到简历所记的 2026 年 11 月 15 日。见 <a href="../cases/shangzhou.html">商舟</a>。</p>
+        <h2>入口可以问，链路才按标准交</h2>
+        <p>问一句和交一版可投产的东西，验收标准不同。前者看回答是否形成。后者看有没有按 SOP 走完、有没有经过结果校验、结论能否回到规则或数据。AllyNext 把生成收在固定的结果类型里：标题、五点、钩子、口播、分镜、视频提示词。商舟把选品收在固定的顺序里：采集、筛选、利润与合规、Listing、刊登。两边都先规定输出长什么样、中间结果交给谁，再谈模型如何生成。</p>
+        <p>通用模型可以出现在链路的某一步，负责按已经注入的搜索量、竞争度、爆款结构或合规规则来写。它不负责自己决定这单内容该不该投产，也不负责自己发明一套选品标准。那两件事分别留在校验与人工确认、以及写进知识库的规则里。所以我做的是可编排的生产链路和选品链路，不是一个什么都能问的对话框。</p>
+        <p>这样做的直接后果是，成功指标也跟着链路走。AllyNext 看四类场景有没有按 SOP 交出可校验的结果，商舟看结论能不能追溯、节点有没有按确定性和风险分开。两者都不把「用户能不能随便开聊」写成目标。对话框若以后出现，也只能是链路中的一个问法，不能反过来定义产品。我在这两篇工作里守住的是形态：先有可验收的顺序和结果类型，再把模型放进去。AllyNext 的原则写成可控、可验收、成本低；商舟的原则写成按确定性和风险切节点。两句都是形态约束，不是模型品牌的选择。</p>
+      </div>
+      <div class="post-body lang-en">
+        <p>A chat box can take a question. Handing over assets that are fit to publish, on a stable SOP, or handing over a selection conclusion that can be run again, needs a chain that can be orchestrated and checked. On these two products I chose the chain.</p>
+        <h2>Content production was missing domain knowledge and orchestration</h2>
+        <p>AllyNext had to produce Listings, main images, A+ content, and video. The work depended heavily on people coordinating, turnaround was long, and the toolchain was split. A general model lacked domain knowledge and the ability to orchestrate steps, so it could not steadily produce deliverables fit to publish. The problem was therefore not defined as “add another place to chat.” Scenes were split first: one-click video, recreating a hit, product images, and other frequent, high-value multimodal scenes, with priority and success measures set.</p>
+        <p>After comparing more autonomous agent options, the rule was controllable, acceptable, and lower cost. The design was a workflow, a single agent, and a skill pack. Search volume, competition, hit-product structure, and COSMO user intent are injected into generation. Output is limited to structured results: Listing title and five bullets, script hook, voiceover, shots, and video prompts, with a reason for each change. Generation is constrained by data, then checked, then delivered. This was March to December 2025. The project entry says AI product owner; the work history says deep participation. See <a href="../cases/allynext.html">AllyNext</a>.</p>
+        <h2>Selection is also gathered into a listing chain</h2>
+        <p>Shangzhou orchestrates collect, filter, profit and compliance review, Listing generation, and listing. The knowledge base constrains analysis and generation, and a conclusion has to trace to data and to a rule clause. I use it to show that the product form is a chain. What I check is the orchestration, the knowledge constraint, and the trace. I do not turn the presence or absence of a chat entry into a screen decision. I was the AI product owner, from February 2026 through the resume date of 15 November 2026. See <a href="../cases/shangzhou.html">Shangzhou</a>.</p>
+        <h2>An entry can take a question; a chain delivers to a standard</h2>
+        <p>Asking one question and delivering a version fit to publish have different acceptance tests. The first looks at whether an answer formed. The second looks at whether the SOP was finished, whether a result check ran, and whether the conclusion can return to a rule or to data. AllyNext gathers generation into fixed result types: title, five bullets, hook, voiceover, shots, video prompts. Shangzhou gathers selection into a fixed order: collect, filter, profit and compliance, Listing, listing. Both state what the output looks like, and who receives the intermediate result, before asking how the model writes.</p>
+        <p>A general model can sit on one step of the chain and write from search volume, competition, hit-product structure, or compliance rules that were already injected. It does not decide whether this asset should be published, and it does not invent the selection standard. Those two stay with the check and the human confirmation, and with the rules written into the knowledge base. So what I built is an orchestrated production chain and a selection chain, not a box that can be asked anything.</p>
+        <p>The direct consequence is that success measures follow the chain. AllyNext asks whether the four scenes hand back a checkable result under the SOP. Shangzhou asks whether a conclusion can be traced and whether nodes are split by certainty and risk. Neither writes “can the user chat freely” as the goal. If a chat entry appears later, it can only be one way to ask inside the chain. It does not get to define the product. What I held in both pieces of work is the form: an acceptable order and result type first, and the model placed inside that. AllyNext’s rule is written as controllable, acceptable, and lower cost. Shangzhou’s rule is written as cutting nodes by certainty and risk. Both sentences constrain the form. Neither is a choice of model brand.</p>
+      </div>
+    </article>
+    <footer class="blog-footer">
+      <a href="../blog.html" id="home-footer-link">
+        <span class="lang-zh">返回博客</span><span class="lang-en">Back to blog</span>
+      </a>
+    </footer>
+  </main>
+
+  <script src="../js/particles.min.js"></script>
+  <script>
+    (function () {
+      var root = document.documentElement;
+      var langBtn = document.getElementById('lang-toggle');
+      var themeBtn = document.getElementById('theme-toggle');
+
+      function currentLang() {
+        return root.getAttribute('data-lang') === 'en' ? 'en' : 'zh';
+      }
+
+      function setLang(lang) {
+        root.setAttribute('data-lang', lang);
+        root.setAttribute('lang', lang === 'zh' ? 'zh' : 'en');
+        langBtn.textContent = lang === 'zh' ? 'EN' : '中文';
+        try { localStorage.setItem('lang', lang); } catch (e) {}
+      }
+
+      function isDark() {
+        return root.getAttribute('data-theme') === 'dark';
+      }
+
+      function setTheme(dark) {
+        if (dark) root.setAttribute('data-theme', 'dark');
+        else root.setAttribute('data-theme', 'light');
+        try { localStorage.setItem('theme', dark ? 'dark' : 'light'); } catch (e) {}
+      }
+
+      setLang(currentLang());
+      if (!root.getAttribute('data-theme')) {
+        root.setAttribute('data-theme', 'light');
+      }
+
+      langBtn.addEventListener('click', function () {
+        setLang(currentLang() === 'zh' ? 'en' : 'zh');
+      });
+
+      themeBtn.addEventListener('click', function () {
+        setTheme(!isDark());
+      });
+
+      document.addEventListener('DOMContentLoaded', function () {
+        var page = document.getElementById('post-page');
+        if (page) {
+          requestAnimationFrame(function () {
+            page.classList.add('is-visible');
+          });
+        }
+      });
+
+      function initParticles() {
+        if (typeof particlesJS !== 'function') return;
+        particlesJS('particles-js', {
+          particles: {
+            number: { value: 8, density: { enable: true, value_area: 300 } },
+            color: { value: '#A680A6' },
+            shape: { type: 'triangle' },
+            opacity: {
+              value: 0.8,
+              random: true,
+              anim: { enable: true, speed: 1, opacity_min: 0.1, sync: false }
+            },
+            size: {
+              value: 5,
+              random: true,
+              anim: { enable: true, speed: 4, size_min: 0.3, sync: false }
+            },
+            line_linked: {
+              enable: true,
+              distance: 150,
+              color: '#A680A6',
+              opacity: 0.4,
+              width: 1
+            },
+            move: {
+              enable: true,
+              speed: 1.4,
+              direction: 'none',
+              random: false,
+              straight: false,
+              out_mode: 'bounce',
+              bounce: false
+            }
+          },
+          interactivity: {
+            detect_on: 'canvas',
+            events: {
+              onhover: { enable: true, mode: 'repulse' },
+              onclick: { enable: true, mode: 'push' },
+              resize: true
+            }
+          },
+          retina_detect: true
+        });
+      }
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initParticles);
+      } else {
+        initParticles();
+      }
+    })();
+  </script>
+</body>
+</html>
