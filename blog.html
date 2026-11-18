@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="zh" data-lang="zh" class="notranslate" translate="no">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="google" content="notranslate">
+  <title>Blog — Henry Huang</title>
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem('theme');
+        if (t === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
+        else if (t === 'light') document.documentElement.setAttribute('data-theme', 'light');
+        var lang = localStorage.getItem('lang');
+        if (lang === 'en' || lang === 'zh') {
+          document.documentElement.setAttribute('data-lang', lang);
+          document.documentElement.setAttribute('lang', lang === 'zh' ? 'zh' : 'en');
+        }
+      } catch (e) {}
+    })();
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,300;0,400;0,500;1,400&family=Spectral:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div id="particles-js" aria-hidden="true"></div>
+
+  <header class="site-nav-wrapper">
+    <a href="index.html" class="site-name">henry huang</a>
+    <div class="nav-right">
+      <nav class="site-nav" aria-label="Primary">
+        <a href="index.html"><span class="lang-zh">关于</span><span class="lang-en">About</span></a>
+        <a href="blog.html" class="active"><span class="lang-zh">博客</span><span class="lang-en">Blog</span></a>
+        <a href="projects.html"><span class="lang-zh">项目</span><span class="lang-en">Projects</span></a>
+        <a href="tools.html"><span class="lang-zh">工具</span><span class="lang-en">Tools</span></a>
+        <a href="notes.html"><span class="lang-zh">笔记</span><span class="lang-en">Notes</span></a>
+      </nav>
+      <div class="social-icons" aria-label="Social">
+        <a href="#" aria-label="X / Twitter" title="X"><i class="fab fa-x-twitter"></i></a>
+        <a href="https://github.com/HenryHwang-AI" aria-label="GitHub" title="GitHub"><i class="fab fa-github"></i></a>
+        <a href="#" aria-label="LinkedIn" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+      </div>
+      <button type="button" class="icon-btn" id="lang-toggle" aria-label="Switch language">EN</button>
+      <button type="button" class="icon-btn" id="theme-toggle" aria-label="Toggle dark mode">
+        <span class="theme-label-to-dark">
+          <span class="lang-zh">深色</span><span class="lang-en">Dark</span>
+        </span>
+        <span class="theme-label-to-light">
+          <span class="lang-zh">浅色</span><span class="lang-en">Light</span>
+        </span>
+      </button>
+    </div>
+  </header>
+
+  <main class="blog-page fade-up" id="blog-page">
+    <div class="blog-layout">
+      <div class="category-legend" role="list" aria-label="Categories">
+        <div class="legend-item" data-category="technical" role="listitem" tabindex="0">
+          <div class="legend-color technical" aria-hidden="true"></div>
+          <span><span class="lang-zh">技术</span><span class="lang-en">Technical</span></span>
+        </div>
+        <div class="legend-item" data-category="practice" role="listitem" tabindex="0">
+          <div class="legend-color practice" aria-hidden="true"></div>
+          <span><span class="lang-zh">实践</span><span class="lang-en">Practice</span></span>
+        </div>
+        <div class="legend-item" data-category="reflection" role="listitem" tabindex="0">
+          <div class="legend-color reflection" aria-hidden="true"></div>
+          <span><span class="lang-zh">随笔</span><span class="lang-en">Reflection</span></span>
+        </div>
+      </div>
+
+      <div class="blog-list" id="blog-list">
+        <a class="blog-entry reflection" href="posts/agency-shipping-demos.html">
+          <span class="blog-date">11-05-2026</span>
+          <span class="blog-title">
+            <span class="lang-zh">「做自己」不够：Agency 在于把 Demo 真正交出去</span>
+            <span class="lang-en">“Be yourself” is incomplete: agency means shipping the demos</span>
+          </span>
+        </a>
+        <a class="blog-entry practice" href="posts/craft-over-virality.html">
+          <span class="blog-date">11-03-2026</span>
+          <span class="blog-title">
+            <span class="lang-zh">别为病毒式传播优化：写 Agent，少做教程工厂</span>
+            <span class="lang-en">Don’t optimize for virality: write about agents without becoming tutorial spam</span>
+          </span>
+        </a>
+        <a class="blog-entry reflection" href="posts/write-to-think.html">
+          <span class="blog-date">11-01-2026</span>
+          <span class="blog-title">
+            <span class="lang-zh">为什么要写下来：笔记与博客是产品思维的外置缓存</span>
+            <span class="lang-en">Why write things down: notes and posts as external cache for product thinking</span>
+          </span>
+        </a>
+        <a class="blog-entry technical" href="posts/eval-as-io.html">
+          <span class="blog-date">10-30-2026</span>
+          <span class="blog-title">
+            <span class="lang-zh">评测与追溯为什么也是 I/O 问题</span>
+            <span class="lang-en">Why eval and citation are also an I/O problem</span>
+          </span>
+        </a>
+        <a class="blog-entry practice" href="posts/multi-agent-war-room.html">
+          <span class="blog-date">10-28-2026</span>
+          <span class="blog-title">
+            <span class="lang-zh">多 Agent 投放作战室：角色怎么拆、怎么协作</span>
+            <span class="lang-en">Ad war room: splitting roles so agents actually collaborate</span>
+          </span>
+        </a>
+        <a class="blog-entry technical" href="posts/citation-rag.html">
+          <span class="blog-date">10-12-2026</span>
+          <span class="blog-title">
+            <span class="lang-zh">带引用的 RAG：为什么「能回答」不够，还要可追溯</span>
+            <span class="lang-en">Citation RAG: answering is cheap; traceability is the product</span>
+          </span>
+        </a>
+        <a class="blog-entry practice" href="posts/ad-agent-eval.html">
+          <span class="blog-date">09-20-2026</span>
+          <span class="blog-title">
+            <span class="lang-zh">广告 Agent 评测台：怎么量「好不好用」</span>
+            <span class="lang-en">Eval lab: measuring whether an ads agent is actually usable</span>
+          </span>
+        </a>
+        <a class="blog-entry technical" href="posts/api-first-gui-fallback.html">
+          <span class="blog-date">08-15-2026</span>
+          <span class="blog-title">
+            <span class="lang-zh">API 优先、GUI 兜底：我搭 Agent 时的集成原则</span>
+            <span class="lang-en">API first, GUI fallback: my integration rule for agents</span>
+          </span>
+        </a>
+        <a class="blog-entry practice" href="posts/inbox-workflow.html">
+          <span class="blog-date">07-02-2026</span>
+          <span class="blog-title">
+            <span class="lang-zh">Inbox 工作流：低摩擦把点子收进系统</span>
+            <span class="lang-en">Inbox workflow: capture ideas before they evaporate</span>
+          </span>
+        </a>
+        <a class="blog-entry reflection" href="posts/second-brain-notes.html">
+          <span class="blog-date">05-18-2026</span>
+          <span class="blog-title">
+            <span class="lang-zh">第二大脑式笔记：少建库，多写链接</span>
+            <span class="lang-en">Second-brain notes: fewer databases, more links</span>
+          </span>
+        </a>
+      </div>
+    </div>
+
+    <footer class="blog-footer">
+      <a href="index.html" id="home-footer-link">
+        <span class="lang-zh">主页</span><span class="lang-en">Home</span>
+      </a>
+    </footer>
+  </main>
+
+  <script src="js/particles.min.js"></script>
+  <script>
+    (function () {
+      var root = document.documentElement;
+      var langBtn = document.getElementById('lang-toggle');
+      var themeBtn = document.getElementById('theme-toggle');
+
+      function currentLang() {
+        return root.getAttribute('data-lang') === 'en' ? 'en' : 'zh';
+      }
+
+      function setLang(lang) {
+        root.setAttribute('data-lang', lang);
+        root.setAttribute('lang', lang === 'zh' ? 'zh' : 'en');
+        langBtn.textContent = lang === 'zh' ? 'EN' : '中文';
+        try { localStorage.setItem('lang', lang); } catch (e) {}
+      }
+
+      function isDark() {
+        return root.getAttribute('data-theme') === 'dark';
+      }
+
+      function setTheme(dark) {
+        if (dark) root.setAttribute('data-theme', 'dark');
+        else root.setAttribute('data-theme', 'light');
+        try { localStorage.setItem('theme', dark ? 'dark' : 'light'); } catch (e) {}
+      }
+
+      setLang(currentLang());
+      if (!root.getAttribute('data-theme')) {
+        root.setAttribute('data-theme', 'light');
+      }
+
+      langBtn.addEventListener('click', function () {
+        setLang(currentLang() === 'zh' ? 'en' : 'zh');
+      });
+
+      themeBtn.addEventListener('click', function () {
+        setTheme(!isDark());
+      });
+
+      document.querySelectorAll('.blog-entry[aria-disabled="true"]').forEach(function (el) {
+        el.addEventListener('click', function (e) {
+          e.preventDefault();
+        });
+      });
+
+      var blogEntries = document.querySelectorAll('.blog-entry');
+      var legendItems = document.querySelectorAll('.legend-item');
+      var activeFilter = null;
+
+      function applyFilter(category) {
+        if (activeFilter === category) {
+          activeFilter = null;
+          legendItems.forEach(function (item) { item.classList.remove('active'); });
+          blogEntries.forEach(function (entry) { entry.classList.remove('hidden'); });
+          return;
+        }
+        activeFilter = category;
+        legendItems.forEach(function (item) {
+          item.classList.toggle('active', item.getAttribute('data-category') === category);
+        });
+        blogEntries.forEach(function (entry) {
+          if (entry.classList.contains(category)) entry.classList.remove('hidden');
+          else entry.classList.add('hidden');
+        });
+      }
+
+      legendItems.forEach(function (item) {
+        item.addEventListener('click', function () {
+          applyFilter(this.getAttribute('data-category'));
+        });
+        item.addEventListener('keydown', function (e) {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            applyFilter(this.getAttribute('data-category'));
+          }
+        });
+      });
+
+      document.addEventListener('DOMContentLoaded', function () {
+        var page = document.getElementById('blog-page');
+        if (page) {
+          requestAnimationFrame(function () {
+            page.classList.add('is-visible');
+          });
+        }
+        var items = document.querySelectorAll('#blog-list .blog-entry');
+        items.forEach(function (item, idx) {
+          item.style.opacity = '0';
+          item.style.transform = 'translateY(10px)';
+          item.style.transition = 'opacity 420ms ease, transform 420ms ease';
+          setTimeout(function () {
+            item.style.opacity = '1';
+            item.style.transform = 'none';
+          }, 80 + idx * 30);
+        });
+      });
+
+      function initParticles() {
+        if (typeof particlesJS !== 'function') return;
+        particlesJS('particles-js', {
+          particles: {
+            number: { value: 8, density: { enable: true, value_area: 300 } },
+            color: { value: '#A680A6' },
+            shape: { type: 'triangle' },
+            opacity: {
+              value: 0.8,
+              random: true,
+              anim: { enable: true, speed: 1, opacity_min: 0.1, sync: false }
+            },
+            size: {
+              value: 5,
+              random: true,
+              anim: { enable: true, speed: 4, size_min: 0.3, sync: false }
+            },
+            line_linked: {
+              enable: true,
+              distance: 150,
+              color: '#A680A6',
+              opacity: 0.4,
+              width: 1
+            },
+            move: {
+              enable: true,
+              speed: 1.4,
+              direction: 'none',
+              random: false,
+              straight: false,
+              out_mode: 'bounce',
+              bounce: false
+            }
+          },
+          interactivity: {
+            detect_on: 'canvas',
+            events: {
+              onhover: { enable: true, mode: 'repulse' },
+              onclick: { enable: true, mode: 'push' },
+              resize: true
+            }
+          },
+          retina_detect: true
+        });
+      }
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initParticles);
+      } else {
+        initParticles();
+      }
+    })();
+  </script>
+</body>
+</html>

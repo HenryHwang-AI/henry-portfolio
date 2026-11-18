@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="zh" data-lang="zh" class="notranslate" translate="no">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="google" content="notranslate">
+  <title>Inbox workflow: capture ideas before they evaporate — Henry Huang</title>
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem('theme');
+        if (t === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
+        else if (t === 'light') document.documentElement.setAttribute('data-theme', 'light');
+        var lang = localStorage.getItem('lang');
+        if (lang === 'en' || lang === 'zh') {
+          document.documentElement.setAttribute('data-lang', lang);
+          document.documentElement.setAttribute('lang', lang === 'zh' ? 'zh' : 'en');
+        }
+      } catch (e) {}
+    })();
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,300;0,400;0,500;1,400&family=Spectral:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <div id="particles-js" aria-hidden="true"></div>
+
+  <header class="site-nav-wrapper">
+    <a href="../index.html" class="site-name">henry huang</a>
+    <div class="nav-right">
+      <nav class="site-nav" aria-label="Primary">
+        <a href="../index.html"><span class="lang-zh">关于</span><span class="lang-en">About</span></a>
+        <a href="../blog.html" class="active"><span class="lang-zh">博客</span><span class="lang-en">Blog</span></a>
+        <a href="../projects.html"><span class="lang-zh">项目</span><span class="lang-en">Projects</span></a>
+        <a href="../tools.html"><span class="lang-zh">工具</span><span class="lang-en">Tools</span></a>
+        <a href="../notes.html"><span class="lang-zh">笔记</span><span class="lang-en">Notes</span></a>
+      </nav>
+      <div class="social-icons" aria-label="Social">
+        <a href="#" aria-label="X / Twitter" title="X"><i class="fab fa-x-twitter"></i></a>
+        <a href="https://github.com/HenryHwang-AI" aria-label="GitHub" title="GitHub"><i class="fab fa-github"></i></a>
+        <a href="#" aria-label="LinkedIn" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+      </div>
+      <button type="button" class="icon-btn" id="lang-toggle" aria-label="Switch language">EN</button>
+      <button type="button" class="icon-btn" id="theme-toggle" aria-label="Toggle dark mode">
+        <span class="theme-label-to-dark">
+          <span class="lang-zh">深色</span><span class="lang-en">Dark</span>
+        </span>
+        <span class="theme-label-to-light">
+          <span class="lang-zh">浅色</span><span class="lang-en">Light</span>
+        </span>
+      </button>
+    </div>
+  </header>
+
+    <main class="post-page fade-up" id="post-page">
+    <article class="post-article">
+      <p class="post-meta">
+        <a class="post-back" href="../blog.html"><span class="lang-zh">← 博客</span><span class="lang-en">← Blog</span></a>
+        <span class="post-meta-sep" aria-hidden="true">·</span>
+        <time datetime="2026-07-02">2026-07-02</time>
+        <span class="post-meta-sep" aria-hidden="true">·</span>
+        <span class="post-cat"><span class="lang-zh">实践</span><span class="lang-en">Practice</span></span>
+      </p>
+      <h1 class="post-title">
+        <span class="lang-zh">Inbox 工作流：低摩擦把点子收进系统</span>
+        <span class="lang-en">Inbox workflow: capture ideas before they evaporate</span>
+      </h1>
+
+      <div class="post-body lang-zh">
+        <p>做 Agent 和写实践文时，想法往往在地铁、会议缝隙里冒出来。如果入口太重——打开笔记软件、选文件夹、起标题——它就死在半路。我给自己定的原则是：<strong>先收，后分</strong>。漂亮的分类体系，优先级永远排在「先留下钩子」之后。</p>
+        <h2>低摩擦长什么样</h2>
+        <p>一个永远打开的 Inbox：手机快捷指令、桌面剪贴板、或聊天里丢给自己的一句话。格式随便，标签以后再说。关键是三秒内能留下「钩子」——一个动词 + 一个对象就够，例如「评测台加约束用例」「作战室：诊断官禁止鸡汤」。写不全没关系，钩子在，回头就能补。</p>
+        <p>我刻意不在捕获时做归档决策。捕获阶段唯一的成功标准是：稍后的自己还能看懂这是什么。</p>
+        <h2>和 Agent 工作怎么接</h2>
+        <p>Inbox 不是第二大脑，只是进料口。每周我会扫一遍：能变成用例的进评测台；能变成角色契约的进作战室备忘；能写成文的进博客草稿；需要长期保留的链进<a href="../notes.html">笔记地图</a>。剩下的归档或删掉，绝不假装「以后有空整理」。</p>
+        <h2>我学到什么</h2>
+        <p>收集系统的对手不是「懒」，而是<strong>决策疲劳</strong>。把分类决策推迟到有整块时间时，捕获率会上去；捕获率上去，实践文和 Demo 才有原材料，而不是靠灵感表演。Agent 项目尤其吃这个：好用例几乎都来自某次现场踩坑留下的半句话。</p>
+
+      </div>
+
+      <div class="post-body lang-en">
+        <p>Ideas for agents and practice essays show up in gaps—commutes, the minute after a meeting. If capture is heavy (open the app, pick a folder, invent a title), the idea dies mid-air. My rule: <strong>capture first, sort later</strong>. Pretty taxonomy always ranks after “leave a hook.”</p>
+        <h2>What low friction looks like</h2>
+        <p>One always-on inbox: a phone shortcut, a desktop clip, or a line I message myself. Formatting is optional; tags wait. The bar is three seconds to leave a hook—a verb plus an object, e.g. “eval lab: add constraint cases” or “war room: diagnosis role bans pep talk.” Incomplete is fine if Future Me can parse the intent.</p>
+        <p>I refuse filing decisions at capture time. The only success criterion then is: later-me still understands what this was.</p>
+        <h2>Wiring it to agent work</h2>
+        <p>Inbox is not a second brain; it is a feed. Weekly I triage: cases go to the eval lab, role contracts to war-room notes, essay seeds to blog drafts, keepers into the <a href="../notes.html">notes map</a>. The rest archive or delete—no theater of “I’ll organize later.”</p>
+        <h2>What I learned</h2>
+        <p>The enemy of capture is not laziness; it is <strong>decision fatigue</strong>. Deferring taxonomy until you have a real block of time raises capture rate—and that rate feeds demos and essays, not performative inspiration. Agent work especially: the best cases often start as half a sentence from a live failure.</p>
+
+      </div>
+    </article>
+    <footer class="blog-footer">
+      <a href="../blog.html" id="home-footer-link">
+        <span class="lang-zh">返回博客</span><span class="lang-en">Back to blog</span>
+      </a>
+    </footer>
+  </main>
+
+  <script src="../js/particles.min.js"></script>
+  <script>
+    (function () {
+      var root = document.documentElement;
+      var langBtn = document.getElementById('lang-toggle');
+      var themeBtn = document.getElementById('theme-toggle');
+
+      function currentLang() {
+        return root.getAttribute('data-lang') === 'en' ? 'en' : 'zh';
+      }
+
+      function setLang(lang) {
+        root.setAttribute('data-lang', lang);
+        root.setAttribute('lang', lang === 'zh' ? 'zh' : 'en');
+        langBtn.textContent = lang === 'zh' ? 'EN' : '中文';
+        try { localStorage.setItem('lang', lang); } catch (e) {}
+      }
+
+      function isDark() {
+        return root.getAttribute('data-theme') === 'dark';
+      }
+
+      function setTheme(dark) {
+        if (dark) root.setAttribute('data-theme', 'dark');
+        else root.setAttribute('data-theme', 'light');
+        try { localStorage.setItem('theme', dark ? 'dark' : 'light'); } catch (e) {}
+      }
+
+      setLang(currentLang());
+      if (!root.getAttribute('data-theme')) {
+        root.setAttribute('data-theme', 'light');
+      }
+
+      langBtn.addEventListener('click', function () {
+        setLang(currentLang() === 'zh' ? 'en' : 'zh');
+      });
+
+      themeBtn.addEventListener('click', function () {
+        setTheme(!isDark());
+      });
+
+      document.addEventListener('DOMContentLoaded', function () {
+        var page = document.getElementById('post-page');
+        if (page) {
+          requestAnimationFrame(function () {
+            page.classList.add('is-visible');
+          });
+        }
+      });
+
+      function initParticles() {
+        if (typeof particlesJS !== 'function') return;
+        particlesJS('particles-js', {
+          particles: {
+            number: { value: 8, density: { enable: true, value_area: 300 } },
+            color: { value: '#A680A6' },
+            shape: { type: 'triangle' },
+            opacity: {
+              value: 0.8,
+              random: true,
+              anim: { enable: true, speed: 1, opacity_min: 0.1, sync: false }
+            },
+            size: {
+              value: 5,
+              random: true,
+              anim: { enable: true, speed: 4, size_min: 0.3, sync: false }
+            },
+            line_linked: {
+              enable: true,
+              distance: 150,
+              color: '#A680A6',
+              opacity: 0.4,
+              width: 1
+            },
+            move: {
+              enable: true,
+              speed: 1.4,
+              direction: 'none',
+              random: false,
+              straight: false,
+              out_mode: 'bounce',
+              bounce: false
+            }
+          },
+          interactivity: {
+            detect_on: 'canvas',
+            events: {
+              onhover: { enable: true, mode: 'repulse' },
+              onclick: { enable: true, mode: 'push' },
+              resize: true
+            }
+          },
+          retina_detect: true
+        });
+      }
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initParticles);
+      } else {
+        initParticles();
+      }
+    })();
+  </script>
+</body>
+</html>

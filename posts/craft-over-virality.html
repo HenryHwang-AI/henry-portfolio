@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="zh" data-lang="zh" class="notranslate" translate="no">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="google" content="notranslate">
+  <title>Don’t optimize for virality: write about agents without becoming tutorial spam — Henry Huang</title>
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem('theme');
+        if (t === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
+        else if (t === 'light') document.documentElement.setAttribute('data-theme', 'light');
+        var lang = localStorage.getItem('lang');
+        if (lang === 'en' || lang === 'zh') {
+          document.documentElement.setAttribute('data-lang', lang);
+          document.documentElement.setAttribute('lang', lang === 'zh' ? 'zh' : 'en');
+        }
+      } catch (e) {}
+    })();
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,300;0,400;0,500;1,400&family=Spectral:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <div id="particles-js" aria-hidden="true"></div>
+
+  <header class="site-nav-wrapper">
+    <a href="../index.html" class="site-name">henry huang</a>
+    <div class="nav-right">
+      <nav class="site-nav" aria-label="Primary">
+        <a href="../index.html"><span class="lang-zh">关于</span><span class="lang-en">About</span></a>
+        <a href="../blog.html" class="active"><span class="lang-zh">博客</span><span class="lang-en">Blog</span></a>
+        <a href="../projects.html"><span class="lang-zh">项目</span><span class="lang-en">Projects</span></a>
+        <a href="../tools.html"><span class="lang-zh">工具</span><span class="lang-en">Tools</span></a>
+        <a href="../notes.html"><span class="lang-zh">笔记</span><span class="lang-en">Notes</span></a>
+      </nav>
+      <div class="social-icons" aria-label="Social">
+        <a href="#" aria-label="X / Twitter" title="X"><i class="fab fa-x-twitter"></i></a>
+        <a href="https://github.com/HenryHwang-AI" aria-label="GitHub" title="GitHub"><i class="fab fa-github"></i></a>
+        <a href="#" aria-label="LinkedIn" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+      </div>
+      <button type="button" class="icon-btn" id="lang-toggle" aria-label="Switch language">EN</button>
+      <button type="button" class="icon-btn" id="theme-toggle" aria-label="Toggle dark mode">
+        <span class="theme-label-to-dark">
+          <span class="lang-zh">深色</span><span class="lang-en">Dark</span>
+        </span>
+        <span class="theme-label-to-light">
+          <span class="lang-zh">浅色</span><span class="lang-en">Light</span>
+        </span>
+      </button>
+    </div>
+  </header>
+
+  <main class="post-page fade-up" id="post-page">
+    <article class="post-article">
+      <p class="post-meta">
+        <a class="post-back" href="../blog.html"><span class="lang-zh">← 博客</span><span class="lang-en">← Blog</span></a>
+        <span class="post-meta-sep" aria-hidden="true">·</span>
+        <time datetime="2026-11-03">2026-11-03</time>
+        <span class="post-meta-sep" aria-hidden="true">·</span>
+        <span class="post-cat"><span class="lang-zh">实践</span><span class="lang-en">Practice</span></span>
+      </p>
+      <h1 class="post-title">
+        <span class="lang-zh">别为病毒式传播优化：写 Agent，少做教程工厂</span>
+        <span class="lang-en">Don’t optimize for virality: write about agents without becoming tutorial spam</span>
+      </h1>
+
+      <div class="post-body lang-zh">
+        <p>X / 短内容很容易把人训练成「教程工厂」：长帖、清单、第一句就回答「学到什么」。流量会来，但代价是——你开始为预估的阅读量选题，高质量却安静的帖子会让你焦虑，真正该做的 Demo 反而后排。</p>
+        <h2>我改优化什么</h2>
+        <p>我把目标改成<strong>对话与手艺</strong>，不是曝光。写投放作战室，我会写角色怎么吵、失败怎么复盘，而不是「十分钟搭 Multi-Agent」。写评测台，我会写指标为什么骗人，而不是再发一篇「Eval 最佳实践 20 条」。愿意回你、愿意追问边界的人，比一万次划过更值。</p>
+        <h2>个人品牌不是印象数</h2>
+        <p>品牌是别人想起你时，能不能准确说出你在做的窄东西。三个 Demo 就是那条窄东西。发内容时我自问：这是在加深那条线，还是在用通用模板换点赞？若是后者，就停。算法偶尔送一次触达；记得你、愿意一起拆问题的人，才是复利。</p>
+        <p>所以：发你真正好奇、真正踩过坑的；认真回帖；让交换长成关系。别成为「Agent 教程男」——那条路短、挤、而且会吃掉你真正想造的东西。</p>
+              <h2>怎么写仍有信息量</h2>
+        <p>不优化病毒，不等于写得含糊。我仍要求第一段说清楚「解决什么痛」，但拒绝为了完播率把每个坑都包装成通用 checklist。细节可以留在博客长文和 Demo README 里；短内容负责抛出一个真实问题，把愿意深聊的人引到可跑的东西上。</p>
+        <p>若某条帖子火了却带不回任何对三个 Demo 的追问，我会把它记成噪声，而不是成功。成功是有人复现了失败路径，或指出了我漏测的边界。</p>
+              <p>实操上，我会把「想发的清单体」先压成一句问题发到草稿，隔天若仍觉得必须展开成教程，再决定要不要写长文挂博客——多数时候那句问题本身就够，或者直接指向某个 Demo 的失败日志更有用。</p>
+      </div>
+
+      <div class="post-body lang-en">
+        <p>X / short-form trains people into a “tutorial factory”: long posts, lists, first lines that answer “what will I learn.” Reach arrives—but you start picking topics for predicted views, quiet high-quality posts make you anxious, and the demos that matter slip to the back.</p>
+        <h2>What I optimize instead</h2>
+        <p>I optimize for <strong>conversations and craft</strong>, not impressions. On the war room I write how roles argue and how failures get reviewed—not “multi-agent in ten minutes.” On the eval lab I write why metrics lie—not another “20 eval best practices.” People who reply and pressure your edges beat ten thousand scrolls.</p>
+        <h2>Brand isn’t impression count</h2>
+        <p>Brand is whether someone can name the narrow thing you actually ship. The three demos are that narrow thing. Before posting I ask: does this deepen the line, or trade a generic template for likes? If the latter, stop. Algorithms gift reach once; people who remember you and dissect problems with you compound.</p>
+        <p>So: post what you’re curious about and scarred by; reply thoughtfully; let exchanges become relationships. Don’t become the “agent tutorial guy”—that road is short, crowded, and eats what you meant to build.</p>
+              <h2>Still write with signal</h2>
+        <p>Skipping virality isn’t an excuse to be vague. I still want the first paragraph to name the pain—but I refuse to wrap every scar into a generic checklist for completion rate. Detail can live in long posts and demo READMEs; short posts should pose a real question and route curious people to something runnable.</p>
+        <p>If a post goes wide yet brings zero follow-ups about the three demos, I log it as noise, not success. Success is someone replaying a failure path or naming an edge case I missed.</p>
+              <p>In practice I compress “listicle urges” into one draft question; if it still needs a tutorial the next day, I consider a long blog post—often the question alone is enough, or a pointer to a demo failure log is more useful.</p>
+      </div>
+    </article>
+    <footer class="blog-footer">
+      <p class="post-inspired" style="margin:0 0 0.75rem;font-size:0.85rem;opacity:0.7;">
+        <span class="lang-zh">选题启发自 nathanchen.me 上的若干主题；正文为本人实践改写。</span>
+        <span class="lang-en">Inspired by themes on nathanchen.me; rewritten from my own practice.</span>
+      </p>
+      <a href="../blog.html" id="home-footer-link">
+        <span class="lang-zh">返回博客</span><span class="lang-en">Back to blog</span>
+      </a>
+    </footer>
+  </main>
+
+  <script src="../js/particles.min.js"></script>
+  <script>
+    (function () {
+      var root = document.documentElement;
+      var langBtn = document.getElementById('lang-toggle');
+      var themeBtn = document.getElementById('theme-toggle');
+
+      function currentLang() {
+        return root.getAttribute('data-lang') === 'en' ? 'en' : 'zh';
+      }
+
+      function setLang(lang) {
+        root.setAttribute('data-lang', lang);
+        root.setAttribute('lang', lang === 'zh' ? 'zh' : 'en');
+        langBtn.textContent = lang === 'zh' ? 'EN' : '中文';
+        try { localStorage.setItem('lang', lang); } catch (e) {}
+      }
+
+      function isDark() {
+        return root.getAttribute('data-theme') === 'dark';
+      }
+
+      function setTheme(dark) {
+        if (dark) root.setAttribute('data-theme', 'dark');
+        else root.setAttribute('data-theme', 'light');
+        try { localStorage.setItem('theme', dark ? 'dark' : 'light'); } catch (e) {}
+      }
+
+      setLang(currentLang());
+      if (!root.getAttribute('data-theme')) {
+        root.setAttribute('data-theme', 'light');
+      }
+
+      langBtn.addEventListener('click', function () {
+        setLang(currentLang() === 'zh' ? 'en' : 'zh');
+      });
+
+      themeBtn.addEventListener('click', function () {
+        setTheme(!isDark());
+      });
+
+      document.addEventListener('DOMContentLoaded', function () {
+        var page = document.getElementById('post-page');
+        if (page) {
+          requestAnimationFrame(function () {
+            page.classList.add('is-visible');
+          });
+        }
+      });
+
+      function initParticles() {
+        if (typeof particlesJS !== 'function') return;
+        particlesJS('particles-js', {
+          particles: {
+            number: { value: 8, density: { enable: true, value_area: 300 } },
+            color: { value: '#A680A6' },
+            shape: { type: 'triangle' },
+            opacity: {
+              value: 0.8,
+              random: true,
+              anim: { enable: true, speed: 1, opacity_min: 0.1, sync: false }
+            },
+            size: {
+              value: 5,
+              random: true,
+              anim: { enable: true, speed: 4, size_min: 0.3, sync: false }
+            },
+            line_linked: {
+              enable: true,
+              distance: 150,
+              color: '#A680A6',
+              opacity: 0.4,
+              width: 1
+            },
+            move: {
+              enable: true,
+              speed: 1.4,
+              direction: 'none',
+              random: false,
+              straight: false,
+              out_mode: 'bounce',
+              bounce: false
+            }
+          },
+          interactivity: {
+            detect_on: 'canvas',
+            events: {
+              onhover: { enable: true, mode: 'repulse' },
+              onclick: { enable: true, mode: 'push' },
+              resize: true
+            }
+          },
+          retina_detect: true
+        });
+      }
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initParticles);
+      } else {
+        initParticles();
+      }
+    })();
+  </script>
+</body>
+</html>

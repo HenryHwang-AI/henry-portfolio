@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="zh" data-lang="zh" class="notranslate" translate="no">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="google" content="notranslate">
+  <title>情报周报台 · 信息雷达 — Henry Huang</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Spectral:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #f7f6f3;
+      --ink: #1a1917;
+      --muted: #6e6861;
+      --line: rgba(26,25,23,0.12);
+      --card: #fff;
+      --accent: #3d4f68;
+      --accent-soft: rgba(61,79,104,0.1);
+      --ok: #2e6846;
+      --shadow: 0 14px 36px rgba(26,25,23,0.06);
+    }
+    [data-theme="dark"] {
+      --bg: #111111;
+      --ink: #f2eee8;
+      --muted: #a59d94;
+      --line: rgba(242,238,232,0.14);
+      --card: #1b1a18;
+      --accent: #b7c7e2;
+      --accent-soft: rgba(183,199,226,0.14);
+      --ok: #8dcea6;
+      --shadow: 0 14px 36px rgba(0,0,0,0.35);
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; }
+    body { font-family: Jost, system-ui, sans-serif; background: var(--bg); color: var(--ink); line-height: 1.5; }
+    .lang-en { display: none; }
+    [data-lang="en"] .lang-zh { display: none; }
+    [data-lang="en"] .lang-en { display: inline; }
+    .topbar { display: flex; justify-content: space-between; align-items: center; gap: 1rem; padding: .9rem 1.25rem; border-bottom: 1px solid var(--line); position: sticky; top: 0; background: color-mix(in srgb, var(--bg) 88%, transparent); backdrop-filter: blur(10px); z-index: 4; }
+    .brand { color: inherit; text-decoration: none; display: flex; gap: .55rem; align-items: baseline; }
+    .brand-mark { font-family: Spectral, Georgia, serif; font-weight: 600; }
+    .brand-sub { color: var(--muted); font-size: .75rem; }
+    .top-actions { display: flex; gap: .4rem; flex-wrap: wrap; }
+    .chip-btn { border: 1px solid var(--line); background: transparent; color: inherit; border-radius: 999px; padding: .32rem .75rem; font: inherit; font-size: .78rem; cursor: pointer; text-decoration: none; }
+    .chip-btn:hover, .chip-btn.on { border-color: var(--accent); color: var(--accent); background: var(--accent-soft); }
+    .wrap { max-width: 1100px; margin: 0 auto; padding: 1.15rem 1.2rem 2.5rem; display: grid; grid-template-columns: 1.15fr .85fr; gap: 1rem; }
+    @media (max-width: 900px) { .wrap { grid-template-columns: 1fr; } }
+    .panel { background: var(--card); border: 1px solid var(--line); border-radius: 16px; box-shadow: var(--shadow); padding: 1rem; }
+    .filters { display: flex; flex-wrap: wrap; gap: .35rem; margin-bottom: .8rem; }
+    .card { border-top: 1px solid var(--line); padding: .85rem 0; }
+    .card header { display: flex; justify-content: space-between; gap: .6rem; align-items: baseline; }
+    .src { font-size: .68rem; letter-spacing: .08em; text-transform: uppercase; color: var(--accent); }
+    h2 { font-family: Spectral, serif; font-weight: 500; font-size: 1.05rem; margin: .2rem 0; }
+    .sum { color: var(--muted); font-size: .86rem; margin: 0 0 .45rem; }
+    .scores { display: flex; gap: .4rem; font-size: .72rem; color: var(--muted); }
+    .scores b { color: var(--ink); font-weight: 500; }
+    .card-actions { display: flex; flex-wrap: wrap; gap: .35rem; margin-top: .55rem; }
+    .mini { border: 1px solid var(--line); background: transparent; color: inherit; border-radius: 999px; padding: .2rem .55rem; font: inherit; font-size: .72rem; cursor: pointer; }
+    .mini.on { background: var(--ink); color: var(--bg); border-color: transparent; }
+    .rubric { font-size: .8rem; color: var(--muted); margin: 0 0 .8rem; }
+    textarea { width: 100%; min-height: 280px; border: 1px solid var(--line); background: var(--bg); color: var(--ink); border-radius: 12px; padding: .75rem; font: inherit; font-size: .82rem; }
+    .primary { width: 100%; margin: .4rem 0; border: 0; border-radius: 999px; padding: .7rem; background: var(--ink); color: var(--bg); font: inherit; cursor: pointer; }
+    .status { font-size: .75rem; color: var(--ok); min-height: 1rem; }
+    .foot { max-width: 1100px; margin: 0 auto; padding: 0 1.2rem 2rem; display: flex; justify-content: space-between; color: var(--muted); font-size: .78rem; }
+    .foot a { color: inherit; }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="../../projects.html">
+      <span class="brand-mark"><span class="lang-zh">情报周报台</span><span class="lang-en">Intel Weekly</span></span>
+      <span class="brand-sub"><span class="lang-zh">信息雷达</span><span class="lang-en">A brief, not a feed</span></span>
+    </a>
+    <div class="top-actions">
+      <button type="button" class="chip-btn" id="lang-toggle">EN</button>
+      <button type="button" class="chip-btn" id="theme-toggle"><span class="lang-zh">深色</span><span class="lang-en">Dark</span></button>
+      <a class="chip-btn" href="../../projects.html"><span class="lang-zh">← 项目</span><span class="lang-en">← Projects</span></a>
+    </div>
+  </header>
+  <main class="wrap">
+    <section class="panel">
+      <div class="filters" id="source-filters">
+        <button type="button" class="chip-btn on" data-source="all">All</button>
+        <button type="button" class="chip-btn" data-source="launch">Launch board</button>
+        <button type="button" class="chip-btn" data-source="forum">Forum</button>
+        <button type="button" class="chip-btn" data-source="code">Code host</button>
+        <button type="button" class="chip-btn" data-source="letter">Letter</button>
+      </div>
+      <div class="filters">
+        <button type="button" class="chip-btn" id="only-star"><span class="lang-zh">只看星标</span><span class="lang-en">Starred</span></button>
+      </div>
+      <p class="rubric"><span class="lang-zh">打分：新意 / 和广告+Agent 实践的相关度 / 可执行性，各 1–5。模拟条目，不是抓取。</span><span class="lang-en">Rubric: novelty / relevance to ad+agent practice / actionability, each 1–5. Simulated items, not a scrape.</span></p>
+      <div id="list"></div>
+    </section>
+    <section class="panel">
+      <h2 style="font-size:1.25rem;margin-top:0"><span class="lang-zh">一周简报</span><span class="lang-en">Weekly brief</span></h2>
+      <p class="rubric"><span class="lang-zh">用当前筛选和星标生成：变了什么、为什么重要、要试什么、该忽略什么。</span><span class="lang-en">Built from the current filter and stars: what changed, why it matters, what to try, what to ignore.</span></p>
+      <button type="button" class="primary" id="gen"><span class="lang-zh">生成简报</span><span class="lang-en">Generate brief</span></button>
+      <button type="button" class="chip-btn" id="copy"><span class="lang-zh">复制 Markdown</span><span class="lang-en">Copy Markdown</span></button>
+      <p class="status" id="status"></p>
+      <textarea id="md" readonly></textarea>
+    </section>
+  </main>
+  <footer class="foot">
+    <span><span class="lang-zh">标题为原创模拟，不代表真实产品。</span><span class="lang-en">Headlines are original simulations, not real products.</span></span>
+    <a href="../../projects.html"><span class="lang-zh">返回项目页</span><span class="lang-en">Back to projects</span></a>
+  </footer>
+  <script>
+    (function () {
+      var root = document.documentElement;
+      var source = 'all';
+      var starredOnly = false;
+      var items = [
+        { id: 'guard', source: 'launch', novelty: 4, relevance: 5, action: 5, priority: '', star: false, ignore: false,
+          zh: '花费守卫：只有人打勾，计划才会暂停', en: 'A spend guard that pauses a plan only after a person ticks it',
+          sz: '把「自动止损」改成默认关闭的人工门。', se: 'Turns automatic stop-loss into a human gate that defaults off.' },
+        { id: 'metric', source: 'forum', novelty: 3, relevance: 5, action: 4, priority: '', star: false, ignore: false,
+          zh: '把指标交给 Agent，而不是仪表盘截图', en: 'Hand the agent the metric, not a dashboard screenshot',
+          sz: '讨论为什么截图会让模型编造趋势。', se: 'A thread on why screenshots make models invent trends.' },
+        { id: 'harness', source: 'code', novelty: 4, relevance: 5, action: 5, priority: '', star: false, ignore: false,
+          zh: '四十条 Brief 上对比两套文案 Agent 的小评测架', en: 'A small harness that diffs two copy agents on forty briefs',
+          sz: '同一输入，输出差异和失败原因并排。', se: 'Same inputs, side-by-side diffs and failure notes.' },
+        { id: 'freq', source: 'letter', novelty: 2, relevance: 4, action: 3, priority: '', star: false, ignore: false,
+          zh: '频次上限是产品决定：三支团队公开了自己的数字', en: 'Frequency caps are a product decision: three teams published theirs',
+          sz: '数字本身不重要，公开约束这件事重要。', se: 'The numbers matter less than publishing the constraint.' },
+        { id: 'chips', source: 'launch', novelty: 3, relevance: 4, action: 4, priority: '', star: false, ignore: false,
+          zh: '给媒介买方内部问答加上可点的引用碎片', en: 'Citation chips for internal answers used by media buyers',
+          sz: '回答旁边钉着来源段落，点开即原文。', se: 'Answers sit next to the source passage.' },
+        { id: 'ignore', source: 'forum', novelty: 3, relevance: 4, action: 4, priority: '', star: false, ignore: false,
+          zh: '周报如果没有「本周忽略」一节，就不算简报', en: 'A weekly without an ignore section is not a brief',
+          sz: '强迫编辑写出不跟进的理由。', se: 'Forces the editor to say what they will not chase.' },
+        { id: 'roles', source: 'code', novelty: 3, relevance: 5, action: 3, priority: '', star: false, ignore: false,
+          zh: '用一份纯文本契约描述三个投放角色', en: 'A plain-text contract for three media roles',
+          sz: '输入、禁止事项、谁有最终拍板，没有界面。', se: 'Inputs, forbidden moves, and who decides. No interface.' },
+        { id: 'raise', source: 'letter', novelty: 2, relevance: 5, action: 2, priority: '', star: false, ignore: false,
+          zh: '一家零售商悄悄停掉了「自动加预算」', en: 'A retailer quietly turned off automatic budget raises',
+          sz: '样本周里 CPA 更稳，量少了一点。', se: 'CPA steadied that sample week. Volume dipped.' }
+      ];
+
+      function currentLang() { return root.getAttribute('data-lang') === 'en' ? 'en' : 'zh'; }
+      function L(zh, en) { return currentLang() === 'en' ? en : zh; }
+      function setLang(lang) {
+        root.setAttribute('data-lang', lang);
+        root.setAttribute('lang', lang === 'zh' ? 'zh' : 'en');
+        document.getElementById('lang-toggle').textContent = lang === 'zh' ? 'EN' : '中文';
+        paint();
+      }
+      function setTheme(dark) {
+        root.setAttribute('data-theme', dark ? 'dark' : 'light');
+        document.getElementById('theme-toggle').innerHTML = dark
+          ? '<span class="lang-zh">浅色</span><span class="lang-en">Light</span>'
+          : '<span class="lang-zh">深色</span><span class="lang-en">Dark</span>';
+      }
+      setLang('zh');
+      if (!root.getAttribute('data-theme')) root.setAttribute('data-theme', 'light');
+      document.getElementById('lang-toggle').addEventListener('click', function () { setLang(currentLang() === 'zh' ? 'en' : 'zh'); });
+      document.getElementById('theme-toggle').addEventListener('click', function () { setTheme(root.getAttribute('data-theme') !== 'dark'); });
+
+      function avg(it) { return (it.novelty + it.relevance + it.action) / 3; }
+      function visible() {
+        return items.filter(function (it) {
+          if (source !== 'all' && it.source !== source) return false;
+          if (starredOnly && !it.star) return false;
+          return true;
+        });
+      }
+      function title(it) { return L(it.zh, it.en); }
+      function blurb(it) { return L(it.sz, it.se); }
+
+      function paint() {
+        var host = document.getElementById('list');
+        var rows = visible();
+        host.innerHTML = rows.map(function (it) {
+          return '<article class="card" data-id="' + it.id + '">' +
+            '<header><span class="src">' + it.source + '</span><span>' + (it.priority || '—') + (it.star ? ' ★' : '') + '</span></header>' +
+            '<h2>' + title(it) + '</h2><p class="sum">' + blurb(it) + '</p>' +
+            '<div class="scores"><span>' + L('新意', 'Novelty') + ' <b>' + it.novelty + '</b></span><span>' + L('相关', 'Relevance') + ' <b>' + it.relevance + '</b></span><span>' + L('可做', 'Action') + ' <b>' + it.action + '</b></span><span>avg <b>' + avg(it).toFixed(1) + '</b></span></div>' +
+            '<div class="card-actions">' +
+              '<button type="button" class="mini' + (it.star ? ' on' : '') + '" data-star="' + it.id + '">★</button>' +
+              '<button type="button" class="mini' + (it.priority === 'P0' ? ' on' : '') + '" data-p="P0" data-id="' + it.id + '">P0</button>' +
+              '<button type="button" class="mini' + (it.priority === 'P1' ? ' on' : '') + '" data-p="P1" data-id="' + it.id + '">P1</button>' +
+              '<button type="button" class="mini' + (it.priority === 'P2' ? ' on' : '') + '" data-p="P2" data-id="' + it.id + '">P2</button>' +
+              '<button type="button" class="mini' + (it.ignore ? ' on' : '') + '" data-ignore="' + it.id + '">' + L('忽略', 'Ignore') + '</button>' +
+            '</div></article>';
+        }).join('') || '<p class="rubric">' + L('这个筛选下没有条目。', 'Nothing in this filter.') + '</p>';
+        host.querySelectorAll('[data-star]').forEach(function (btn) {
+          btn.addEventListener('click', function () {
+            var it = items.filter(function (x) { return x.id === btn.getAttribute('data-star'); })[0];
+            it.star = !it.star; paint();
+          });
+        });
+        host.querySelectorAll('[data-p]').forEach(function (btn) {
+          btn.addEventListener('click', function () {
+            var it = items.filter(function (x) { return x.id === btn.getAttribute('data-id'); })[0];
+            it.priority = it.priority === btn.getAttribute('data-p') ? '' : btn.getAttribute('data-p');
+            paint();
+          });
+        });
+        host.querySelectorAll('[data-ignore]').forEach(function (btn) {
+          btn.addEventListener('click', function () {
+            var it = items.filter(function (x) { return x.id === btn.getAttribute('data-ignore'); })[0];
+            it.ignore = !it.ignore; paint();
+          });
+        });
+      }
+
+      document.getElementById('source-filters').addEventListener('click', function (e) {
+        var btn = e.target.closest('[data-source]');
+        if (!btn) return;
+        source = btn.getAttribute('data-source');
+        document.querySelectorAll('#source-filters .chip-btn').forEach(function (b) { b.classList.toggle('on', b === btn); });
+        paint();
+      });
+      document.getElementById('only-star').addEventListener('click', function () {
+        starredOnly = !starredOnly;
+        this.classList.toggle('on', starredOnly);
+        paint();
+      });
+
+      function build() {
+        var pool = visible().filter(function (it) { return !it.ignore; });
+        var starred = pool.filter(function (it) { return it.star; });
+        var changed = (starred.length ? starred : pool).slice().sort(function (a, b) {
+          var pr = { P0: 0, P1: 1, P2: 2, '': 3 };
+          return (pr[a.priority] - pr[b.priority]) || (avg(b) - avg(a));
+        }).slice(0, 3);
+        var tryThese = pool.filter(function (it) { return !it.ignore && (it.priority === 'P0' || it.action >= 4); });
+        var skip = pool.filter(function (it) { return it.ignore || it.priority === 'P2' || avg(it) <= 2.4; });
+        var en = currentLang() === 'en';
+        function lines(arr) {
+          return arr.map(function (it) { return '- ' + title(it) + ' (' + it.source + ', ' + avg(it).toFixed(1) + ') — ' + blurb(it); }).join('\n');
+        }
+        if (en) {
+          return '# Intel weekly\n\n## What changed\n' + (lines(changed) || '- Nothing cleared the filter.') +
+            '\n\n## Why it matters\nThese sit close to ad and agent practice: human gates, eval diffs, and frequency as a product choice.\n\n## What to try\n' +
+            (lines(tryThese) || '- No high-action item in view.') +
+            '\n\n## What to ignore\n' + (lines(skip) || '- Nothing marked to skip.');
+        }
+        return '# 情报周报\n\n## 变了什么\n' + (lines(changed) || '- 当前筛选下没有可写的变化。') +
+          '\n\n## 为什么重要\n它们靠近广告和 Agent 实践：人工门、评测对照，以及把频次当成产品决定。\n\n## 要试什么\n' +
+          (lines(tryThese) || '- 视野里没有高可执行项。') +
+          '\n\n## 该忽略什么\n' + (lines(skip) || '- 没有标成忽略的条目。');
+      }
+
+      document.getElementById('gen').addEventListener('click', function () {
+        document.getElementById('md').value = build();
+        document.getElementById('status').textContent = L('已写入下方，可再复制。', 'Written below. Copy when ready.');
+      });
+      document.getElementById('copy').addEventListener('click', function () {
+        var text = document.getElementById('md').value || build();
+        document.getElementById('md').value = text;
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(text).then(function () {
+            document.getElementById('status').textContent = L('已复制 Markdown。', 'Markdown copied.');
+          }, function () {
+            document.getElementById('md').focus();
+            document.getElementById('status').textContent = L('无法写入剪贴板，文本已在框内。', 'Clipboard blocked. The text is in the box.');
+          });
+        } else {
+          document.getElementById('status').textContent = L('文本已在框内。', 'Text is in the box.');
+        }
+      });
+      paint();
+    })();
+  </script>
+</body>
+</html>

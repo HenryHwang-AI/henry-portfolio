@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="zh" data-lang="zh" class="notranslate" translate="no">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="google" content="notranslate">
+  <title>API first, GUI fallback: my integration rule for agents — Henry Huang</title>
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem('theme');
+        if (t === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
+        else if (t === 'light') document.documentElement.setAttribute('data-theme', 'light');
+        var lang = localStorage.getItem('lang');
+        if (lang === 'en' || lang === 'zh') {
+          document.documentElement.setAttribute('data-lang', lang);
+          document.documentElement.setAttribute('lang', lang === 'zh' ? 'zh' : 'en');
+        }
+      } catch (e) {}
+    })();
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,300;0,400;0,500;1,400&family=Spectral:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <div id="particles-js" aria-hidden="true"></div>
+
+  <header class="site-nav-wrapper">
+    <a href="../index.html" class="site-name">henry huang</a>
+    <div class="nav-right">
+      <nav class="site-nav" aria-label="Primary">
+        <a href="../index.html"><span class="lang-zh">关于</span><span class="lang-en">About</span></a>
+        <a href="../blog.html" class="active"><span class="lang-zh">博客</span><span class="lang-en">Blog</span></a>
+        <a href="../projects.html"><span class="lang-zh">项目</span><span class="lang-en">Projects</span></a>
+        <a href="../tools.html"><span class="lang-zh">工具</span><span class="lang-en">Tools</span></a>
+        <a href="../notes.html"><span class="lang-zh">笔记</span><span class="lang-en">Notes</span></a>
+      </nav>
+      <div class="social-icons" aria-label="Social">
+        <a href="#" aria-label="X / Twitter" title="X"><i class="fab fa-x-twitter"></i></a>
+        <a href="https://github.com/HenryHwang-AI" aria-label="GitHub" title="GitHub"><i class="fab fa-github"></i></a>
+        <a href="#" aria-label="LinkedIn" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+      </div>
+      <button type="button" class="icon-btn" id="lang-toggle" aria-label="Switch language">EN</button>
+      <button type="button" class="icon-btn" id="theme-toggle" aria-label="Toggle dark mode">
+        <span class="theme-label-to-dark">
+          <span class="lang-zh">深色</span><span class="lang-en">Dark</span>
+        </span>
+        <span class="theme-label-to-light">
+          <span class="lang-zh">浅色</span><span class="lang-en">Light</span>
+        </span>
+      </button>
+    </div>
+  </header>
+
+    <main class="post-page fade-up" id="post-page">
+    <article class="post-article">
+      <p class="post-meta">
+        <a class="post-back" href="../blog.html"><span class="lang-zh">← 博客</span><span class="lang-en">← Blog</span></a>
+        <span class="post-meta-sep" aria-hidden="true">·</span>
+        <time datetime="2026-08-15">2026-08-15</time>
+        <span class="post-meta-sep" aria-hidden="true">·</span>
+        <span class="post-cat"><span class="lang-zh">技术</span><span class="lang-en">Technical</span></span>
+      </p>
+      <h1 class="post-title">
+        <span class="lang-zh">API 优先、GUI 兜底：我搭 Agent 时的集成原则</span>
+        <span class="lang-en">API first, GUI fallback: my integration rule for agents</span>
+      </h1>
+
+      <div class="post-body lang-zh">
+        <p>做投放作战室、评测台和引溯时，我反复遇到同一个分叉：Agent 是去点界面，还是去调接口？默认答案我写死了——<strong>API 优先，GUI 只做兜底</strong>。这条原则看起来土，却决定了后面所有分层能不能站得住。</p>
+        <h2>为什么</h2>
+        <p>GUI 自动化脆：布局一变就碎，难回放，也难进评测。API 有契约、有错误码、能重试，适合作为工具层的稳定面。三个 Demo 共用「场景 Bot + 工具层」时，如果工具层漂在截图点击上，分层就只是故事，评测台也对不齐同一条路径。</p>
+        <p>更现实的一点：广告与文档系统往往已有正式 API。放着不用，却去教 Agent「看屏幕」，是在用高方差手段解决低方差问题。</p>
+        <h2>怎么落地</h2>
+        <p>协调 Bot 只下达意图；场景 Bot 选择工具；工具层先查有没有正式 API / SDK。没有接口、又必须完成的步骤，才允许 GUI 路径，并且把它标成「脆弱依赖」——评测里单独记一笔，提醒自己尽快换掉。权限、配额、审计日志也只挂在 API 路径上，GUI 逃生舱默认不进生产主链路。</p>
+        <h2>我学到什么</h2>
+        <p>「能自动化」不等于「该自动化成主路径」。主路径要可测、可版本化；GUI 是逃生舱，不是高速公路。这一条让我在加新场景时少写很多事后补丁，也让多 Agent 协作有了共同的地面，而不是各自发明一套点击脚本。工具层一旦稳定，作战室换角色、评测台加用例，都不必重写集成。</p>
+
+      </div>
+
+      <div class="post-body lang-en">
+        <p>Building the war room, eval lab, and citation advisor, I kept hitting the same fork: should the agent click a UI or call an API? I hardcoded the default—<strong>API first, GUI only as fallback</strong>. It sounds plain, but it decides whether the layering story can stand.</p>
+        <h2>Why</h2>
+        <p>GUI automation is brittle: layouts break it, replays hurt, and evals get noisy. APIs give contracts, error codes, and retries—a stable tools surface. If three demos share scene bots plus a tools layer, floating that layer on screenshot clicks turns “layering” into fiction and misaligns the eval lab.</p>
+        <p>Practically, ads and document systems already expose real APIs. Ignoring them to teach an agent to “look at the screen” is high-variance work on a low-variance problem.</p>
+        <h2>How I apply it</h2>
+        <p>The coordinator states intent; scene bots pick tools; the tools layer checks for a real API/SDK first. Only when there is no interface and the step is mandatory do I allow a GUI path—and I label it a fragile dependency, scored separately in eval so I remember to replace it. Auth, quotas, and audit logs ride the API path; the GUI hatch stays out of the production mainline by default.</p>
+        <h2>What I learned</h2>
+        <p>“Can automate” is not “should be the main path.” The main path must be testable and versionable; GUI is an escape hatch, not a highway. That rule saves after-the-fact patches when I add scenes, and gives multi-agent collaboration shared ground instead of competing click scripts.</p>
+
+      </div>
+    </article>
+    <footer class="blog-footer">
+      <a href="../blog.html" id="home-footer-link">
+        <span class="lang-zh">返回博客</span><span class="lang-en">Back to blog</span>
+      </a>
+    </footer>
+  </main>
+
+  <script src="../js/particles.min.js"></script>
+  <script>
+    (function () {
+      var root = document.documentElement;
+      var langBtn = document.getElementById('lang-toggle');
+      var themeBtn = document.getElementById('theme-toggle');
+
+      function currentLang() {
+        return root.getAttribute('data-lang') === 'en' ? 'en' : 'zh';
+      }
+
+      function setLang(lang) {
+        root.setAttribute('data-lang', lang);
+        root.setAttribute('lang', lang === 'zh' ? 'zh' : 'en');
+        langBtn.textContent = lang === 'zh' ? 'EN' : '中文';
+        try { localStorage.setItem('lang', lang); } catch (e) {}
+      }
+
+      function isDark() {
+        return root.getAttribute('data-theme') === 'dark';
+      }
+
+      function setTheme(dark) {
+        if (dark) root.setAttribute('data-theme', 'dark');
+        else root.setAttribute('data-theme', 'light');
+        try { localStorage.setItem('theme', dark ? 'dark' : 'light'); } catch (e) {}
+      }
+
+      setLang(currentLang());
+      if (!root.getAttribute('data-theme')) {
+        root.setAttribute('data-theme', 'light');
+      }
+
+      langBtn.addEventListener('click', function () {
+        setLang(currentLang() === 'zh' ? 'en' : 'zh');
+      });
+
+      themeBtn.addEventListener('click', function () {
+        setTheme(!isDark());
+      });
+
+      document.addEventListener('DOMContentLoaded', function () {
+        var page = document.getElementById('post-page');
+        if (page) {
+          requestAnimationFrame(function () {
+            page.classList.add('is-visible');
+          });
+        }
+      });
+
+      function initParticles() {
+        if (typeof particlesJS !== 'function') return;
+        particlesJS('particles-js', {
+          particles: {
+            number: { value: 8, density: { enable: true, value_area: 300 } },
+            color: { value: '#A680A6' },
+            shape: { type: 'triangle' },
+            opacity: {
+              value: 0.8,
+              random: true,
+              anim: { enable: true, speed: 1, opacity_min: 0.1, sync: false }
+            },
+            size: {
+              value: 5,
+              random: true,
+              anim: { enable: true, speed: 4, size_min: 0.3, sync: false }
+            },
+            line_linked: {
+              enable: true,
+              distance: 150,
+              color: '#A680A6',
+              opacity: 0.4,
+              width: 1
+            },
+            move: {
+              enable: true,
+              speed: 1.4,
+              direction: 'none',
+              random: false,
+              straight: false,
+              out_mode: 'bounce',
+              bounce: false
+            }
+          },
+          interactivity: {
+            detect_on: 'canvas',
+            events: {
+              onhover: { enable: true, mode: 'repulse' },
+              onclick: { enable: true, mode: 'push' },
+              resize: true
+            }
+          },
+          retina_detect: true
+        });
+      }
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initParticles);
+      } else {
+        initParticles();
+      }
+    })();
+  </script>
+</body>
+</html>

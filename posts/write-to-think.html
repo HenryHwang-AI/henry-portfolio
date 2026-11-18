@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="zh" data-lang="zh" class="notranslate" translate="no">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="google" content="notranslate">
+  <title>Why write things down: notes and posts as external cache for product thinking — Henry Huang</title>
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem('theme');
+        if (t === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
+        else if (t === 'light') document.documentElement.setAttribute('data-theme', 'light');
+        var lang = localStorage.getItem('lang');
+        if (lang === 'en' || lang === 'zh') {
+          document.documentElement.setAttribute('data-lang', lang);
+          document.documentElement.setAttribute('lang', lang === 'zh' ? 'zh' : 'en');
+        }
+      } catch (e) {}
+    })();
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,300;0,400;0,500;1,400&family=Spectral:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <div id="particles-js" aria-hidden="true"></div>
+
+  <header class="site-nav-wrapper">
+    <a href="../index.html" class="site-name">henry huang</a>
+    <div class="nav-right">
+      <nav class="site-nav" aria-label="Primary">
+        <a href="../index.html"><span class="lang-zh">关于</span><span class="lang-en">About</span></a>
+        <a href="../blog.html" class="active"><span class="lang-zh">博客</span><span class="lang-en">Blog</span></a>
+        <a href="../projects.html"><span class="lang-zh">项目</span><span class="lang-en">Projects</span></a>
+        <a href="../tools.html"><span class="lang-zh">工具</span><span class="lang-en">Tools</span></a>
+        <a href="../notes.html"><span class="lang-zh">笔记</span><span class="lang-en">Notes</span></a>
+      </nav>
+      <div class="social-icons" aria-label="Social">
+        <a href="#" aria-label="X / Twitter" title="X"><i class="fab fa-x-twitter"></i></a>
+        <a href="https://github.com/HenryHwang-AI" aria-label="GitHub" title="GitHub"><i class="fab fa-github"></i></a>
+        <a href="#" aria-label="LinkedIn" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+      </div>
+      <button type="button" class="icon-btn" id="lang-toggle" aria-label="Switch language">EN</button>
+      <button type="button" class="icon-btn" id="theme-toggle" aria-label="Toggle dark mode">
+        <span class="theme-label-to-dark">
+          <span class="lang-zh">深色</span><span class="lang-en">Dark</span>
+        </span>
+        <span class="theme-label-to-light">
+          <span class="lang-zh">浅色</span><span class="lang-en">Light</span>
+        </span>
+      </button>
+    </div>
+  </header>
+
+  <main class="post-page fade-up" id="post-page">
+    <article class="post-article">
+      <p class="post-meta">
+        <a class="post-back" href="../blog.html"><span class="lang-zh">← 博客</span><span class="lang-en">← Blog</span></a>
+        <span class="post-meta-sep" aria-hidden="true">·</span>
+        <time datetime="2026-11-01">2026-11-01</time>
+        <span class="post-meta-sep" aria-hidden="true">·</span>
+        <span class="post-cat"><span class="lang-zh">随笔</span><span class="lang-en">Reflection</span></span>
+      </p>
+      <h1 class="post-title">
+        <span class="lang-zh">为什么要写下来：笔记与博客是产品思维的外置缓存</span>
+        <span class="lang-en">Why write things down: notes and posts as external cache for product thinking</span>
+      </h1>
+
+      <div class="post-body lang-zh">
+        <p>脑子里的产品直觉像未落盘的缓存：当时很亮，隔一周只剩「好像想过」。写下来不是为了看起来勤奋，而是把模糊判断变成可检查的句子——别人能反驳，未来的自己也能改。</p>
+        <h2>和第二大脑、博客怎么接</h2>
+        <p>笔记页对我是低摩擦入口：Inbox 收碎片，链到场景与决策，而不是先建完美库。博客则是「公开过一遍」的压力测试：写评测台时，我不得不说清「好用」到底指完成率、幻觉率还是人工改写成本；写 RAG 时，不得不说清引用挂在哪一层。说不清的地方，往往就是产品还没想透的地方。</p>
+        <h2>写，是为了想清楚</h2>
+        <p>我很少为了更新频率硬写。更常是：Demo 卡在一个选择（要不要 GUI 兜底？评测要不要拆脆弱依赖？），先写一段给自己看。写完要么动手改架构，要么删掉幻想需求。公开博客只是其中一部分；日记式私有笔记同样算——关键是外置，不是表演。</p>
+        <p>站上的「笔记」入口，就是提醒自己：收集 → 链接 → 偶尔写成文。少建库，多写能被下周的自己读懂的话。产品思维需要带宽；纸和文件是便宜的 SRAM。</p>
+              <h2>从碎片到可决策句子</h2>
+        <p>Inbox 里常有「评测要加个维度」这种半句话。若不写完，它会永远停在情绪层。我逼自己补成：维度叫什么、怎么采样、和业务指标如何对齐、会不会奖励刷屏式工具调用。补完往往发现：要么已经有现成字段，要么这个维度根本测不到——于是删需求比加仪表盘更快。</p>
+        <p>博客公开版是精修后的结论；私有笔记保留吵架过程。两者一起，才构成我所谓的外置缓存：热数据在工作集里，冷数据可检索，而不是全堆在脑子的 HBM 幻想里。</p>
+      </div>
+
+      <div class="post-body lang-en">
+        <p>Product intuition in your head is like an unsaved cache: bright in the moment, a week later only “I think I had something.” Writing isn’t performative diligence—it’s turning fuzzy judgment into checkable sentences others can argue with and future-you can edit.</p>
+        <h2>How it ties to notes and the blog</h2>
+        <p>The notes page is a low-friction inbox: capture scraps, link to scenes and decisions, skip the perfect database first. The blog is a public stress test: writing the eval lab forced me to define “usable” as completion, hallucination, or rewrite cost; writing RAG forced me to say where citations attach. Whatever I can’t say clearly is usually where the product isn’t clear yet.</p>
+        <h2>Write to think</h2>
+        <p>I rarely write for cadence. More often a demo stalls on a choice (GUI fallback? score fragile deps separately?), and I draft a paragraph for myself. Afterward I either change the architecture or delete a fantasy requirement. Public posts are only one layer; private journal notes count—the point is externalization, not performance.</p>
+        <p>The site’s Notes entry is a reminder: capture → link → occasionally publish. Fewer databases; more sentences next-week-you can parse. Product thinking needs bandwidth; paper and files are cheap SRAM.</p>
+              <h2>From scraps to decidable sentences</h2>
+        <p>The inbox often holds half-lines like “add an eval dimension.” Left unfinished, they stay emotional. I force a full form: name the dimension, sampling, business alignment, and whether it rewards spammy tool calls. Finishing usually shows we already have the field—or the dimension isn’t measurable—so deleting the ask beats adding a dashboard.</p>
+        <p>Public posts hold the polished conclusion; private notes keep the argument. Together they are the external cache I mean: hot data in the working set, cold data retrievable—not everything imagined into mental HBM.</p>
+      </div>
+    </article>
+    <footer class="blog-footer">
+      <p class="post-inspired" style="margin:0 0 0.75rem;font-size:0.85rem;opacity:0.7;">
+        <span class="lang-zh">选题启发自 nathanchen.me 上的若干主题；正文为本人实践改写。</span>
+        <span class="lang-en">Inspired by themes on nathanchen.me; rewritten from my own practice.</span>
+      </p>
+      <a href="../blog.html" id="home-footer-link">
+        <span class="lang-zh">返回博客</span><span class="lang-en">Back to blog</span>
+      </a>
+    </footer>
+  </main>
+
+  <script src="../js/particles.min.js"></script>
+  <script>
+    (function () {
+      var root = document.documentElement;
+      var langBtn = document.getElementById('lang-toggle');
+      var themeBtn = document.getElementById('theme-toggle');
+
+      function currentLang() {
+        return root.getAttribute('data-lang') === 'en' ? 'en' : 'zh';
+      }
+
+      function setLang(lang) {
+        root.setAttribute('data-lang', lang);
+        root.setAttribute('lang', lang === 'zh' ? 'zh' : 'en');
+        langBtn.textContent = lang === 'zh' ? 'EN' : '中文';
+        try { localStorage.setItem('lang', lang); } catch (e) {}
+      }
+
+      function isDark() {
+        return root.getAttribute('data-theme') === 'dark';
+      }
+
+      function setTheme(dark) {
+        if (dark) root.setAttribute('data-theme', 'dark');
+        else root.setAttribute('data-theme', 'light');
+        try { localStorage.setItem('theme', dark ? 'dark' : 'light'); } catch (e) {}
+      }
+
+      setLang(currentLang());
+      if (!root.getAttribute('data-theme')) {
+        root.setAttribute('data-theme', 'light');
+      }
+
+      langBtn.addEventListener('click', function () {
+        setLang(currentLang() === 'zh' ? 'en' : 'zh');
+      });
+
+      themeBtn.addEventListener('click', function () {
+        setTheme(!isDark());
+      });
+
+      document.addEventListener('DOMContentLoaded', function () {
+        var page = document.getElementById('post-page');
+        if (page) {
+          requestAnimationFrame(function () {
+            page.classList.add('is-visible');
+          });
+        }
+      });
+
+      function initParticles() {
+        if (typeof particlesJS !== 'function') return;
+        particlesJS('particles-js', {
+          particles: {
+            number: { value: 8, density: { enable: true, value_area: 300 } },
+            color: { value: '#A680A6' },
+            shape: { type: 'triangle' },
+            opacity: {
+              value: 0.8,
+              random: true,
+              anim: { enable: true, speed: 1, opacity_min: 0.1, sync: false }
+            },
+            size: {
+              value: 5,
+              random: true,
+              anim: { enable: true, speed: 4, size_min: 0.3, sync: false }
+            },
+            line_linked: {
+              enable: true,
+              distance: 150,
+              color: '#A680A6',
+              opacity: 0.4,
+              width: 1
+            },
+            move: {
+              enable: true,
+              speed: 1.4,
+              direction: 'none',
+              random: false,
+              straight: false,
+              out_mode: 'bounce',
+              bounce: false
+            }
+          },
+          interactivity: {
+            detect_on: 'canvas',
+            events: {
+              onhover: { enable: true, mode: 'repulse' },
+              onclick: { enable: true, mode: 'push' },
+              resize: true
+            }
+          },
+          retina_detect: true
+        });
+      }
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initParticles);
+      } else {
+        initParticles();
+      }
+    })();
+  </script>
+</body>
+</html>

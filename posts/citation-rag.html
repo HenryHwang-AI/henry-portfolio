@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="zh" data-lang="zh" class="notranslate" translate="no">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="google" content="notranslate">
+  <title>Citation RAG: answering is cheap; traceability is the product — Henry Huang</title>
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem('theme');
+        if (t === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
+        else if (t === 'light') document.documentElement.setAttribute('data-theme', 'light');
+        var lang = localStorage.getItem('lang');
+        if (lang === 'en' || lang === 'zh') {
+          document.documentElement.setAttribute('data-lang', lang);
+          document.documentElement.setAttribute('lang', lang === 'zh' ? 'zh' : 'en');
+        }
+      } catch (e) {}
+    })();
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,300;0,400;0,500;1,400&family=Spectral:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <div id="particles-js" aria-hidden="true"></div>
+
+  <header class="site-nav-wrapper">
+    <a href="../index.html" class="site-name">henry huang</a>
+    <div class="nav-right">
+      <nav class="site-nav" aria-label="Primary">
+        <a href="../index.html"><span class="lang-zh">关于</span><span class="lang-en">About</span></a>
+        <a href="../blog.html" class="active"><span class="lang-zh">博客</span><span class="lang-en">Blog</span></a>
+        <a href="../projects.html"><span class="lang-zh">项目</span><span class="lang-en">Projects</span></a>
+        <a href="../tools.html"><span class="lang-zh">工具</span><span class="lang-en">Tools</span></a>
+        <a href="../notes.html"><span class="lang-zh">笔记</span><span class="lang-en">Notes</span></a>
+      </nav>
+      <div class="social-icons" aria-label="Social">
+        <a href="#" aria-label="X / Twitter" title="X"><i class="fab fa-x-twitter"></i></a>
+        <a href="https://github.com/HenryHwang-AI" aria-label="GitHub" title="GitHub"><i class="fab fa-github"></i></a>
+        <a href="#" aria-label="LinkedIn" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+      </div>
+      <button type="button" class="icon-btn" id="lang-toggle" aria-label="Switch language">EN</button>
+      <button type="button" class="icon-btn" id="theme-toggle" aria-label="Toggle dark mode">
+        <span class="theme-label-to-dark">
+          <span class="lang-zh">深色</span><span class="lang-en">Dark</span>
+        </span>
+        <span class="theme-label-to-light">
+          <span class="lang-zh">浅色</span><span class="lang-en">Light</span>
+        </span>
+      </button>
+    </div>
+  </header>
+
+    <main class="post-page fade-up" id="post-page">
+    <article class="post-article">
+      <p class="post-meta">
+        <a class="post-back" href="../blog.html"><span class="lang-zh">← 博客</span><span class="lang-en">← Blog</span></a>
+        <span class="post-meta-sep" aria-hidden="true">·</span>
+        <time datetime="2026-10-12">2026-10-12</time>
+        <span class="post-meta-sep" aria-hidden="true">·</span>
+        <span class="post-cat"><span class="lang-zh">技术</span><span class="lang-en">Technical</span></span>
+      </p>
+      <h1 class="post-title">
+        <span class="lang-zh">带引用的 RAG：为什么「能回答」不够，还要可追溯</span>
+        <span class="lang-en">Citation RAG: answering is cheap; traceability is the product</span>
+      </h1>
+
+      <div class="post-body lang-zh">
+        <p>行业顾问场景里，客户问的不是「聪明不聪明」，而是「这句话能不能回到原文」。我做<a href="https://henryhwang-ai.github.io/citation-rag-advisor/" target="_blank" rel="noopener noreferrer">引溯 · 带引用的行业 RAG 顾问</a>，就是把这句话当成验收标准，而不是页脚装饰。</p>
+        <h2>为什么只「能答」不够</h2>
+        <p>无引用的流畅回答，在品牌、合规、投放策略里几乎不可用：你没法审计，也没法反驳幻觉。对方一旦追问「出处呢」，整场咨询的信任会瞬间塌掉。RAG 如果只停在检索 + 生成，产品形态还是聊天；加上「钉回原文」，它才变成顾问工具。</p>
+        <p>这也是为什么我把项目命名成「引溯」——重点不在检索召回率刷分，而在读者能否顺着引用把结论揪回来。</p>
+        <h2>我怎么做</h2>
+        <p>流水线刻意短：检索候选段落 → 生成时强制带引用标记 → UI 把标记点回出处。宁可少说一句，也不允许无源断言。协调层可以继续追问，但每一轮新结论仍然要挂上来源。工具层同样遵守 API 优先：文档索引与检索服务走稳定接口，而不是靠页面爬虫碰运气。</p>
+        <h2>我学到什么</h2>
+        <p>引用不是后处理贴标签，而是<strong>生成约束</strong>。评测时我看的不是「像不像人话」，而是：点开引用，读者能不能在三十秒内核对。过不了这一关，就不叫引溯。和评测台联动后，无引用输出直接记失败，比事后人工抽查省心得多。行业材料越敏感，这条硬约束越值钱——宁可答得短，也不要答得不可核验。</p>
+        <p class="post-links">Demo：<a href="https://henryhwang-ai.github.io/citation-rag-advisor/" target="_blank" rel="noopener noreferrer">citation-rag-advisor</a> · GitHub：<a href="https://github.com/HenryHwang-AI/citation-rag-advisor" target="_blank" rel="noopener noreferrer">仓库</a></p>
+
+      </div>
+
+      <div class="post-body lang-en">
+        <p>In industry-advisor settings, buyers do not ask “is it clever?”—they ask “can this sentence go back to a source?” <a href="https://henryhwang-ai.github.io/citation-rag-advisor/" target="_blank" rel="noopener noreferrer">Citation RAG Advisor</a> treats that as the acceptance test, not a footer badge.</p>
+        <h2>Why fluent answers fail</h2>
+        <p>Uncited fluency is almost useless for brand, compliance, or media strategy: you cannot audit it, and you cannot challenge a hallucination. One “where is that from?” and trust collapses. Retrieve-then-generate alone is still a chat toy; pinning claims to passages makes it an advisor.</p>
+        <p>That is why the project is named for tracing—not for leaderboard recall. Success is whether a reader can yank the claim back to a passage.</p>
+        <h2>How I ship it</h2>
+        <p>Keep the pipeline short: retrieve passages → force citation markers in generation → UI maps markers back to sources. Prefer saying less over asserting without evidence. Follow-up turns still hang every new claim on a source. The tools layer stays API-first: indexing and retrieval ride stable interfaces, not fragile page scrapes.</p>
+        <h2>What I learned</h2>
+        <p>Citations are a <strong>generation constraint</strong>, not a post-hoc sticker. My eval question is blunt: can a reader verify the claim in thirty seconds after clicking? If not, it is not “citation RAG.” Wired to the eval lab, missing citations fail the case automatically—cheaper than manual spot checks.</p>
+        <p class="post-links">Demo: <a href="https://henryhwang-ai.github.io/citation-rag-advisor/" target="_blank" rel="noopener noreferrer">citation-rag-advisor</a> · GitHub: <a href="https://github.com/HenryHwang-AI/citation-rag-advisor" target="_blank" rel="noopener noreferrer">repo</a></p>
+
+      </div>
+    </article>
+    <footer class="blog-footer">
+      <a href="../blog.html" id="home-footer-link">
+        <span class="lang-zh">返回博客</span><span class="lang-en">Back to blog</span>
+      </a>
+    </footer>
+  </main>
+
+  <script src="../js/particles.min.js"></script>
+  <script>
+    (function () {
+      var root = document.documentElement;
+      var langBtn = document.getElementById('lang-toggle');
+      var themeBtn = document.getElementById('theme-toggle');
+
+      function currentLang() {
+        return root.getAttribute('data-lang') === 'en' ? 'en' : 'zh';
+      }
+
+      function setLang(lang) {
+        root.setAttribute('data-lang', lang);
+        root.setAttribute('lang', lang === 'zh' ? 'zh' : 'en');
+        langBtn.textContent = lang === 'zh' ? 'EN' : '中文';
+        try { localStorage.setItem('lang', lang); } catch (e) {}
+      }
+
+      function isDark() {
+        return root.getAttribute('data-theme') === 'dark';
+      }
+
+      function setTheme(dark) {
+        if (dark) root.setAttribute('data-theme', 'dark');
+        else root.setAttribute('data-theme', 'light');
+        try { localStorage.setItem('theme', dark ? 'dark' : 'light'); } catch (e) {}
+      }
+
+      setLang(currentLang());
+      if (!root.getAttribute('data-theme')) {
+        root.setAttribute('data-theme', 'light');
+      }
+
+      langBtn.addEventListener('click', function () {
+        setLang(currentLang() === 'zh' ? 'en' : 'zh');
+      });
+
+      themeBtn.addEventListener('click', function () {
+        setTheme(!isDark());
+      });
+
+      document.addEventListener('DOMContentLoaded', function () {
+        var page = document.getElementById('post-page');
+        if (page) {
+          requestAnimationFrame(function () {
+            page.classList.add('is-visible');
+          });
+        }
+      });
+
+      function initParticles() {
+        if (typeof particlesJS !== 'function') return;
+        particlesJS('particles-js', {
+          particles: {
+            number: { value: 8, density: { enable: true, value_area: 300 } },
+            color: { value: '#A680A6' },
+            shape: { type: 'triangle' },
+            opacity: {
+              value: 0.8,
+              random: true,
+              anim: { enable: true, speed: 1, opacity_min: 0.1, sync: false }
+            },
+            size: {
+              value: 5,
+              random: true,
+              anim: { enable: true, speed: 4, size_min: 0.3, sync: false }
+            },
+            line_linked: {
+              enable: true,
+              distance: 150,
+              color: '#A680A6',
+              opacity: 0.4,
+              width: 1
+            },
+            move: {
+              enable: true,
+              speed: 1.4,
+              direction: 'none',
+              random: false,
+              straight: false,
+              out_mode: 'bounce',
+              bounce: false
+            }
+          },
+          interactivity: {
+            detect_on: 'canvas',
+            events: {
+              onhover: { enable: true, mode: 'repulse' },
+              onclick: { enable: true, mode: 'push' },
+              resize: true
+            }
+          },
+          retina_detect: true
+        });
+      }
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initParticles);
+      } else {
+        initParticles();
+      }
+    })();
+  </script>
+</body>
+</html>

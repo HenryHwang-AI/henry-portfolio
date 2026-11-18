@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="zh" data-lang="zh" class="notranslate" translate="no">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="google" content="notranslate">
+  <title>镜语 · 广告视觉创意教练 — Henry Huang</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Spectral:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #faf9f7;
+      --ink: #1a1816;
+      --muted: #6b6560;
+      --line: rgba(26,24,22,0.1);
+      --card: #fff;
+      --accent: #8b5e5e;
+      --accent-soft: rgba(139,94,94,0.12);
+      --ok: #3d6b4f;
+      --warn: #9a6b2f;
+      --shadow: 0 18px 50px rgba(26,24,22,0.08);
+      --radius: 16px;
+    }
+    [data-theme="dark"] {
+      --bg: #121110;
+      --ink: #f2eee8;
+      --muted: #a39b93;
+      --line: rgba(242,238,232,0.12);
+      --card: #1c1a18;
+      --accent: #d4a5a5;
+      --accent-soft: rgba(212,165,165,0.14);
+      --ok: #7cbc95;
+      --warn: #e0b06a;
+      --shadow: 0 18px 50px rgba(0,0,0,0.35);
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+    body {
+      font-family: Jost, system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+      line-height: 1.55;
+      min-height: 100vh;
+    }
+    .lang-en { display: none; }
+    [data-lang="en"] .lang-zh { display: none; }
+    [data-lang="en"] .lang-en { display: inline; }
+    [data-lang="en"] p.lang-en,
+    [data-lang="en"] li.lang-en,
+    [data-lang="en"] div.lang-en,
+    [data-lang="en"] label.lang-en { display: block; }
+    [data-lang="zh"] p.lang-en,
+    [data-lang="zh"] li.lang-en,
+    [data-lang="zh"] div.lang-en,
+    [data-lang="zh"] label.lang-en { display: none; }
+    [data-lang="en"] p.lang-zh,
+    [data-lang="en"] li.lang-zh,
+    [data-lang="en"] div.lang-zh,
+    [data-lang="en"] label.lang-zh { display: none; }
+
+    .topbar {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1rem 1.5rem; border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; backdrop-filter: blur(12px);
+      background: color-mix(in srgb, var(--bg) 86%, transparent); z-index: 10;
+    }
+    .brand { display: flex; align-items: baseline; gap: .6rem; text-decoration: none; color: inherit; }
+    .brand-mark {
+      font-family: Spectral, Georgia, serif; font-weight: 600; font-size: 1.15rem; letter-spacing: .02em;
+    }
+    .brand-sub { font-size: .75rem; color: var(--muted); font-weight: 400; }
+    .top-actions { display: flex; gap: .5rem; }
+    .chip-btn {
+      border: 1px solid var(--line); background: transparent; color: var(--ink);
+      border-radius: 999px; padding: .35rem .85rem; font: inherit; font-size: .8rem; cursor: pointer;
+    }
+    .chip-btn:hover { border-color: var(--accent); color: var(--accent); }
+
+    .hero {
+      max-width: 1080px; margin: 0 auto; padding: 3.2rem 1.5rem 1.5rem;
+      display: grid; grid-template-columns: 1.2fr .8fr; gap: 2.5rem; align-items: end;
+    }
+    @media (max-width: 860px) { .hero { grid-template-columns: 1fr; padding-top: 2rem; } }
+    .eyebrow {
+      font-size: .72rem; letter-spacing: .16em; text-transform: uppercase; color: var(--accent); margin: 0 0 .8rem;
+    }
+    h1 {
+      font-family: Spectral, Georgia, serif; font-weight: 500; font-size: clamp(2rem, 4vw, 3.1rem);
+      line-height: 1.15; margin: 0 0 1rem; letter-spacing: -.01em;
+    }
+    .lede { color: var(--muted); font-size: 1.02rem; margin: 0; max-width: 36rem; }
+    .hero-stats {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: .75rem;
+      background: var(--card); border: 1px solid var(--line); border-radius: var(--radius);
+      padding: 1.1rem; box-shadow: var(--shadow);
+    }
+    .stat strong { display: block; font-family: Spectral, serif; font-size: 1.45rem; font-weight: 500; }
+    .stat span { font-size: .72rem; color: var(--muted); }
+
+    .workspace {
+      max-width: 1080px; margin: 0 auto; padding: 1rem 1.5rem 4rem;
+      display: grid; grid-template-columns: .95fr 1.05fr; gap: 1.25rem;
+    }
+    @media (max-width: 860px) { .workspace { grid-template-columns: 1fr; } }
+    .panel {
+      background: var(--card); border: 1px solid var(--line); border-radius: var(--radius);
+      padding: 1.25rem 1.35rem; box-shadow: var(--shadow);
+    }
+    .panel h2 {
+      font-family: Spectral, serif; font-size: 1.25rem; font-weight: 500; margin: 0 0 .35rem;
+    }
+    .panel-note { color: var(--muted); font-size: .85rem; margin: 0 0 1rem; }
+
+    label.field-label { display: block; font-size: .78rem; color: var(--muted); margin: .85rem 0 .35rem; }
+    textarea, select, input[type="text"] {
+      width: 100%; border: 1px solid var(--line); background: var(--bg); color: var(--ink);
+      border-radius: 12px; padding: .75rem .9rem; font: inherit; resize: vertical;
+    }
+    textarea:focus, select:focus, input:focus { outline: 2px solid var(--accent-soft); border-color: var(--accent); }
+    .row2 { display: grid; grid-template-columns: 1fr 1fr; gap: .75rem; }
+    @media (max-width: 560px) { .row2 { grid-template-columns: 1fr; } }
+
+    .preset-row { display: flex; flex-wrap: wrap; gap: .4rem; margin: .6rem 0 0; }
+    .preset {
+      border: 1px solid var(--line); background: transparent; color: var(--muted);
+      border-radius: 999px; padding: .25rem .7rem; font-size: .72rem; cursor: pointer; font: inherit;
+    }
+    .preset:hover, .preset.active { background: var(--accent-soft); color: var(--accent); border-color: transparent; }
+
+    .primary {
+      margin-top: 1.1rem; width: 100%; border: 0; border-radius: 999px; padding: .85rem 1rem;
+      background: var(--ink); color: var(--bg); font: inherit; font-weight: 500; cursor: pointer;
+      letter-spacing: .02em;
+    }
+    .primary:hover { opacity: .9; }
+    .primary:disabled { opacity: .55; cursor: wait; }
+
+    .frame {
+      aspect-ratio: 4/5; border-radius: 14px; border: 1px solid var(--line); overflow: hidden;
+      position: relative; background:
+        linear-gradient(145deg, #d9cfc4 0%, #b7a99a 38%, #8b6f5d 100%);
+      margin-bottom: 1rem;
+    }
+    .frame::before {
+      content: ""; position: absolute; inset: 12% 18% auto; height: 38%;
+      background: radial-gradient(circle at 50% 40%, rgba(255,255,255,.55), transparent 65%);
+      border-radius: 50%;
+    }
+    .frame::after {
+      content: ""; position: absolute; left: 18%; right: 18%; bottom: 16%; height: 28%;
+      background: rgba(26,24,22,.22); border-radius: 40% 40% 18% 18%;
+      backdrop-filter: blur(1px);
+    }
+    .frame-badge {
+      position: absolute; left: .75rem; top: .75rem; z-index: 1;
+      background: rgba(255,255,255,.88); color: #1a1816; font-size: .68rem;
+      padding: .25rem .55rem; border-radius: 999px; letter-spacing: .04em;
+    }
+    [data-theme="dark"] .frame-badge { background: rgba(28,26,24,.88); color: #f2eee8; }
+    .frame.alt {
+      background: linear-gradient(160deg, #c8d2d8 0%, #8a9eab 45%, #4f6674 100%);
+    }
+    .frame-meta {
+      position: absolute; left: .75rem; right: .75rem; bottom: .75rem; z-index: 1;
+      display: flex; justify-content: space-between; gap: .5rem; color: #fff; font-size: .72rem;
+      text-shadow: 0 1px 8px rgba(0,0,0,.35);
+    }
+
+    .score-row { display: flex; gap: .5rem; margin-bottom: 1rem; flex-wrap: wrap; }
+    .score-pill {
+      flex: 1; min-width: 90px; border: 1px solid var(--line); border-radius: 12px; padding: .65rem .75rem;
+      background: var(--bg);
+    }
+    .score-pill em { display: block; font-style: normal; font-size: .68rem; color: var(--muted); }
+    .score-pill strong { font-family: Spectral, serif; font-size: 1.35rem; font-weight: 500; }
+    .score-pill.ok strong { color: var(--ok); }
+    .score-pill.warn strong { color: var(--warn); }
+
+    .critiques { display: grid; gap: .75rem; }
+    .critique {
+      border: 1px solid var(--line); border-radius: 14px; padding: .9rem 1rem; background: var(--bg);
+      opacity: 0; transform: translateY(8px); transition: opacity .4s ease, transform .4s ease;
+    }
+    .critique.show { opacity: 1; transform: none; }
+    .critique header { display: flex; justify-content: space-between; align-items: center; margin-bottom: .35rem; gap: .5rem; }
+    .critique h3 { margin: 0; font-size: .92rem; font-weight: 500; }
+    .tag {
+      font-size: .65rem; letter-spacing: .06em; text-transform: uppercase;
+      padding: .18rem .45rem; border-radius: 999px; background: var(--accent-soft); color: var(--accent);
+    }
+    .critique p { margin: 0; font-size: .88rem; color: var(--muted); }
+    .critique .fix { margin-top: .55rem; font-size: .84rem; color: var(--ink); padding-left: .7rem; border-left: 2px solid var(--accent); }
+
+    .ba {
+      margin-top: 1.1rem; display: grid; grid-template-columns: 1fr 1fr; gap: .75rem;
+    }
+    @media (max-width: 560px) { .ba { grid-template-columns: 1fr; } }
+    .ba-card {
+      border: 1px dashed var(--line); border-radius: 12px; padding: .8rem .9rem; font-size: .84rem;
+    }
+    .ba-card h4 { margin: 0 0 .35rem; font-size: .78rem; color: var(--muted); font-weight: 500; letter-spacing: .04em; text-transform: uppercase; }
+    .ba-card ul { margin: 0; padding-left: 1rem; color: var(--ink); }
+    .ba-card li { margin: .2rem 0; }
+
+    .empty {
+      border: 1px dashed var(--line); border-radius: 14px; padding: 2rem 1rem; text-align: center; color: var(--muted);
+      font-size: .9rem;
+    }
+
+    .foot {
+      max-width: 1080px; margin: 0 auto; padding: 0 1.5rem 3rem; color: var(--muted); font-size: .78rem;
+      display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap;
+    }
+    .foot a { color: inherit; }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="../../projects.html">
+      <span class="brand-mark">镜语 Lens Note</span>
+      <span class="brand-sub"><span class="lang-zh">广告视觉创意教练</span><span class="lang-en">Creative Coach for Ads</span></span>
+    </a>
+    <div class="top-actions">
+      <button type="button" class="chip-btn" id="lang-toggle">EN</button>
+      <button type="button" class="chip-btn" id="theme-toggle"><span class="lang-zh">深色</span><span class="lang-en">Dark</span></button>
+      <a class="chip-btn" href="../../projects.html"><span class="lang-zh">← 项目</span><span class="lang-en">← Projects</span></a>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div>
+      <p class="eyebrow">Interactive demo · local mock</p>
+      <h1>
+        <span class="lang-zh">把 Brief 丢进来，<br>立刻拿到视觉教练的拆解。</span>
+        <span class="lang-en">Drop a campaign brief.<br>Get a visual coach critique.</span>
+      </h1>
+      <p class="lede lang-zh">镜语不是又一个滤镜 App——它针对广告投放图：构图、CTA 可读性、品牌语气。下面是可点的本地 Demo（mock AI）。</p>
+      <p class="lede lang-en">Lens Note is not another filter app — it critiques ad creatives for composition, CTA clarity, and brand tone. Local interactive mock below.</p>
+    </div>
+    <div class="hero-stats" aria-label="sample stats">
+      <div class="stat"><strong>3</strong><span><span class="lang-zh">维度打分</span><span class="lang-en">score axes</span></span></div>
+      <div class="stat"><strong>~4s</strong><span><span class="lang-zh">mock 响应</span><span class="lang-en">mock latency</span></span></div>
+      <div class="stat"><strong>Bilingual</strong><span><span class="lang-zh">中英切换</span><span class="lang-en">ZH / EN UI</span></span></div>
+    </div>
+  </section>
+
+  <section class="workspace">
+    <div class="panel">
+      <h2><span class="lang-zh">投放 Brief</span><span class="lang-en">Campaign brief</span></h2>
+      <p class="panel-note lang-zh">选一个预设，或自己改文案，再点「生成教练意见」。</p>
+      <p class="panel-note lang-en">Pick a preset or edit freely, then run the coach.</p>
+
+      <label class="field-label" for="product"><span class="lang-zh">产品 / 品牌</span><span class="lang-en">Product / brand</span></label>
+      <input id="product" type="text" value="Lumen Skin — 夜间修护精华">
+
+      <div class="row2">
+        <div>
+          <label class="field-label" for="channel"><span class="lang-zh">渠道</span><span class="lang-en">Channel</span></label>
+          <select id="channel">
+            <option value="feed">Feed / 信息流</option>
+            <option value="story">Story / 竖屏</option>
+            <option value="search">Search / 搜索广告</option>
+          </select>
+        </div>
+        <div>
+          <label class="field-label" for="tone"><span class="lang-zh">品牌语气</span><span class="lang-en">Brand tone</span></label>
+          <select id="tone">
+            <option value="calm">Calm clinical</option>
+            <option value="bold">Bold &amp; vivid</option>
+            <option value="warm">Warm lifestyle</option>
+          </select>
+        </div>
+      </div>
+
+      <label class="field-label" for="brief"><span class="lang-zh">Brief 描述</span><span class="lang-en">Brief</span></label>
+      <textarea id="brief" rows="5">目标：25–40 岁女性护肤转化。主视觉：瓶身特写 + 柔光。文案：「一夜修护，天亮更亮」。CTA：立即体验。竞品偏喧闹，我们要克制、可信任。</textarea>
+
+      <div class="preset-row" id="presets">
+        <button type="button" class="preset active" data-preset="skin">护肤精华</button>
+        <button type="button" class="preset" data-preset="saas">ToB SaaS</button>
+        <button type="button" class="preset" data-preset="ev">新能源车</button>
+      </div>
+
+      <button type="button" class="primary" id="run-btn">
+        <span class="lang-zh">生成教练意见</span><span class="lang-en">Run creative coach</span>
+      </button>
+    </div>
+
+    <div class="panel">
+      <h2><span class="lang-zh">教练输出</span><span class="lang-en">Coach output</span></h2>
+      <p class="panel-note lang-zh">构图 · CTA · 品牌语气 — 卡片会按 Brief 动态变化。</p>
+      <p class="panel-note lang-en">Composition · CTA · Brand tone — cards update from your brief.</p>
+
+      <div class="frame" id="frame">
+        <span class="frame-badge">SAMPLE FRAME</span>
+        <div class="frame-meta">
+          <span id="frame-product">Lumen Skin</span>
+          <span id="frame-channel">Feed</span>
+        </div>
+      </div>
+
+      <div class="score-row" id="scores" hidden>
+        <div class="score-pill" id="s-comp"><em><span class="lang-zh">构图</span><span class="lang-en">Composition</span></em><strong>—</strong></div>
+        <div class="score-pill" id="s-cta"><em>CTA</em><strong>—</strong></div>
+        <div class="score-pill" id="s-tone"><em><span class="lang-zh">语气</span><span class="lang-en">Tone</span></em><strong>—</strong></div>
+      </div>
+
+      <div id="output">
+        <div class="empty">
+          <span class="lang-zh">点左侧按钮，生成三维教练卡片与 before / after 建议。</span>
+          <span class="lang-en">Hit the button to generate critique cards and before/after notes.</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="foot">
+    <span><span class="lang-zh">本地 Demo · mock AI · Henry Huang</span><span class="lang-en">Local demo · mock AI · Henry Huang</span></span>
+    <a href="../../projects.html"><span class="lang-zh">返回项目页</span><span class="lang-en">Back to projects</span></a>
+  </footer>
+
+  <script>
+    (function () {
+      var root = document.documentElement;
+      var presets = {
+        skin: {
+          product: 'Lumen Skin — 夜间修护精华',
+          channel: 'feed',
+          tone: 'calm',
+          brief: '目标：25–40 岁女性护肤转化。主视觉：瓶身特写 + 柔光。文案：「一夜修护，天亮更亮」。CTA：立即体验。竞品偏喧闹，我们要克制、可信任。'
+        },
+        saas: {
+          product: 'Northwind Ops — 投放中台',
+          channel: 'search',
+          tone: 'bold',
+          brief: '目标：广告主决策人试用。主视觉：仪表盘截图 + 一条 KPI 弧线。文案：「少开会，多看数」。CTA：预约 Demo。语气要利落，避免堆功能清单。'
+        },
+        ev: {
+          product: 'Aether EV — 城市通勤版',
+          channel: 'story',
+          tone: 'warm',
+          brief: '目标：都市通勤意向。竖屏：车灯扫过雨夜街道，人物背影。文案：「回家的路，安静一点」。CTA：预约试驾。情绪优先于参数罗列。'
+        }
+      };
+
+      function currentLang() { return root.getAttribute('data-lang') === 'en' ? 'en' : 'zh'; }
+      function setLang(lang) {
+        root.setAttribute('data-lang', lang);
+        root.setAttribute('lang', lang === 'zh' ? 'zh' : 'en');
+        document.getElementById('lang-toggle').textContent = lang === 'zh' ? 'EN' : '中文';
+      }
+      function setTheme(dark) {
+        root.setAttribute('data-theme', dark ? 'dark' : 'light');
+        var btn = document.getElementById('theme-toggle');
+        btn.innerHTML = dark
+          ? '<span class="lang-zh">浅色</span><span class="lang-en">Light</span>'
+          : '<span class="lang-zh">深色</span><span class="lang-en">Dark</span>';
+      }
+      setLang(currentLang());
+      if (!root.getAttribute('data-theme')) root.setAttribute('data-theme', 'light');
+
+      document.getElementById('lang-toggle').addEventListener('click', function () {
+        setLang(currentLang() === 'zh' ? 'en' : 'zh');
+      });
+      document.getElementById('theme-toggle').addEventListener('click', function () {
+        setTheme(root.getAttribute('data-theme') !== 'dark');
+      });
+
+      document.querySelectorAll('.preset').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          document.querySelectorAll('.preset').forEach(function (b) { b.classList.remove('active'); });
+          btn.classList.add('active');
+          var p = presets[btn.getAttribute('data-preset')];
+          if (!p) return;
+          document.getElementById('product').value = p.product;
+          document.getElementById('channel').value = p.channel;
+          document.getElementById('tone').value = p.tone;
+          document.getElementById('brief').value = p.brief;
+        });
+      });
+
+      function hashScore(str, base, spread) {
+        var h = 0;
+        for (var i = 0; i < str.length; i++) h = (h * 31 + str.charCodeAt(i)) >>> 0;
+        return base + (h % (spread + 1));
+      }
+
+      function critiqueFor(kind, ctx) {
+        var zh = {
+          composition: {
+            title: '构图',
+            tag: 'Composition',
+            body: '主体落在' + (ctx.channel === 'story' ? '竖屏黄金分割偏上' : '视觉中心偏左') + '，负空间够用，但边缘还有干扰信息。',
+            fix: ctx.channel === 'story'
+              ? '把瓶身 / 产品上移 8%，底部留给 CTA；雨夜光轨可弱化 20% 以免抢戏。'
+              : '裁掉右下角次要图标；主产品与标题形成明确对角线。'
+          },
+          cta: {
+            title: 'CTA 可读性',
+            tag: 'CTA',
+            body: '「' + ctx.ctaGuess + '」对比度尚可，但在信息流缩略图里字号偏小，拇指热区也偏窄。',
+            fix: 'CTA 字号 +2，按钮宽度至少 44% 画幅；文案改成动词开头（体验 / 预约 / 试驾）。'
+          },
+          tone: {
+            title: '品牌语气',
+            tag: 'Brand tone',
+            body: ctx.tone === 'calm'
+              ? '整体克制，符合「可信任」定位；标题略偏促销腔，和柔光画面有一点撕裂。'
+              : ctx.tone === 'bold'
+                ? '节奏够快，但截图信息密度过高，读起来像功能清单而不是主张。'
+                : '情绪到位，人物故事清楚；参数条可以再少一条，别冲淡温度。',
+            fix: ctx.tone === 'calm'
+              ? '标题改陈述而非促销：「修护发生在夜里。」副文案再解释利益点。'
+              : ctx.tone === 'bold'
+                ? '只留一条 KPI 弧线 + 一句主张；其余放到落地页。'
+                : '保留情绪主视觉，参数改成角标而不是正文。'
+          }
+        };
+        var en = {
+          composition: {
+            title: 'Composition',
+            tag: 'Composition',
+            body: 'Subject sits ' + (ctx.channel === 'story' ? 'high on the vertical thirds' : 'slightly left of center') + '. Negative space is fine; edges still carry noise.',
+            fix: ctx.channel === 'story'
+              ? 'Lift the hero 8% and reserve the bottom band for CTA; soften light trails ~20%.'
+              : 'Crop secondary icons at the lower-right; align product and headline on one diagonal.'
+          },
+          cta: {
+            title: 'CTA clarity',
+            tag: 'CTA',
+            body: '"' + ctx.ctaGuess + '" has okay contrast, but type is small at feed thumbnail size and the tap target is narrow.',
+            fix: 'Bump CTA type +2, make the button ≥44% frame width; lead with a verb.'
+          },
+          tone: {
+            title: 'Brand tone',
+            tag: 'Brand tone',
+            body: ctx.tone === 'calm'
+              ? 'Calm fits the trust brief; the headline still sounds promo-y against the soft light.'
+              : ctx.tone === 'bold'
+                ? 'Pace is sharp, but the screenshot is dense — reads like a feature list, not a claim.'
+                : 'Mood is right; one fewer spec line would keep the warmth.',
+            fix: ctx.tone === 'calm'
+              ? 'Make the headline a statement, not a sale: “Repair happens at night.”'
+              : ctx.tone === 'bold'
+                ? 'Keep one KPI arc + one claim; push the rest to the landing page.'
+                : 'Keep the emotional hero; demote specs to corner badges.'
+          }
+        };
+        return (currentLang() === 'en' ? en : zh)[kind];
+      }
+
+      function guessCta(brief) {
+        if (/预约|demo/i.test(brief)) return currentLang() === 'en' ? 'Book a demo' : '预约 Demo';
+        if (/试驾/.test(brief)) return currentLang() === 'en' ? 'Book a test drive' : '预约试驾';
+        if (/体验|cta/i.test(brief)) return currentLang() === 'en' ? 'Try now' : '立即体验';
+        return currentLang() === 'en' ? 'Learn more' : '了解更多';
+      }
+
+      function beforeAfter(ctx) {
+        if (currentLang() === 'en') {
+          return {
+            before: ['Headline competes with product', 'CTA under 40% width', 'Tone drifts from brief'],
+            after: ['One hero + one claim', 'CTA ≥44% width, verb-led', 'Tone locked to ' + ctx.tone]
+          };
+        }
+        return {
+          before: ['标题与产品抢视线', 'CTA 宽度不足 40%', '语气与 Brief 略漂'],
+          after: ['一主视觉 + 一主张', 'CTA ≥44% 宽度、动词开头', '语气锁定为 ' + ctx.tone]
+        };
+      }
+
+      function render(ctx) {
+        var scores = document.getElementById('scores');
+        scores.hidden = false;
+        var c1 = hashScore(ctx.brief + ctx.channel, 72, 18);
+        var c2 = hashScore(ctx.brief + ctx.tone, 68, 22);
+        var c3 = hashScore(ctx.product + ctx.tone, 74, 16);
+        function fill(id, val) {
+          var el = document.getElementById(id);
+          el.querySelector('strong').textContent = val;
+          el.classList.remove('ok', 'warn');
+          el.classList.add(val >= 80 ? 'ok' : 'warn');
+        }
+        fill('s-comp', c1); fill('s-cta', c2); fill('s-tone', c3);
+
+        document.getElementById('frame-product').textContent = ctx.product.split('—')[0].trim().split('-')[0].trim();
+        document.getElementById('frame-channel').textContent = ctx.channel === 'story' ? 'Story' : ctx.channel === 'search' ? 'Search' : 'Feed';
+        document.getElementById('frame').classList.toggle('alt', ctx.channel !== 'feed');
+
+        var kinds = ['composition', 'cta', 'tone'];
+        var html = '<div class="critiques">';
+        kinds.forEach(function (k) {
+          var card = critiqueFor(k, ctx);
+          html += '<article class="critique" data-k="' + k + '"><header><h3>' + card.title + '</h3><span class="tag">' + card.tag + '</span></header>' +
+            '<p>' + card.body + '</p><div class="fix">' + card.fix + '</div></article>';
+        });
+        var ba = beforeAfter(ctx);
+        html += '</div><div class="ba"><div class="ba-card"><h4>Before</h4><ul>' +
+          ba.before.map(function (x) { return '<li>' + x + '</li>'; }).join('') +
+          '</ul></div><div class="ba-card"><h4>After</h4><ul>' +
+          ba.after.map(function (x) { return '<li>' + x + '</li>'; }).join('') +
+          '</ul></div></div>';
+        document.getElementById('output').innerHTML = html;
+        requestAnimationFrame(function () {
+          document.querySelectorAll('.critique').forEach(function (el, i) {
+            setTimeout(function () { el.classList.add('show'); }, 80 + i * 120);
+          });
+        });
+      }
+
+      document.getElementById('run-btn').addEventListener('click', function () {
+        var btn = document.getElementById('run-btn');
+        btn.disabled = true;
+        btn.innerHTML = '<span class="lang-zh">教练阅读 Brief…</span><span class="lang-en">Reading brief…</span>';
+        var ctx = {
+          product: document.getElementById('product').value.trim() || 'Untitled',
+          channel: document.getElementById('channel').value,
+          tone: document.getElementById('tone').value,
+          brief: document.getElementById('brief').value.trim()
+        };
+        ctx.ctaGuess = guessCta(ctx.brief);
+        document.getElementById('output').innerHTML = '<div class="empty"><span class="lang-zh">拆解构图 / CTA / 语气…</span><span class="lang-en">Scoring composition / CTA / tone…</span></div>';
+        setTimeout(function () {
+          render(ctx);
+          btn.disabled = false;
+          btn.innerHTML = '<span class="lang-zh">再次生成</span><span class="lang-en">Run again</span>';
+        }, 900 + Math.floor(Math.random() * 500));
+      });
+    })();
+  </script>
+</body>
+</html>
