@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="zh" data-lang="zh" class="notranslate" translate="no">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="google" content="notranslate">
+  <title>When it fails, I need to know which step — Henry Huang</title>
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem('theme');
+        if (t === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
+        else if (t === 'light') document.documentElement.setAttribute('data-theme', 'light');
+        var lang = localStorage.getItem('lang');
+        if (lang === 'en' || lang === 'zh') {
+          document.documentElement.setAttribute('data-lang', lang);
+          document.documentElement.setAttribute('lang', lang === 'zh' ? 'zh' : 'en');
+        }
+      } catch (e) {}
+    })();
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,300;0,400;0,500;1,400&family=Spectral:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <div id="particles-js" aria-hidden="true"></div>
+
+  <header class="site-nav-wrapper">
+    <a href="../index.html" class="site-name"><svg class="site-mark" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="7.1" fill="none" stroke="currentColor" stroke-width="2.15" stroke-linecap="round" stroke-dasharray="36 9" stroke-dashoffset="8"/></svg><span>Henry Huang</span></a>
+    <button type="button" class="hamburger" aria-label="Menu" aria-expanded="false" onclick="var b=this;b.classList.toggle('active');var open=b.classList.contains('active');b.setAttribute('aria-expanded', open?'true':'false');b.parentElement.classList.toggle('is-open', open);"><span></span><span></span><span></span></button>
+    <nav class="site-nav" aria-label="Primary">
+        <a href="../index.html"><span class="lang-zh">关于</span><span class="lang-en">About</span></a>
+        <a href="../blog.html" class="active"><span class="lang-zh">博客</span><span class="lang-en">Blog</span></a>
+        <a href="../projects.html"><span class="lang-zh">项目</span><span class="lang-en">Projects</span></a>
+        <a href="../tools.html"><span class="lang-zh">工具</span><span class="lang-en">Tools</span></a>
+        <a href="../notes.html"><span class="lang-zh">笔记</span><span class="lang-en">Notes</span></a>
+      </nav>
+    <div class="nav-right">
+      <div class="social-icons" aria-label="Social">
+        <a href="#" aria-label="X / Twitter" title="X"><i class="fab fa-x-twitter"></i></a>
+        <a href="https://github.com/HenryHwang-AI" aria-label="GitHub" title="GitHub"><i class="fab fa-github"></i></a>
+        <a href="#" aria-label="LinkedIn" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+      </div>
+      <button type="button" class="icon-btn" id="lang-toggle" aria-label="Switch language">EN</button>
+      <button type="button" class="icon-btn" id="theme-toggle" aria-label="Toggle dark mode">
+        <span class="theme-label-to-dark">
+          <span class="lang-zh">深色</span><span class="lang-en">Dark</span>
+        </span>
+        <span class="theme-label-to-light">
+          <span class="lang-zh">浅色</span><span class="lang-en">Light</span>
+        </span>
+      </button>
+    </div>
+  </header>
+
+    <main class="post-page fade-up" id="post-page">
+    <article class="post-article">
+      <p class="post-meta">
+        <a class="post-back" href="../blog.html"><span class="lang-zh">← 博客</span><span class="lang-en">← Blog</span></a>
+        <span class="post-meta-sep" aria-hidden="true">·</span>
+        <time datetime="2026-11-18">2026-11-18</time>
+        <span class="post-meta-sep" aria-hidden="true">·</span>
+        <span class="post-cat"><span class="lang-zh">AI 洞察</span><span class="lang-en">AI insight</span></span>
+      </p>
+      <h1 class="post-title">
+        <span class="lang-zh">出错时，我要能定位是哪一步</span>
+        <span class="lang-en">When it fails, I need to know which step</span>
+      </h1>
+      <div class="post-body lang-zh">
+        <p>自动化可以缩短选品和分析的时间。产品仍然要能把错误归到某一步，而不是只看见一个最终失败。归不到步骤，下一次就不知道改 Prompt、改规则、改工具，还是改数据源。</p>
+        <h2>选品报告和 Listing 按层来评</h2>
+        <p>商舟里，我为分析报告和 Listing 做了分层评测。Badcase 归因到四类：Prompt、规则、Tool、数据源，然后回灌，再做回归。结论可以回溯到数据和规则条款，关键结论的数据可追溯率是 99%。选品报告的人工复核通过率 95% 以上。</p>
+        <p>取数按步骤进行。Context 只保留当步的商品和命中的规则，节点之间传递结构化的中间结果。这样做的目标包括降低 Token 成本和延迟，简历没有给出成本或延迟的数字，我也不估算。利润与合规放在链路前部，是为了让后面的生成使用已经核对过的约束。我的角色是 AI 产品负责人，时间从 2026 年 2 月到简历所记的 2026 年 11 月 15 日。见 <a href="../cases/shangzhou.html">商舟</a>。</p>
+        <h2>客服侧，变更之前先全量回归</h2>
+        <p>多语言客服 RAG 上，Prompt 有模板库和版本管理，变更前做全量回归。评测是 6 维人工评测加 800 条离线样本，6 个维度的名称没有单列。回答准确率从 62% 到 89%，口径是人工标注，评测体系到 V4。Top-3 命中率从 68% 到 86%，切片和向量化是与算法一起定的。这是 2024 年 2 月到 12 月、我承接上级立项后担任执行负责人的工作，不是独立立项。见 <a href="../cases/support-rag.html">多语言客服 RAG</a>。</p>
+        <h2>四类归因各管一块</h2>
+        <p>Prompt 管的是分析和生成时的指令：报告怎么写、Listing 怎么组织。规则管的是利润口径、合规要求和随平台政策更新的条款。Tool 管的是 Function Calling 有没有取到该取的数。数据源管的是数和材料本身从哪来。中间结果是结构化的，下一步拿到的是上一步已经定下来的对象，而不是一整段无法拆开的长文本。因此失败可以停在某一类上，再回到该类去改，然后回归。</p>
+        <p>99% 的可追溯率说明关键结论里，绝大多数能回到数据和条款。95% 以上的复核通过率说明报告还要过人。62% 到 89% 说明在人工标注的评测里，回答准确率走到了 V4 的终点，各版没有分开的准确率。这些数字不代替「错误属于哪一类」。分类在产品里：Prompt、规则、Tool、数据源，以及客服侧变更前的全量回归。商舟没有成本或延迟数字，定位能力不靠估一个耗时来证明。</p>
+        <p>我把定位写成上线前的设计，而不是出了问题再补的日志。分层评测先规定报告和 Listing 各自怎么判，归因表再规定失败落到哪一类，结构化中间结果让上一步的输出可以单独查看。客服侧的模板库和版本管理，让一次 Prompt 变更有版本可指，全量回归则在变更生效前跑完 800 条离线样本和 6 维人工评测。两边的共同点是：最终失败可以被拆开。拆开之后才知道下一次改哪里。同等商品规模下，选品从 4 小时到 0.5 小时，说明整段变快了；可追溯率 99% 和复核通过率 95% 以上，说明变快之后仍然能指出结论从哪来、报告有没有过人。速度和定位是两件同时要成立的事。</p>
+      </div>
+      <div class="post-body lang-en">
+        <p>Automation can shorten selection and analysis. The product still has to place an error on a step, rather than showing only a final failure. If it cannot be placed, the next change does not know whether to edit the prompt, the rule, the tool, or the data source.</p>
+        <h2>Selection reports and Listings are evaluated in layers</h2>
+        <p>On Shangzhou I set layered evaluation for analysis reports and Listings. A bad case is attributed to one of four places: prompt, rule, tool, or data source, then fed back, then run through regression again. A conclusion traces to data and to a rule clause. Traceability of key conclusions is 99%. Human review pass rate on selection reports is 95%+.</p>
+        <p>Data is fetched by step. Context keeps only the current product and the rules that hit, and nodes pass structured intermediate results. The aim includes lower token cost and lower latency. The resume gives no cost or latency figure, and I do not estimate one. Profit and compliance sit early in the chain so later generation uses constraints that have already been checked. I was the AI product owner, from February 2026 through the resume date of 15 November 2026. See <a href="../cases/shangzhou.html">Shangzhou</a>.</p>
+        <h2>On support, a full regression runs before the change</h2>
+        <p>On the multilingual support RAG, prompts have a template library and version control, and a full regression runs before a change. Evaluation is a 6-dimension human review plus 800 offline samples. The six dimension names are not listed separately. Answer accuracy went from 62% to 89%, human-labeled, with the evaluation system through V4. Top-3 hit rate went from 68% to 86%. Chunking and embedding were set with the algorithm team. This was February to December 2024. I was the execution owner of a project chartered above me, not the person who opened the charter. See <a href="../cases/support-rag.html">the support RAG</a>.</p>
+        <h2>The four attributions each cover one piece</h2>
+        <p>Prompt covers the instruction for analysis and generation: how a report is written, how a Listing is organized. Rule covers profit definitions, compliance requirements, and clauses that update with platform policy. Tool covers whether function calling fetched what it was supposed to fetch. Data source covers where the numbers and materials themselves come from. Intermediate results are structured, so the next step receives an object the previous step already fixed, rather than one long text that cannot be split. A failure can therefore stop on one class, go back to that class, and then regress.</p>
+        <p>Traceability of 99% says most key conclusions can return to data and to a clause. A review pass rate of 95%+ says the report still passes a person. The move from 62% to 89% says that, on human-labeled evaluation, answer accuracy reached the V4 end point, with no separate accuracy per version. Those numbers do not replace “which class the error belongs to.” The classes are in the product: prompt, rule, tool, data source, and, on the support side, a full regression before a change. Shangzhou has no cost or latency figure. The ability to place an error is not proved by estimating a duration.</p>
+        <p>I write placement as a design made before launch, not as a log added after something breaks. Layered evaluation first states how a report and a Listing are judged. The attribution table then states which class a failure falls into. Structured intermediate results let the previous step’s output be inspected on its own. On the support side, the template library and version control give a prompt change a version to point at, and the full regression runs the 800 offline samples and the 6-dimension human review before the change takes effect. What the two share is that a final failure can be split. Only after it is split is it clear what to change next. At the same product scale, selection from 4 hours to 0.5 hours says the whole pass got faster. Traceability of 99% and a review pass rate of 95%+ say that, after it got faster, a conclusion can still be pointed back to its source and the report still passes a person. Speed and placement are two things that have to hold together.</p>
+      </div>
+    </article>
+    <footer class="blog-footer">
+      <a href="../blog.html" id="home-footer-link">
+        <span class="lang-zh">返回博客</span><span class="lang-en">Back to blog</span>
+      </a>
+    </footer>
+  </main>
+
+  <script src="../js/particles.min.js"></script>
+  <script>
+    (function () {
+      var root = document.documentElement;
+      var langBtn = document.getElementById('lang-toggle');
+      var themeBtn = document.getElementById('theme-toggle');
+
+      function currentLang() {
+        return root.getAttribute('data-lang') === 'en' ? 'en' : 'zh';
+      }
+
+      function setLang(lang) {
+        root.setAttribute('data-lang', lang);
+        root.setAttribute('lang', lang === 'zh' ? 'zh' : 'en');
+        langBtn.textContent = lang === 'zh' ? 'EN' : '中文';
+        try { localStorage.setItem('lang', lang); } catch (e) {}
+      }
+
+      function isDark() {
+        return root.getAttribute('data-theme') === 'dark';
+      }
+
+      function setTheme(dark) {
+        if (dark) root.setAttribute('data-theme', 'dark');
+        else root.setAttribute('data-theme', 'light');
+        try { localStorage.setItem('theme', dark ? 'dark' : 'light'); } catch (e) {}
+      }
+
+      setLang(currentLang());
+      if (!root.getAttribute('data-theme')) {
+        root.setAttribute('data-theme', 'light');
+      }
+
+      langBtn.addEventListener('click', function () {
+        setLang(currentLang() === 'zh' ? 'en' : 'zh');
+      });
+
+      themeBtn.addEventListener('click', function () {
+        setTheme(!isDark());
+      });
+
+      document.addEventListener('DOMContentLoaded', function () {
+        var page = document.getElementById('post-page');
+        if (page) {
+          requestAnimationFrame(function () {
+            page.classList.add('is-visible');
+          });
+        }
+      });
+
+      function initParticles() {
+        if (typeof particlesJS !== 'function') return;
+        particlesJS('particles-js', {
+          particles: {
+            number: { value: 8, density: { enable: true, value_area: 300 } },
+            color: { value: '#A680A6' },
+            shape: { type: 'triangle' },
+            opacity: {
+              value: 0.8,
+              random: true,
+              anim: { enable: true, speed: 1, opacity_min: 0.1, sync: false }
+            },
+            size: {
+              value: 5,
+              random: true,
+              anim: { enable: true, speed: 4, size_min: 0.3, sync: false }
+            },
+            line_linked: {
+              enable: true,
+              distance: 150,
+              color: '#A680A6',
+              opacity: 0.4,
+              width: 1
+            },
+            move: {
+              enable: true,
+              speed: 1.4,
+              direction: 'none',
+              random: false,
+              straight: false,
+              out_mode: 'bounce',
+              bounce: false
+            }
+          },
+          interactivity: {
+            detect_on: 'canvas',
+            events: {
+              onhover: { enable: true, mode: 'repulse' },
+              onclick: { enable: true, mode: 'push' },
+              resize: true
+            }
+          },
+          retina_detect: true
+        });
+      }
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initParticles);
+      } else {
+        initParticles();
+      }
+    })();
+  </script>
+</body>
+</html>

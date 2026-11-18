@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="zh" data-lang="zh" class="notranslate" translate="no">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="google" content="notranslate">
+  <title>Daily use went up because the report got narrower — Henry Huang</title>
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem('theme');
+        if (t === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
+        else if (t === 'light') document.documentElement.setAttribute('data-theme', 'light');
+        var lang = localStorage.getItem('lang');
+        if (lang === 'en' || lang === 'zh') {
+          document.documentElement.setAttribute('data-lang', lang);
+          document.documentElement.setAttribute('lang', lang === 'zh' ? 'zh' : 'en');
+        }
+      } catch (e) {}
+    })();
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,300;0,400;0,500;1,400&family=Spectral:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <div id="particles-js" aria-hidden="true"></div>
+
+  <header class="site-nav-wrapper">
+    <a href="../index.html" class="site-name"><svg class="site-mark" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="7.1" fill="none" stroke="currentColor" stroke-width="2.15" stroke-linecap="round" stroke-dasharray="36 9" stroke-dashoffset="8"/></svg><span>Henry Huang</span></a>
+    <button type="button" class="hamburger" aria-label="Menu" aria-expanded="false" onclick="var b=this;b.classList.toggle('active');var open=b.classList.contains('active');b.setAttribute('aria-expanded', open?'true':'false');b.parentElement.classList.toggle('is-open', open);"><span></span><span></span><span></span></button>
+    <nav class="site-nav" aria-label="Primary">
+        <a href="../index.html"><span class="lang-zh">关于</span><span class="lang-en">About</span></a>
+        <a href="../blog.html" class="active"><span class="lang-zh">博客</span><span class="lang-en">Blog</span></a>
+        <a href="../projects.html"><span class="lang-zh">项目</span><span class="lang-en">Projects</span></a>
+        <a href="../tools.html"><span class="lang-zh">工具</span><span class="lang-en">Tools</span></a>
+        <a href="../notes.html"><span class="lang-zh">笔记</span><span class="lang-en">Notes</span></a>
+      </nav>
+    <div class="nav-right">
+      <div class="social-icons" aria-label="Social">
+        <a href="#" aria-label="X / Twitter" title="X"><i class="fab fa-x-twitter"></i></a>
+        <a href="https://github.com/HenryHwang-AI" aria-label="GitHub" title="GitHub"><i class="fab fa-github"></i></a>
+        <a href="#" aria-label="LinkedIn" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+      </div>
+      <button type="button" class="icon-btn" id="lang-toggle" aria-label="Switch language">EN</button>
+      <button type="button" class="icon-btn" id="theme-toggle" aria-label="Toggle dark mode">
+        <span class="theme-label-to-dark">
+          <span class="lang-zh">深色</span><span class="lang-en">Dark</span>
+        </span>
+        <span class="theme-label-to-light">
+          <span class="lang-zh">浅色</span><span class="lang-en">Light</span>
+        </span>
+      </button>
+    </div>
+  </header>
+
+    <main class="post-page fade-up" id="post-page">
+    <article class="post-article">
+      <p class="post-meta">
+        <a class="post-back" href="../blog.html"><span class="lang-zh">← 博客</span><span class="lang-en">← Blog</span></a>
+        <span class="post-meta-sep" aria-hidden="true">·</span>
+        <time datetime="2026-11-18">2026-11-18</time>
+        <span class="post-meta-sep" aria-hidden="true">·</span>
+        <span class="post-cat"><span class="lang-zh">个人随想</span><span class="lang-en">Essays</span></span>
+      </p>
+      <h1 class="post-title">
+        <span class="lang-zh">日活涨上去，不是因为报表更宽了</span>
+        <span class="lang-en">Daily use went up because the report got narrower</span>
+      </h1>
+      <div class="post-body lang-zh">
+        <p>能生成，和被当成每天要用的工具，是两件事。我看采用，不看功能清单有多长。覆盖了多少场景、省了多少时间、一次能不能直接用，也要分开读。</p>
+        <h2>指标变少以后，日活才成为日常</h2>
+        <p>经营分析 Copilot 没有把 50 多个指标原样搬进产品。健康度只用 8 个核心指标，再加上异常归因和动作建议。运营使用日活从 31% 到 90% 以上，业务流程耗时减少 70%，落地到 1000 多名运营，并成为经营数据分析的核心工具。日活分母没有另行定义，所以 90% 以上是使用口径，不是一份写明对照对象的实验报告。异常归因准确率 95% 以上，没有对照基线。我的角色是 AI 产品经理，执行落地，时间是 2023 年 7 月到 12 月。见 <a href="../cases/ops-copilot.html">Copilot</a>。</p>
+        <h2>覆盖率、耗时、一次采纳率各说各的</h2>
+        <p>AllyNext 上线了 4 类场景：Listing 文案、A+ 视觉、爆款脚本、AI 视频提示词和视频生成。运营场景覆盖 80% 以上，覆盖口径没有再定义。这只说明铺开的面。一次采纳率从 [30–50%] 到 [70–85%]，更接近「生成的东西能不能直接用」。视频制作从约 2 天到 20 分钟，Listing 生成从约 3 小时到 15 分钟，简历把这两则概括为交付时间最高下降 99%。那是对这两则耗时的概括，不是第三项独立实验。配合大规模 A/B，产出素材平均 CTR 为 3%，同比提升 150%。「配合」意味着这不是我单独设计的实验，实验前的 CTR 绝对值也没有给出。项目条目是 AI 产品负责人，工作经历是深度参与，2025 年 3 月到 12 月。见 <a href="../cases/allynext.html">AllyNext</a>。</p>
+        <h2>被收成标准流程，才算选品被用起来</h2>
+        <p>商舟里，「自动筛选 → AI 分析 → 人工确认」被多个运营团队采用，累计 3000 次以上选品任务，沉淀为公司标准选品流程。这是流程被收进日常，不是功能条数。同等规模下单次选品 4 小时到 0.5 小时，量的是耗时；人工操作 100 次以上到 9 次，量的是还要人动手的次数。我是 AI 产品负责人。见 <a href="../cases/shangzhou.html">商舟</a>。</p>
+        <p>更早的 2022 年到 2023 年，我在 Temu 做产品经理助理，协助把核心发品漏斗从 5 步收到 3 步，商家单均上架耗时降低 30%，上线后新活跃商家的功能渗透率 85%。这是协助，是 B 端漏斗上的早期练习。渗透率说明新活跃商家碰到了被改过的功能，不说明后来的 Copilot 或 Agent 因此而成。</p>
+        <h2>清单变长，不会自动变成被使用</h2>
+        <p>覆盖 80% 以上的运营场景，回答的是铺开了哪些生产类型。一次采纳率的区间，回答的是交出来的东西有多少能直接留下。两则耗时回答的是履约。CTR 的 3% 和同比 150% 回答的是配合实验时素材的点击表现，不是运营人员对工具的日活。商舟成为标准流程，回答的是团队是否按这条路径干活，「多个」没有换成具体团队数，3000 次以上保留「以上」。Copilot 的日活回答的是经营分析是否进入日常，分母未单独定义，所以它停在 90% 以上，不写成每一个运营每天都打开。我把这些句子分开读。功能若只是又多一个生成入口，而日活、一次采纳或标准流程没有变化，我不会把它写成交付完成。报表更宽、场景更多，只有在这些采用口径一起动的时候，才被我写成人们真的用起来了。</p>
+      </div>
+      <div class="post-body lang-en">
+        <p>Being able to generate something, and being used as a daily tool, are two different outcomes. I read adoption, not the length of a feature list. How many scenes are covered, how much time is saved, and whether a result can be used on the first pass also have to be read separately.</p>
+        <h2>Daily use became a habit after the metric set got smaller</h2>
+        <p>The operations Copilot did not move 50+ metrics into the product as they were. Health keeps 8 core metrics, plus anomaly attribution and a suggested action. Operations daily active use went from 31% to 90%+. Process time fell 70%. It reached 1,000+ operators and became the core tool for operating analysis. The denominator of daily active use is not separately defined, so 90%+ is a usage figure, not a report that names a control. Anomaly-attribution accuracy is 95%+ with no baseline. I was the AI product manager on execution, July to December 2023. See <a href="../cases/ops-copilot.html">the Copilot</a>.</p>
+        <h2>Coverage, time, and first-pass acceptance each say their own thing</h2>
+        <p>AllyNext shipped 4 scene types: Listing copy, A+ visuals, hit-product scripts, and AI video prompts plus video generation. Operations-scene coverage is 80%+. The coverage definition is not further specified. That only describes how widely it was laid out. First-pass acceptance moved from [30–50%] to [70–85%], which is closer to “can the generated thing be used as-is.” Video production went from about 2 days to 20 minutes, and Listing generation from about 3 hours to 15 minutes. The resume summarizes those two as delivery time down by as much as 99%. That summary covers those two durations. It is not a third, separate measurement. Alongside large-scale A/B tests, average CTR of the produced assets was 3%, up 150% year over year. “Alongside” means I did not independently design that experiment, and the pre-test CTR is not given. The project entry says AI product owner; the work history says deep participation; March to December 2025. See <a href="../cases/allynext.html">AllyNext</a>.</p>
+        <h2>Selection counts as adopted when it becomes the standard flow</h2>
+        <p>On Shangzhou, “automatic filter → AI analysis → human confirmation” was adopted by multiple operations teams, with 3,000+ selection tasks, and settled as the company’s standard selection flow. That is a process taken into daily work, not a count of features. At the same scale, one pass from 4 hours to 0.5 hours measures time. Manual operations from 100+ to 9 measure how often a person still has to act. I was the AI product owner. See <a href="../cases/shangzhou.html">Shangzhou</a>.</p>
+        <p>Earlier, in 2022–2023, I was a product manager assistant at Temu and assisted in cutting the core listing funnel from 5 steps to 3. Average listing time per merchant item fell 30%, and feature penetration among newly active merchants reached 85% after launch. That was assistance, an early exercise on a seller-side funnel. Penetration says newly active merchants met the changed feature. It does not say the later Copilot or the agents followed from it.</p>
+        <h2>A longer list does not become use by itself</h2>
+        <p>Coverage of 80%+ of operations scenes answers which production types were laid out. The first-pass range answers how much of what was handed over can be kept as-is. The two durations answer turnaround. CTR of 3% and a 150% year-over-year rise answer click performance of assets alongside an experiment, not operators’ daily use of the tool. Shangzhou becoming the standard flow answers whether teams work that path. “Multiple” is not replaced with a team count, and 3,000+ keeps the plus. The Copilot’s daily active use answers whether operating analysis entered the day. Its denominator is not separately defined, so it stays at 90%+ and is not rewritten as every operator opening it daily. I read these sentences apart. If a feature is only another generation entry, and daily use, first-pass acceptance, or the standard flow does not move, I do not write the delivery as finished. A wider report, or more scenes, counts for me as real use only when these adoption measures move with it.</p>
+      </div>
+    </article>
+    <footer class="blog-footer">
+      <a href="../blog.html" id="home-footer-link">
+        <span class="lang-zh">返回博客</span><span class="lang-en">Back to blog</span>
+      </a>
+    </footer>
+  </main>
+
+  <script src="../js/particles.min.js"></script>
+  <script>
+    (function () {
+      var root = document.documentElement;
+      var langBtn = document.getElementById('lang-toggle');
+      var themeBtn = document.getElementById('theme-toggle');
+
+      function currentLang() {
+        return root.getAttribute('data-lang') === 'en' ? 'en' : 'zh';
+      }
+
+      function setLang(lang) {
+        root.setAttribute('data-lang', lang);
+        root.setAttribute('lang', lang === 'zh' ? 'zh' : 'en');
+        langBtn.textContent = lang === 'zh' ? 'EN' : '中文';
+        try { localStorage.setItem('lang', lang); } catch (e) {}
+      }
+
+      function isDark() {
+        return root.getAttribute('data-theme') === 'dark';
+      }
+
+      function setTheme(dark) {
+        if (dark) root.setAttribute('data-theme', 'dark');
+        else root.setAttribute('data-theme', 'light');
+        try { localStorage.setItem('theme', dark ? 'dark' : 'light'); } catch (e) {}
+      }
+
+      setLang(currentLang());
+      if (!root.getAttribute('data-theme')) {
+        root.setAttribute('data-theme', 'light');
+      }
+
+      langBtn.addEventListener('click', function () {
+        setLang(currentLang() === 'zh' ? 'en' : 'zh');
+      });
+
+      themeBtn.addEventListener('click', function () {
+        setTheme(!isDark());
+      });
+
+      document.addEventListener('DOMContentLoaded', function () {
+        var page = document.getElementById('post-page');
+        if (page) {
+          requestAnimationFrame(function () {
+            page.classList.add('is-visible');
+          });
+        }
+      });
+
+      function initParticles() {
+        if (typeof particlesJS !== 'function') return;
+        particlesJS('particles-js', {
+          particles: {
+            number: { value: 8, density: { enable: true, value_area: 300 } },
+            color: { value: '#A680A6' },
+            shape: { type: 'triangle' },
+            opacity: {
+              value: 0.8,
+              random: true,
+              anim: { enable: true, speed: 1, opacity_min: 0.1, sync: false }
+            },
+            size: {
+              value: 5,
+              random: true,
+              anim: { enable: true, speed: 4, size_min: 0.3, sync: false }
+            },
+            line_linked: {
+              enable: true,
+              distance: 150,
+              color: '#A680A6',
+              opacity: 0.4,
+              width: 1
+            },
+            move: {
+              enable: true,
+              speed: 1.4,
+              direction: 'none',
+              random: false,
+              straight: false,
+              out_mode: 'bounce',
+              bounce: false
+            }
+          },
+          interactivity: {
+            detect_on: 'canvas',
+            events: {
+              onhover: { enable: true, mode: 'repulse' },
+              onclick: { enable: true, mode: 'push' },
+              resize: true
+            }
+          },
+          retina_detect: true
+        });
+      }
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initParticles);
+      } else {
+        initParticles();
+      }
+    })();
+  </script>
+</body>
+</html>

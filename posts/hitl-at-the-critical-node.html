@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="zh" data-lang="zh" class="notranslate" translate="no">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="google" content="notranslate">
+  <title>Keep people at the critical nodes, not off the whole chain — Henry Huang</title>
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem('theme');
+        if (t === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
+        else if (t === 'light') document.documentElement.setAttribute('data-theme', 'light');
+        var lang = localStorage.getItem('lang');
+        if (lang === 'en' || lang === 'zh') {
+          document.documentElement.setAttribute('data-lang', lang);
+          document.documentElement.setAttribute('lang', lang === 'zh' ? 'zh' : 'en');
+        }
+      } catch (e) {}
+    })();
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,300;0,400;0,500;1,400&family=Spectral:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <div id="particles-js" aria-hidden="true"></div>
+
+  <header class="site-nav-wrapper">
+    <a href="../index.html" class="site-name"><svg class="site-mark" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="7.1" fill="none" stroke="currentColor" stroke-width="2.15" stroke-linecap="round" stroke-dasharray="36 9" stroke-dashoffset="8"/></svg><span>Henry Huang</span></a>
+    <button type="button" class="hamburger" aria-label="Menu" aria-expanded="false" onclick="var b=this;b.classList.toggle('active');var open=b.classList.contains('active');b.setAttribute('aria-expanded', open?'true':'false');b.parentElement.classList.toggle('is-open', open);"><span></span><span></span><span></span></button>
+    <nav class="site-nav" aria-label="Primary">
+        <a href="../index.html"><span class="lang-zh">关于</span><span class="lang-en">About</span></a>
+        <a href="../blog.html" class="active"><span class="lang-zh">博客</span><span class="lang-en">Blog</span></a>
+        <a href="../projects.html"><span class="lang-zh">项目</span><span class="lang-en">Projects</span></a>
+        <a href="../tools.html"><span class="lang-zh">工具</span><span class="lang-en">Tools</span></a>
+        <a href="../notes.html"><span class="lang-zh">笔记</span><span class="lang-en">Notes</span></a>
+      </nav>
+    <div class="nav-right">
+      <div class="social-icons" aria-label="Social">
+        <a href="#" aria-label="X / Twitter" title="X"><i class="fab fa-x-twitter"></i></a>
+        <a href="https://github.com/HenryHwang-AI" aria-label="GitHub" title="GitHub"><i class="fab fa-github"></i></a>
+        <a href="#" aria-label="LinkedIn" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+      </div>
+      <button type="button" class="icon-btn" id="lang-toggle" aria-label="Switch language">EN</button>
+      <button type="button" class="icon-btn" id="theme-toggle" aria-label="Toggle dark mode">
+        <span class="theme-label-to-dark">
+          <span class="lang-zh">深色</span><span class="lang-en">Dark</span>
+        </span>
+        <span class="theme-label-to-light">
+          <span class="lang-zh">浅色</span><span class="lang-en">Light</span>
+        </span>
+      </button>
+    </div>
+  </header>
+
+    <main class="post-page fade-up" id="post-page">
+    <article class="post-article">
+      <p class="post-meta">
+        <a class="post-back" href="../blog.html"><span class="lang-zh">← 博客</span><span class="lang-en">← Blog</span></a>
+        <span class="post-meta-sep" aria-hidden="true">·</span>
+        <time datetime="2026-11-18">2026-11-18</time>
+        <span class="post-meta-sep" aria-hidden="true">·</span>
+        <span class="post-cat"><span class="lang-zh">个人随想</span><span class="lang-en">Essays</span></span>
+      </p>
+      <h1 class="post-title">
+        <span class="lang-zh">关键节点才留人，不是整条链路都交给 Agent</span>
+        <span class="lang-en">Keep people at the critical nodes, not off the whole chain</span>
+      </h1>
+      <div class="post-body lang-zh">
+        <p>自主做到哪一步，是写进节点规则的产品边界。演示里跑通一整条，不等于交付时可以无人点头。我把边界写在流程上，而不是等上线后再靠人盯着补。</p>
+        <h2>主方案停在可确认的那一档</h2>
+        <p>AllyNext 是 2025 年 3 月到 12 月的电商内容生产。项目条目写 AI 产品负责人，工作经历写深度参与全链路。对比过更自主的 Agent 之后，主方案是 Workflow、单 Agent 和技能包。自动执行和人工确认按风险分开，关键决策强制人在回路里。输出是结构化结果，并附上修改理由，方便人看完再决定用不用。</p>
+        <p>同一条产品里，交付被定义成「取回真实结果才算交付」，成品和过程产物分开计。生成出一段文案或一条提示词，还停在过程里；回到可投产的结果，才进入交付。一次采纳率从 [30–50%] 到 [70–85%]，区间保留，说明人仍然在判断这批结果能不能直接用。细节在 <a href="../cases/allynext.html">AllyNext</a>。</p>
+        <h2>选品链路里，人留在关键节点</h2>
+        <p>商舟用 Workflow 编排采集、筛选、利润与合规评估、Listing 生成、刊登。Agent 的循环是自动筛选，Tool Calling 取数，AI 分析，人工确认，Listing 生成，再上架。只在关键节点保留 Human-in-the-loop。利润和合规评估放在前面，是为了让自动执行碰到的是已经收过一遍的风险，而不是把这两项留到最后补救。</p>
+        <p>同等商品规模下，人工操作从 100 次以上降到 9 次，人工投入时长下降 90%。9 次不是 0 次。选品报告的人工复核通过率 95% 以上，关键结论的数据可追溯率 99%。「自动筛选 → AI 分析 → 人工确认」被多个运营团队采用，累计 3000 次以上选品任务，并成为公司标准选品流程。「多个」没有给出团队个数。我的角色是 AI 产品负责人，时间从 2026 年 2 月到简历所记的 2026 年 11 月 15 日。记录在 <a href="../cases/shangzhou.html">商舟</a>。</p>
+        <h2>次数和时长是两本账</h2>
+        <p>商舟的两则人工口径同时成立：操作从 100 次以上到 9 次，投入时长下降 90%。次数说明链路里还排着要人处理的步骤，时长说明那些步骤以外的重复劳动被收掉了。循环把人工确认放在 AI 分析和 Listing 生成之间，上架仍留在循环末尾。自动描述的是筛选、取数和分析可以连着走。刊登这一段仍然经过人。</p>
+        <p>AllyNext 把同一条原则用在内容上。自动执行和人工确认按风险划分，关键决策要人点头。修改理由随着结构化结果一起交出来，人看的是结果和理由。一次采纳率停在区间里：直接可用的比例在上升，仍有一部分要退回。生成完成，和取回真实结果，在这条定义里不是同一刻。成品计入交付，过程产物不计入。</p>
+        <h2>人留在规则里，不留在事后补看</h2>
+        <p>内容生产把人留在关键决策和真实结果的验收上。选品把人留在利润、合规和上架前的确认上。节点上写的是谁来点头。操作次数下降，说明重复动作被收掉；复核通过率和一次采纳率还在，说明交付仍然经过人。两条链路没有写过互相继承，我也不把 9 次操作说成内容生产那条链路的指标。100 次以上保留「以上」，9 次就是 9 次，时长下降 90% 与次数并陈，不收成更整齐的单点。</p>
+      </div>
+      <div class="post-body lang-en">
+        <p>How far autonomy goes is a product boundary written into the node rules. A demo that runs the whole chain does not mean delivery can skip a person’s agreement. I write the boundary into the flow, rather than watching it after launch and patching by eye.</p>
+        <h2>The main design stops where a person can still confirm</h2>
+        <p>AllyNext, from March to December 2025, produced ecommerce content. The project entry says AI product owner; the work history says deep participation across the chain. After comparing more autonomous agents, the main design was a workflow, a single agent, and a skill pack. Automatic steps and human confirmation are split by risk, and critical decisions require a person in the loop. The output is structured and carries a reason for each change, so a person can decide whether to use it.</p>
+        <p>In the same product, delivery means a real result has come back. Finished goods and intermediate artifacts are counted separately. A draft line or a prompt is still in process. A result fit to publish is what counts as delivered. First-pass acceptance moved from [30–50%] to [70–85%]. I keep the ranges. They say a person is still judging whether the batch can be used as-is. The write-up is <a href="../cases/allynext.html">AllyNext</a>.</p>
+        <h2>On selection, people stay at the critical nodes</h2>
+        <p>Shangzhou orchestrates collect, filter, profit and compliance review, Listing generation, and listing. The agent loop is automatic filtering, tool calls for data, AI analysis, human confirmation, Listing generation, then publish. Human-in-the-loop stays only at the critical nodes. Profit and compliance sit early, so automatic steps meet risk that has already been narrowed, rather than leaving those checks as a last patch.</p>
+        <p>At the same product scale, manual operations fell from 100+ to 9, and manual time fell 90%. Nine is not zero. Human review pass rate on selection reports is 95%+, and traceability of key conclusions is 99%. The standard path “automatic filter → AI analysis → human confirmation” was adopted by multiple operations teams, with 3,000+ selection tasks, and became the company’s standard selection flow. “Multiple” does not name a team count. My role was AI product owner, from February 2026 through the resume date of 15 November 2026. The record is <a href="../cases/shangzhou.html">Shangzhou</a>.</p>
+        <h2>Operation count and time saved are two ledgers</h2>
+        <p>Shangzhou’s two manual figures both stand: operations from 100+ to 9, and manual time down 90%. The count says the chain still contains steps a person handles. The time says repeated work outside those steps was removed. The loop places human confirmation between AI analysis and Listing generation, and publish stays at the end of the loop. “Automatic” describes filtering, fetching, and analysis running in sequence. The listing stretch still passes a person.</p>
+        <p>AllyNext uses the same principle on content. Automatic steps and human confirmation are split by risk, and critical decisions need a person’s agreement. The reason for a change ships with the structured result, so the person reads both the result and the reason. First-pass acceptance stays in a range: the share that can be used as-is is rising, and a part still goes back. Generation finishing, and a real result coming back, are not the same moment in this definition. Finished goods count as delivery. Intermediate artifacts do not.</p>
+        <h2>People stay in the rule, not in a later glance</h2>
+        <p>Content production keeps people on critical decisions and on accepting a real result. Selection keeps people on profit, compliance, and confirmation before publish. The node states who agrees. A lower operation count means repeated actions were removed. Review pass rate and first-pass acceptance are still there, so delivery still passes a person. The record does not say the two chains inherited each other, and I do not treat the 9 remaining operations as a metric of the content chain. The “100+” keeps the plus, 9 stays 9, and the 90% drop in time stands beside the count. I do not collapse them into a neater single point.</p>
+      </div>
+    </article>
+    <footer class="blog-footer">
+      <a href="../blog.html" id="home-footer-link">
+        <span class="lang-zh">返回博客</span><span class="lang-en">Back to blog</span>
+      </a>
+    </footer>
+  </main>
+
+  <script src="../js/particles.min.js"></script>
+  <script>
+    (function () {
+      var root = document.documentElement;
+      var langBtn = document.getElementById('lang-toggle');
+      var themeBtn = document.getElementById('theme-toggle');
+
+      function currentLang() {
+        return root.getAttribute('data-lang') === 'en' ? 'en' : 'zh';
+      }
+
+      function setLang(lang) {
+        root.setAttribute('data-lang', lang);
+        root.setAttribute('lang', lang === 'zh' ? 'zh' : 'en');
+        langBtn.textContent = lang === 'zh' ? 'EN' : '中文';
+        try { localStorage.setItem('lang', lang); } catch (e) {}
+      }
+
+      function isDark() {
+        return root.getAttribute('data-theme') === 'dark';
+      }
+
+      function setTheme(dark) {
+        if (dark) root.setAttribute('data-theme', 'dark');
+        else root.setAttribute('data-theme', 'light');
+        try { localStorage.setItem('theme', dark ? 'dark' : 'light'); } catch (e) {}
+      }
+
+      setLang(currentLang());
+      if (!root.getAttribute('data-theme')) {
+        root.setAttribute('data-theme', 'light');
+      }
+
+      langBtn.addEventListener('click', function () {
+        setLang(currentLang() === 'zh' ? 'en' : 'zh');
+      });
+
+      themeBtn.addEventListener('click', function () {
+        setTheme(!isDark());
+      });
+
+      document.addEventListener('DOMContentLoaded', function () {
+        var page = document.getElementById('post-page');
+        if (page) {
+          requestAnimationFrame(function () {
+            page.classList.add('is-visible');
+          });
+        }
+      });
+
+      function initParticles() {
+        if (typeof particlesJS !== 'function') return;
+        particlesJS('particles-js', {
+          particles: {
+            number: { value: 8, density: { enable: true, value_area: 300 } },
+            color: { value: '#A680A6' },
+            shape: { type: 'triangle' },
+            opacity: {
+              value: 0.8,
+              random: true,
+              anim: { enable: true, speed: 1, opacity_min: 0.1, sync: false }
+            },
+            size: {
+              value: 5,
+              random: true,
+              anim: { enable: true, speed: 4, size_min: 0.3, sync: false }
+            },
+            line_linked: {
+              enable: true,
+              distance: 150,
+              color: '#A680A6',
+              opacity: 0.4,
+              width: 1
+            },
+            move: {
+              enable: true,
+              speed: 1.4,
+              direction: 'none',
+              random: false,
+              straight: false,
+              out_mode: 'bounce',
+              bounce: false
+            }
+          },
+          interactivity: {
+            detect_on: 'canvas',
+            events: {
+              onhover: { enable: true, mode: 'repulse' },
+              onclick: { enable: true, mode: 'push' },
+              resize: true
+            }
+          },
+          retina_detect: true
+        });
+      }
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initParticles);
+      } else {
+        initParticles();
+      }
+    })();
+  </script>
+</body>
+</html>
