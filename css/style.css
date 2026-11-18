@@ -1090,6 +1090,48 @@ html[data-theme="dark"] {
   color: var(--blog-text-secondary) !important;
 }
 
+.work-label {
+  font-family: var(--sans-font);
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--blog-text-secondary);
+  margin: 0 0 0.75rem;
+}
+
+.case-kicker {
+  font-family: var(--sans-font);
+  font-size: 0.75rem;
+  color: var(--blog-text-secondary);
+  margin: 0 0 0.35rem;
+}
+
+.case-metric {
+  font-family: var(--serif-font);
+  font-size: 1.2rem;
+  font-weight: 500;
+  line-height: 1.35;
+  margin: 0.2rem 0 0.45rem;
+  color: var(--color);
+}
+
+.metric-note,
+.early-note {
+  font-size: 0.86rem;
+  line-height: 1.55;
+  color: var(--blog-text-secondary);
+}
+
+.early-note {
+  margin: 1.35rem 0 0;
+}
+
+.demo-divider {
+  margin: 2.25rem 0 1.25rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--hr-color);
+}
+
 @media (max-width: 768px) {
   .post-article {
     padding: 1rem 1rem 0;

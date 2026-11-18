@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="zh" data-lang="zh" class="notranslate" translate="no">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="google" content="notranslate">
+  <title>AllyNext｜电商 AIGC Agent — Henry Huang</title>
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem('theme');
+        if (t === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
+        else if (t === 'light') document.documentElement.setAttribute('data-theme', 'light');
+        var lang = localStorage.getItem('lang');
+        if (lang === 'en' || lang === 'zh') {
+          document.documentElement.setAttribute('data-lang', lang);
+          document.documentElement.setAttribute('lang', lang === 'zh' ? 'zh' : 'en');
+        }
+      } catch (e) {}
+    })();
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,300;0,400;0,500;1,400&family=Spectral:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <div id="particles-js" aria-hidden="true"></div>
+  <header class="site-nav-wrapper">
+    <a href="../index.html" class="site-name">henry huang</a>
+    <div class="nav-right">
+      <nav class="site-nav" aria-label="Primary">
+        <a href="../index.html"><span class="lang-zh">关于</span><span class="lang-en">About</span></a>
+        <a href="../blog.html"><span class="lang-zh">博客</span><span class="lang-en">Blog</span></a>
+        <a href="../projects.html" class="active"><span class="lang-zh">项目</span><span class="lang-en">Projects</span></a>
+        <a href="../tools.html"><span class="lang-zh">工具</span><span class="lang-en">Tools</span></a>
+        <a href="../notes.html"><span class="lang-zh">笔记</span><span class="lang-en">Notes</span></a>
+      </nav>
+      <div class="social-icons" aria-label="Social">
+        <a href="#" aria-label="X / Twitter" title="X"><i class="fab fa-x-twitter"></i></a>
+        <a href="https://github.com/HenryHwang-AI" aria-label="GitHub" title="GitHub"><i class="fab fa-github"></i></a>
+        <a href="#" aria-label="LinkedIn" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+      </div>
+      <button type="button" class="icon-btn" id="lang-toggle" aria-label="Switch language">EN</button>
+      <button type="button" class="icon-btn" id="theme-toggle" aria-label="Toggle dark mode">
+        <span class="theme-label-to-dark"><span class="lang-zh">深色</span><span class="lang-en">Dark</span></span>
+        <span class="theme-label-to-light"><span class="lang-zh">浅色</span><span class="lang-en">Light</span></span>
+      </button>
+    </div>
+  </header>
+
+  <main class="post-page fade-up" id="post-page">
+    <article class="post-article">
+      <p class="post-meta">
+        <a class="post-back" href="../projects.html"><span class="lang-zh">项目</span><span class="lang-en">Projects</span></a>
+        <span class="post-meta-sep">·</span>
+        <span>2025.03–2025.12</span>
+        <span class="post-meta-sep">·</span>
+        <span class="lang-zh">AI 产品负责人（项目条目）</span><span class="lang-en">AI product lead (project entry)</span>
+      </p>
+      <h1 class="post-title"><span class="lang-zh">AllyNext｜电商 AIGC Agent</span><span class="lang-en">AllyNext · ecommerce AIGC Agent</span></h1>
+      <p class="metric-note lang-zh">文中数字均来自简历，未经本站独立核验。项目条目写的是 AI 产品负责人并带领团队；工作经历里的对应表述是深度参与 AIGC Agent 全链路。两处都保留，不把后者升成前者。</p>
+      <p class="metric-note lang-en">Figures are resume-reported and are not independently verified here. The project entry says AI product lead, leading the team. The employment entry says deep involvement across the AIGC agent path. Both stay. The weaker line is not upgraded.</p>
+      <p class="case-metric"><span class="lang-zh">约 2 天 → 20 分钟</span><span class="lang-en">~2 days → 20 min</span></p>
+      <p class="metric-note lang-zh">视频制作。Listing 生成是另一则：约 3 小时 → 15 分钟。简历把这两则概括为「交付时间最高 ↓99%」，不是第三次独立测算。</p>
+      <p class="metric-note lang-en">That figure is video production. Listing generation is a separate line: about 3 hours → 15 minutes. The resume summarizes both as “delivery time down by as much as 99%.” It is not a third experiment.</p>
+
+      <div class="post-body lang-zh">
+        <p>Listing、主图、A+ 和视频高度依赖人工协同。履约 TAT 长，工具链是断的。通用模型缺域内知识，也没有按 SOP 编排的能力，交不出稳定、可投产的东西。</p>
+        <h2>选可控、可验收、成本低的路</h2>
+        <p>对比过更自主的 Agent 之后，产品决策是 Workflow + 单 Agent + 技能包。原则是可控、可验收、成本低。运营 SOP 被收成 Skills。取数走 Function Calling / MCP。Memory 保住上下文。闭环是「数据驱动生成 → 结果校验 → 交付」。</p>
+        <p>场景从内容链路里挑高频、高价值的多模态需求：一键成片、爆款复刻、产品图，并排好优先级和成功指标。Prompt 吃进搜索量、竞争度、爆款结构和 COSMO 用户意图。输出是结构化的：Listing 标题和五点、脚本的钩子 / 口播 / 分镜、视频提示词，并附修改理由。按风险划分自动执行和人工确认，关键决策强制人工在环。</p>
+        <h2>三个让内容能投产的决定</h2>
+        <p><strong>主方案不走更自主的 Agent。</strong>这是路线，不是实现细节。</p>
+        <p><strong>取回真实结果才算交付。</strong>成品和过程产物分开。关键决策必须人确认。反馈闭环写成「Badcase → 教训 → 技能 / 记忆更新」。一次采纳率由 [30–50%] 到 [70–85%]。区间保留，不收成一个点。</p>
+        <p><strong>检索和成本都做减法。</strong>平台知识库规模小、结构规整、要精确命中，所以用关键词融合检索加分段读取，暂不上向量库。生成按图像、视频、文本、内容理解分池，再按时长、速度和成本路由，默认低成本档。素材生成成本 ↓60–80%。</p>
+        <h2>结果</h2>
+        <p>上线 4 类场景：Listing 文案、A+ 视觉、爆款脚本、AI 视频提示词 / 视频生成。电商运营场景覆盖 80%+，覆盖口径简历没有再定义。视频约 2 天 → 20 分钟，Listing 约 3 小时 → 15 分钟，交付时间最高 ↓99%。配合大规模 A/B，产出素材平均 CTR 为 3%，同比提升 150%。简历写的是「配合」，没有写独立设计实验，也没有给出实验前的 CTR 绝对值。一次采纳率 [30–50%] → [70–85%]。成本 ↓60–80%。</p>
+        <p>留下的方法是 Skill 与 Agent 的能力矩阵、交付定义、轻量检索的取舍，以及分档路由。简历没有 2025.12 之后的版本，也没有写它和后来选品 Agent 的继承关系。这里不补。</p>
+      </div>
+      <div class="post-body lang-en">
+        <p>Listings, hero images, A+ modules, and video depended on people handing work across tools. Turnaround was long and the toolchain was split. A general model lacked domain knowledge and a way to follow an SOP, so it could not reliably hand back something fit to publish.</p>
+        <h2>Choose the path that is controllable, acceptable, and cheaper</h2>
+        <p>After comparing a more autonomous agent, the decision was a workflow, one agent, and a skill pack. The criteria were control, acceptance, and cost. Operating SOPs became skills. Data came through function calling and MCP. Memory kept context. The loop was generate from data, check the result, then deliver.</p>
+        <p>The scenes were the frequent, high-value multimodal jobs: one-click video, reproducing a winning structure, product images, with priorities and success measures. Prompts took search volume, competition, winning-listing structure, and COSMO user intent. Outputs were structured: listing title and bullets, script hook, spoken line, and shot list, video prompts, plus a reason for each edit. Automatic steps and human confirms were split by risk. Critical decisions required a person.</p>
+        <h2>Three decisions that made the output shippable</h2>
+        <p><strong>The main design is not a more autonomous agent.</strong> That is a product choice, not an implementation detail.</p>
+        <p><strong>Delivery means a real result came back.</strong> Finished goods and intermediate artifacts are different. Critical decisions require a person. The feedback loop is bad case, lesson, then an update to a skill or to memory. First-pass acceptance moved from [30–50%] to [70–85%]. The ranges stay ranges.</p>
+        <p><strong>Retrieval and cost were both reduced on purpose.</strong> The platform knowledge base was small, regular, and needed an exact hit, so retrieval is keyword fusion plus segmented reads. A vector store was explicitly not adopted yet. Generation is pooled by image, video, text, and content understanding, then routed by duration, speed, and cost, defaulting to the cheaper tier. Asset-generation cost fell 60–80%.</p>
+        <h2>Outcomes</h2>
+        <p>Four scenes shipped: listing copy, A+ visuals, winning-structure scripts, and AI video prompts or video generation. Ecommerce operating coverage was 80%+. The resume does not further define that coverage. Video went from about 2 days to 20 minutes. Listing generation went from about 3 hours to 15 minutes. The resume summarizes those as delivery time down by as much as 99%. Alongside large-scale A/B tests, produced assets averaged a 3% CTR, up 150% year over year. The resume says “alongside,” not that this role independently designed the experiment, and it does not give the pre-test CTR. First-pass acceptance [30–50%] → [70–85%]. Cost down 60–80%.</p>
+        <p>What remains as method: the skill and agent matrix, the definition of delivery, the choice of light retrieval, and tiered routing. The resume does not describe versions after December 2025, and it does not say this work became the later selection agent. This page does not add that link.</p>
+      </div>
+      
+    <p class="post-links">
+      <a href="shangzhou.html"><span class="lang-zh">上一篇 · 商舟</span><span class="lang-en">Previous · Shangzhou</span></a> · <a href="support-rag.html"><span class="lang-zh">下一篇 · 客服 RAG</span><span class="lang-en">Next · Support RAG</span></a>
+      <br>
+      <a href="../projects.html"><span class="lang-zh">返回项目列表</span><span class="lang-en">Back to projects</span></a>
+    </p>
+    </article>
+    <footer class="blog-footer"><a href="../projects.html" id="home-footer-link"><span class="lang-zh">返回项目</span><span class="lang-en">Back to projects</span></a></footer>
+  </main>
+
+<script src="../js/particles.min.js"></script>
+  <script>
+    (function () {
+      var root = document.documentElement;
+      var langBtn = document.getElementById('lang-toggle');
+      var themeBtn = document.getElementById('theme-toggle');
+
+      function currentLang() {
+        return root.getAttribute('data-lang') === 'en' ? 'en' : 'zh';
+      }
+
+      function setLang(lang) {
+        root.setAttribute('data-lang', lang);
+        root.setAttribute('lang', lang === 'zh' ? 'zh' : 'en');
+        langBtn.textContent = lang === 'zh' ? 'EN' : '中文';
+        try { localStorage.setItem('lang', lang); } catch (e) {}
+      }
+
+      function isDark() {
+        return root.getAttribute('data-theme') === 'dark';
+      }
+
+      function setTheme(dark) {
+        if (dark) root.setAttribute('data-theme', 'dark');
+        else root.setAttribute('data-theme', 'light');
+        try { localStorage.setItem('theme', dark ? 'dark' : 'light'); } catch (e) {}
+      }
+
+      setLang(currentLang());
+      if (!root.getAttribute('data-theme')) {
+        root.setAttribute('data-theme', 'light');
+      }
+
+      langBtn.addEventListener('click', function () {
+        setLang(currentLang() === 'zh' ? 'en' : 'zh');
+      });
+
+      themeBtn.addEventListener('click', function () {
+        setTheme(!isDark());
+      });
+
+      document.querySelectorAll('.project-card[aria-disabled="true"]').forEach(function (el) {
+        el.addEventListener('click', function (e) {
+          e.preventDefault();
+        });
+      });
+
+      document.addEventListener('DOMContentLoaded', function () {
+        var page = document.getElementById('post-page');
+        if (page) {
+          requestAnimationFrame(function () {
+            page.classList.add('is-visible');
+          });
+        }
+        var items = document.querySelectorAll('.noop');
+        items.forEach(function (item, idx) {
+          item.style.opacity = '0';
+          item.style.transform = 'translateY(10px)';
+          item.style.transition = 'opacity 420ms ease, transform 420ms ease';
+          setTimeout(function () {
+            item.style.opacity = '1';
+            item.style.transform = 'none';
+          }, 80 + idx * 40);
+        });
+      });
+
+      function initParticles() {
+        if (typeof particlesJS !== 'function') return;
+        particlesJS('particles-js', {
+          particles: {
+            number: { value: 8, density: { enable: true, value_area: 300 } },
+            color: { value: '#A680A6' },
+            shape: { type: 'triangle' },
+            opacity: {
+              value: 0.8,
+              random: true,
+              anim: { enable: true, speed: 1, opacity_min: 0.1, sync: false }
+            },
+            size: {
+              value: 5,
+              random: true,
+              anim: { enable: true, speed: 4, size_min: 0.3, sync: false }
+            },
+            line_linked: {
+              enable: true,
+              distance: 150,
+              color: '#A680A6',
+              opacity: 0.4,
+              width: 1
+            },
+            move: {
+              enable: true,
+              speed: 1.4,
+              direction: 'none',
+              random: false,
+              straight: false,
+              out_mode: 'bounce',
+              bounce: false
+            }
+          },
+          interactivity: {
+            detect_on: 'canvas',
+            events: {
+              onhover: { enable: true, mode: 'repulse' },
+              onclick: { enable: true, mode: 'push' },
+              resize: true
+            }
+          },
+          retina_detect: true
+        });
+      }
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initParticles);
+      } else {
+        initParticles();
+      }
+    })();
+  </script>
+</body>
+</html>

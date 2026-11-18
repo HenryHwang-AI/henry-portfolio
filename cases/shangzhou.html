@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="zh" data-lang="zh" class="notranslate" translate="no">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="google" content="notranslate">
+  <title>商舟｜选品测款 Agent — Henry Huang</title>
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem('theme');
+        if (t === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
+        else if (t === 'light') document.documentElement.setAttribute('data-theme', 'light');
+        var lang = localStorage.getItem('lang');
+        if (lang === 'en' || lang === 'zh') {
+          document.documentElement.setAttribute('data-lang', lang);
+          document.documentElement.setAttribute('lang', lang === 'zh' ? 'zh' : 'en');
+        }
+      } catch (e) {}
+    })();
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,300;0,400;0,500;1,400&family=Spectral:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <div id="particles-js" aria-hidden="true"></div>
+  <header class="site-nav-wrapper">
+    <a href="../index.html" class="site-name">henry huang</a>
+    <div class="nav-right">
+      <nav class="site-nav" aria-label="Primary">
+        <a href="../index.html"><span class="lang-zh">关于</span><span class="lang-en">About</span></a>
+        <a href="../blog.html"><span class="lang-zh">博客</span><span class="lang-en">Blog</span></a>
+        <a href="../projects.html" class="active"><span class="lang-zh">项目</span><span class="lang-en">Projects</span></a>
+        <a href="../tools.html"><span class="lang-zh">工具</span><span class="lang-en">Tools</span></a>
+        <a href="../notes.html"><span class="lang-zh">笔记</span><span class="lang-en">Notes</span></a>
+      </nav>
+      <div class="social-icons" aria-label="Social">
+        <a href="#" aria-label="X / Twitter" title="X"><i class="fab fa-x-twitter"></i></a>
+        <a href="https://github.com/HenryHwang-AI" aria-label="GitHub" title="GitHub"><i class="fab fa-github"></i></a>
+        <a href="#" aria-label="LinkedIn" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+      </div>
+      <button type="button" class="icon-btn" id="lang-toggle" aria-label="Switch language">EN</button>
+      <button type="button" class="icon-btn" id="theme-toggle" aria-label="Toggle dark mode">
+        <span class="theme-label-to-dark"><span class="lang-zh">深色</span><span class="lang-en">Dark</span></span>
+        <span class="theme-label-to-light"><span class="lang-zh">浅色</span><span class="lang-en">Light</span></span>
+      </button>
+    </div>
+  </header>
+
+  <main class="post-page fade-up" id="post-page">
+    <article class="post-article">
+      <p class="post-meta">
+        <a class="post-back" href="../projects.html"><span class="lang-zh">项目</span><span class="lang-en">Projects</span></a>
+        <span class="post-meta-sep">·</span>
+        <span>2026.02–<span class="lang-zh">至今</span><span class="lang-en">present</span></span>
+        <span class="post-meta-sep">·</span>
+        <span class="lang-zh">AI 产品负责人</span><span class="lang-en">AI product lead</span>
+      </p>
+      <h1 class="post-title"><span class="lang-zh">商舟｜选品测款 Agent</span><span class="lang-en">Shangzhou · selection and test Agent</span></h1>
+      <p class="metric-note lang-zh">文中数字均来自简历，未经本站独立核验。带「+」「约」或区间的，保持原口径。</p>
+      <p class="metric-note lang-en">Figures below are resume-reported and are not independently verified here. Plus signs, approximations, and ranges stay as written.</p>
+      <p class="case-metric">4h → 0.5h</p>
+      <p class="metric-note lang-zh">同等商品规模下的单次选品耗时，降幅 87.5%。这不是一键刊登：利润、合规和 Listing 等关键节点仍由人确认。简历另记人工操作 100+ 次 → 9 次，并写人工投入时长 ↓90%。两则并陈，计算细节未载。</p>
+      <p class="metric-note lang-en">Time for one selection pass at the same catalog scale, down 87.5%. This is not one-click listing: profit, compliance, and listing still stop for a person. The resume also records manual operations 100+ → 9, and a 90% drop in manual time. Both statements stand; the calculation detail is not given.</p>
+
+      <div class="post-body lang-zh">
+        <p>批量选品的材料是散的，判断靠个人经验，标准也不统一，所以周期长，同一结论很难再跑一遍。缺的不是再多一个分析页，而是一条能执行、又能把结论追回数据和规则的流程。</p>
+        <h2>一条可追溯的链路，而不是把经验交给黑盒</h2>
+        <p>我作为 AI 产品负责人主导这条产品：用 Workflow 把「采集 → 筛选 → 利润与合规评估 → Listing 生成 → 刊登」串起来。Agent 用 Function Calling 取数和分析，多模态模型生成商品图片和视频素材，知识库约束分析和生成。自动执行，结论可追溯，只在关键节点留 Human-in-the-loop。</p>
+        <p>方案和原型按九步选品流程来做。节点按确定性和风险分成三类：Workflow、Agent 决策、人工确认。利润和合规评估放在前面，而不是刊登失败后再补。Agent Loop 写成：自动筛选 → Tool Calling 取数 → AI 分析 → 人工确认 → Listing 生成 → 上架。</p>
+        <h2>三个让流程能被采用、结论能被复核的决定</h2>
+        <p><strong>按风险分权，而不是全流程自动化。</strong>先拆痛点、场景和优先级，再规定哪一步走流程、哪一步交给 Agent、哪一步必须人点头。这是产品边界，不是上线后的补丁。</p>
+        <p><strong>报告和 Listing 分开做分层 Eval。</strong>Badcase 归因到 Prompt、规则、Tool 或数据源，回灌后再回归。简历所载：选品报告人工复核通过率 95%+，关键结论数据可追溯率 99%。</p>
+        <p><strong>按步骤取数，节点之间只传结构化中间结果。</strong>Context 只留当步商品和命中规则，用来压 Token 成本和延迟。简历没有给出成本或延迟数字。知识库沉淀利润口径、合规规则和历史结论，按步骤检索，结论回到数据和规则条款，目标包括降低刊登驳回风险。驳回率的前后数字，简历没有写。</p>
+        <h2>结果</h2>
+        <p>同等商品规模下，单次选品 4 小时 → 0.5 小时（↓87.5%）；人工操作 100+ 次 → 9 次，人工投入时长 ↓90%。复核通过率 95%+，可追溯率 99%。「自动筛选 → AI 分析 → 人工确认」被多个运营团队采用，累计 3000+ 次选品任务，并成为公司标准选品流程。「多个」没有给出团队数。</p>
+        <p>非数字的部分是这条标准流程、分层 Eval 和按步骤回溯的知识库。商业化在简历里是「构建、规划」，没有可写的收入结果。协同研发完成了开发和上线，并按验收和用户反馈迭代。简历没有分版月份，这里不排时间表。</p>
+      </div>
+      <div class="post-body lang-en">
+        <p>Selection material was scattered, judgment sat with individual experience, and the criteria were not shared. Cycles were long, and the same conclusion was hard to run again. The missing piece was not another analysis screen. It was a path that can execute, and that can trace a conclusion back to data and rules.</p>
+        <h2>A traceable path, not a black box for experience</h2>
+        <p>As AI product lead I owned the product definition: a workflow from collect, to filter, to profit and compliance review, to listing generation, to publish. The agent fetches and analyzes through function calling. A multimodal model produces product images and video. A knowledge base constrains both analysis and generation. Execution is automatic, conclusions are traceable, and a person stays only at the critical nodes.</p>
+        <p>The plan and prototype follow a nine-step selection flow. Nodes are split by certainty and risk into workflow steps, agent decisions, and human confirmations. Profit and compliance sit up front, not after a listing is rejected. The loop is: auto-filter, tool calling, AI analysis, human confirm, listing generation, publish.</p>
+        <h2>Three decisions that made the flow adoptable and reviewable</h2>
+        <p><strong>Split authority by risk, instead of automating the whole path.</strong> Name the pain, the scenario, and the priority first. Then decide which step is a workflow, which step an agent may decide, and which step needs a person. That boundary is the product, not a patch after launch.</p>
+        <p><strong>Evaluate the report and the listing in layers.</strong> A bad case is traced to the prompt, the rule, the tool, or the data source, then fed back and regression-tested. Resume-reported: human review pass rate on selection reports 95%+, and traceability of key conclusions 99%.</p>
+        <p><strong>Fetch data per step, and pass only a structured intermediate result.</strong> Context keeps the current item and the rules that hit, to hold down token cost and latency. The resume gives no cost or latency figure. The knowledge base holds profit definitions, compliance rules, and past conclusions, retrieved per step, so a conclusion can return to the data and the clause. One aim is a lower listing-rejection risk. The resume does not give a before-and-after rejection rate.</p>
+        <h2>Outcomes</h2>
+        <p>At the same catalog scale, one selection pass went from 4 hours to 0.5 hours (down 87.5%). Manual operations went from 100+ to 9, with manual time down 90%. Review pass rate 95%+. Traceability 99%. The standard path — auto-filter, AI analysis, human confirm — was adopted by multiple operations teams, completed 3,000+ selection tasks, and became the company’s standard selection process. “Multiple” is not a headcount.</p>
+        <p>What is not a number: that standard process, the layered evaluation, and a knowledge base that can be walked step by step. Commercialization is described as building and planning a path. There is no revenue result to report. Engineering shipped it, and later changes followed acceptance and user feedback. The resume has no version calendar, so this page does not invent one.</p>
+      </div>
+      
+    <p class="post-links">
+      <a href="allynext.html"><span class="lang-zh">下一篇 · AllyNext</span><span class="lang-en">Next · AllyNext</span></a>
+      <br>
+      <a href="../projects.html"><span class="lang-zh">返回项目列表</span><span class="lang-en">Back to projects</span></a>
+    </p>
+    </article>
+    <footer class="blog-footer"><a href="../projects.html" id="home-footer-link"><span class="lang-zh">返回项目</span><span class="lang-en">Back to projects</span></a></footer>
+  </main>
+
+<script src="../js/particles.min.js"></script>
+  <script>
+    (function () {
+      var root = document.documentElement;
+      var langBtn = document.getElementById('lang-toggle');
+      var themeBtn = document.getElementById('theme-toggle');
+
+      function currentLang() {
+        return root.getAttribute('data-lang') === 'en' ? 'en' : 'zh';
+      }
+
+      function setLang(lang) {
+        root.setAttribute('data-lang', lang);
+        root.setAttribute('lang', lang === 'zh' ? 'zh' : 'en');
+        langBtn.textContent = lang === 'zh' ? 'EN' : '中文';
+        try { localStorage.setItem('lang', lang); } catch (e) {}
+      }
+
+      function isDark() {
+        return root.getAttribute('data-theme') === 'dark';
+      }
+
+      function setTheme(dark) {
+        if (dark) root.setAttribute('data-theme', 'dark');
+        else root.setAttribute('data-theme', 'light');
+        try { localStorage.setItem('theme', dark ? 'dark' : 'light'); } catch (e) {}
+      }
+
+      setLang(currentLang());
+      if (!root.getAttribute('data-theme')) {
+        root.setAttribute('data-theme', 'light');
+      }
+
+      langBtn.addEventListener('click', function () {
+        setLang(currentLang() === 'zh' ? 'en' : 'zh');
+      });
+
+      themeBtn.addEventListener('click', function () {
+        setTheme(!isDark());
+      });
+
+      document.querySelectorAll('.project-card[aria-disabled="true"]').forEach(function (el) {
+        el.addEventListener('click', function (e) {
+          e.preventDefault();
+        });
+      });
+
+      document.addEventListener('DOMContentLoaded', function () {
+        var page = document.getElementById('post-page');
+        if (page) {
+          requestAnimationFrame(function () {
+            page.classList.add('is-visible');
+          });
+        }
+        var items = document.querySelectorAll('.noop');
+        items.forEach(function (item, idx) {
+          item.style.opacity = '0';
+          item.style.transform = 'translateY(10px)';
+          item.style.transition = 'opacity 420ms ease, transform 420ms ease';
+          setTimeout(function () {
+            item.style.opacity = '1';
+            item.style.transform = 'none';
+          }, 80 + idx * 40);
+        });
+      });
+
+      function initParticles() {
+        if (typeof particlesJS !== 'function') return;
+        particlesJS('particles-js', {
+          particles: {
+            number: { value: 8, density: { enable: true, value_area: 300 } },
+            color: { value: '#A680A6' },
+            shape: { type: 'triangle' },
+            opacity: {
+              value: 0.8,
+              random: true,
+              anim: { enable: true, speed: 1, opacity_min: 0.1, sync: false }
+            },
+            size: {
+              value: 5,
+              random: true,
+              anim: { enable: true, speed: 4, size_min: 0.3, sync: false }
+            },
+            line_linked: {
+              enable: true,
+              distance: 150,
+              color: '#A680A6',
+              opacity: 0.4,
+              width: 1
+            },
+            move: {
+              enable: true,
+              speed: 1.4,
+              direction: 'none',
+              random: false,
+              straight: false,
+              out_mode: 'bounce',
+              bounce: false
+            }
+          },
+          interactivity: {
+            detect_on: 'canvas',
+            events: {
+              onhover: { enable: true, mode: 'repulse' },
+              onclick: { enable: true, mode: 'push' },
+              resize: true
+            }
+          },
+          retina_detect: true
+        });
+      }
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initParticles);
+      } else {
+        initParticles();
+      }
+    })();
+  </script>
+</body>
+</html>
