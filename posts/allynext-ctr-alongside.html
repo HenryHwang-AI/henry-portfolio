@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="zh" data-lang="zh" class="notranslate" translate="no">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="google" content="notranslate">
+  <title>The click rate is marked as work alongside an experiment — Henry Huang</title>
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem('theme');
+        if (t === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
+        else if (t === 'light') document.documentElement.setAttribute('data-theme', 'light');
+        var lang = localStorage.getItem('lang');
+        if (lang === 'en' || lang === 'zh') {
+          document.documentElement.setAttribute('data-lang', lang);
+          document.documentElement.setAttribute('lang', lang === 'zh' ? 'zh' : 'en');
+        }
+      } catch (e) {}
+    })();
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,300;0,400;0,500;1,400&family=Spectral:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <div id="particles-js" aria-hidden="true"></div>
+
+  <header class="site-nav-wrapper">
+    <a href="../index.html" class="site-name"><svg class="site-mark" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="7.1" fill="none" stroke="currentColor" stroke-width="2.15" stroke-linecap="round" stroke-dasharray="36 9" stroke-dashoffset="8"/></svg><span>Henry Huang</span></a>
+    <button type="button" class="hamburger" aria-label="Menu" aria-expanded="false" onclick="var b=this;b.classList.toggle('active');var open=b.classList.contains('active');b.setAttribute('aria-expanded', open?'true':'false');b.parentElement.classList.toggle('is-open', open);"><span></span><span></span><span></span></button>
+    <nav class="site-nav" aria-label="Primary">
+        <a href="../index.html"><span class="lang-zh">关于</span><span class="lang-en">About</span></a>
+        <a href="../blog.html" class="active"><span class="lang-zh">博客</span><span class="lang-en">Blog</span></a>
+        <a href="../projects.html"><span class="lang-zh">项目</span><span class="lang-en">Projects</span></a>
+        <a href="../tools.html"><span class="lang-zh">工具</span><span class="lang-en">Tools</span></a>
+        <a href="../notes.html"><span class="lang-zh">笔记</span><span class="lang-en">Notes</span></a>
+      </nav>
+    <div class="nav-right">
+      <div class="social-icons" aria-label="Social">
+        <a href="#" aria-label="X / Twitter" title="X"><i class="fab fa-x-twitter"></i></a>
+        <a href="https://github.com/HenryHwang-AI" aria-label="GitHub" title="GitHub"><i class="fab fa-github"></i></a>
+        <a href="#" aria-label="LinkedIn" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+      </div>
+      <button type="button" class="icon-btn" id="lang-toggle" aria-label="Switch language">EN</button>
+      <button type="button" class="icon-btn" id="theme-toggle" aria-label="Toggle dark mode">
+        <span class="theme-label-to-dark">
+          <span class="lang-zh">深色</span><span class="lang-en">Dark</span>
+        </span>
+        <span class="theme-label-to-light">
+          <span class="lang-zh">浅色</span><span class="lang-en">Light</span>
+        </span>
+      </button>
+    </div>
+  </header>
+
+    <main class="post-page fade-up" id="post-page">
+    <article class="post-article">
+      <p class="post-meta">
+        <a class="post-back" href="../blog.html"><span class="lang-zh">← 博客</span><span class="lang-en">← Blog</span></a>
+        <span class="post-meta-sep" aria-hidden="true">·</span>
+        <span class="post-retro"><span class="lang-zh">2025 项目回顾</span><span class="lang-en">2025 retrospective</span></span>
+        <span class="post-meta-sep" aria-hidden="true">·</span>
+        <time datetime="2026-11-19"><span class="lang-zh">发表于 2026-11-19（北京时间）</span><span class="lang-en">Published 2026-11-19 (Asia/Shanghai)</span></time>
+        <span class="post-meta-sep" aria-hidden="true">·</span>
+        <span class="post-cat"><span class="lang-zh">AI 洞察</span><span class="lang-en">AI insight</span></span>
+      </p>
+      <h1 class="post-title">
+        <span class="lang-zh">点击率旁边写着「配合」</span>
+        <span class="lang-en">The click rate is marked as work alongside an experiment</span>
+      </h1>
+      <div class="post-body lang-zh">
+<p>AllyNext 在 2025 年 3 月到 12 月有一条点击率记录：配合大规模 A/B，产出素材的平均 CTR 是 3%，同比提升 150%。实验前的 CTR 绝对值没有给出。回看时，我先读「配合」这两个字。</p>
+        <h2>配合限定了实验是谁的</h2>
+        <p>配合，说的是测试不是我单独设计的。3% 是那场实验里产出素材的平均点击率。150% 是同比，不是相对一个写出来的实验前基数。两句不能收成「我设计了一场把点击率做到 3% 的实验」。没有实验前的绝对值，同比就停在同比。</p>
+        <p>同一年里还有别的数字，它们不是这一次点击率。视频制作约 2 天到 20 分钟，Listing 生成约 3 小时到 15 分钟，量的是履约耗时。简历把这两则概括为交付时间最高下降 99%，那是概括，不是第三次点击实验。一次采纳率是另一个区间。成本下降是另一口径。点击率只说明配合实验时素材的点击表现。</p>
+        <h2>整段结束之后才写</h2>
+        <p>这篇发表于 2026 年 11 月 19 日，看的是 3 月到 12 月已经结束的项目。我不把 3% 和 150% 写成年中某一月已经落定的结果，因为材料没有分月。项目条目是 AI 产品负责人，工作经历是深度参与，两行都留着。案例在 <a href="../cases/allynext.html">AllyNext</a>。</p>
+        <h2>150% 换不成一个起点</h2>
+        <p>同比 150% 要有上年的基数，才能换成绝对变化。基数没写，150% 就不能说成「从百分之几到 3%」。3% 本身是平均 CTR，不是峰值。配合大规模实验，说明这些素材来自那次测试的产出，不是全站所有素材的自然点击。3% 的范围因此是实验中的产出素材。把范围说大，就超出材料。</p>
+        <p>履约耗时和采纳率留在各自的句子里，只为标明它们不是点击率的分母，也不是实验前的 CTR。12 月才结束的项目没有月度点击序列。回顾就停在整段的这一行，不挑一个年中的月份把 3% 安上去。</p>
+        <p>读这条记录的顺序也固定。先看动词是不是配合，再看 3% 是平均还是峰值，然后看 150% 有没有实验前的绝对值。三步都成立，才能说这是我单独设计、并把点击率从某个数做到 3% 的实验。现在第一步就不成立，后面又缺少峰值和基数。所以 2025 年的这一行，停在配合、平均 3%、同比 150%、实验前绝对值未写。年中任何一个月都没有单独的点击率可填。三个词必须同时在场：拿掉配合，3% 会被读成我自己的实验；拿掉同比，150% 会被读成相对实验前基数。平均 CTR 的主语是实验产出的素材，同比的主语是上一年，配合的主语是我和那场测试的关系。三个主语都留着，不并成一句。不把 3% 写成峰值，也不把 150% 写成实验前到实验后的差值。材料里没有那种差值，所以不写。发表日是 2026 年 11 月 19 日，晚于 12 月，整段可以一起看，仍然不是年中快照。</p>
+      </div>
+      <div class="post-body lang-en">
+<p>AllyNext, from March to December 2025, has one click-rate line: alongside large-scale A/B tests, average CTR of the produced assets was 3%, up 150% year over year. The pre-test CTR is not given. Looking back, I read the word “alongside” first.</p>
+        <h2>Alongside limits whose experiment it was</h2>
+        <p>Alongside means I did not design the test alone. 3% is the average click rate of assets in that experiment. 150% is year over year, not a change against a written pre-test base. The two sentences do not become “I designed an experiment that took click rate to 3%.” Without a pre-test absolute, the year-over-year figure stays year over year.</p>
+        <p>The same year has other numbers, and they are not this click rate. Video production from about 2 days to 20 minutes, and Listing generation from about 3 hours to 15 minutes, measure turnaround. The resume summarizes those two as delivery time down by as much as 99%. That is a summary, not a third click experiment. First-pass acceptance is another range. The cost drop is another measure. Click rate only describes how assets performed alongside the experiment.</p>
+        <h2>Written after the stretch had ended</h2>
+        <p>This piece is published on 19 November 2026 and looks at a project that had already run from March through December. I do not write 3% and 150% as results already fixed in some month mid-year, because the record has no monthly split. The project entry says AI product owner, the work history says deep participation, and both lines stay. The case is <a href="../cases/allynext.html">AllyNext</a>.</p>
+        <h2>150% does not become a starting point</h2>
+        <p>A 150% year-over-year rise needs last year’s base before it becomes an absolute change. The base is unwritten, so 150% cannot be said as “from some percent to 3%.” 3% itself is an average CTR, not a peak. Alongside a large experiment means these assets are the experiment’s output, not the natural clicks of every asset on the site. The scope of 3% is therefore assets produced in the experiment. Widening that scope goes past the record.</p>
+        <p>Turnaround and acceptance stay in their own sentences only to mark that they are not the denominator of click rate and not the pre-test CTR. A project that ended in December has no monthly click series. The retrospective stops on that one line for the whole stretch. It does not pick a mid-year month and place 3% there.</p>
+        <p>The reading order is fixed. First whether the verb is “alongside,” then whether 3% is an average or a peak, then whether 150% has a pre-test absolute. Only if all three hold can the line become an experiment I designed alone that took click rate from a known number to 3%. The first step already fails, and the later steps lack a peak and a base. So the 2025 line stops at alongside, average 3%, 150% year over year, and no pre-test absolute. No month in the middle of the year has a separate click rate to fill in. Three words have to stay together. Remove “alongside,” and 3% gets read as my own experiment. Remove the year-over-year identity, and 150% gets read against a pre-test base. The publication date is 19 November 2026, after December, so the whole stretch can be read together. It is still not a mid-year snapshot.</p>
+      </div>
+    </article>
+    <footer class="blog-footer">
+      <a href="../blog.html" id="home-footer-link">
+        <span class="lang-zh">返回博客</span><span class="lang-en">Back to blog</span>
+      </a>
+    </footer>
+  </main>
+
+  <script src="../js/particles.min.js"></script>
+  <script>
+    (function () {
+      var root = document.documentElement;
+      var langBtn = document.getElementById('lang-toggle');
+      var themeBtn = document.getElementById('theme-toggle');
+
+      function currentLang() {
+        return root.getAttribute('data-lang') === 'en' ? 'en' : 'zh';
+      }
+
+      function setLang(lang) {
+        root.setAttribute('data-lang', lang);
+        root.setAttribute('lang', lang === 'zh' ? 'zh' : 'en');
+        langBtn.textContent = lang === 'zh' ? 'EN' : '中文';
+        try { localStorage.setItem('lang', lang); } catch (e) {}
+      }
+
+      function isDark() {
+        return root.getAttribute('data-theme') === 'dark';
+      }
+
+      function setTheme(dark) {
+        if (dark) root.setAttribute('data-theme', 'dark');
+        else root.setAttribute('data-theme', 'light');
+        try { localStorage.setItem('theme', dark ? 'dark' : 'light'); } catch (e) {}
+      }
+
+      setLang(currentLang());
+      if (!root.getAttribute('data-theme')) {
+        root.setAttribute('data-theme', 'light');
+      }
+
+      langBtn.addEventListener('click', function () {
+        setLang(currentLang() === 'zh' ? 'en' : 'zh');
+      });
+
+      themeBtn.addEventListener('click', function () {
+        setTheme(!isDark());
+      });
+
+      document.addEventListener('DOMContentLoaded', function () {
+        var page = document.getElementById('post-page');
+        if (page) {
+          requestAnimationFrame(function () {
+            page.classList.add('is-visible');
+          });
+        }
+      });
+
+      function initParticles() {
+        if (typeof particlesJS !== 'function') return;
+        particlesJS('particles-js', {
+          particles: {
+            number: { value: 8, density: { enable: true, value_area: 300 } },
+            color: { value: '#A680A6' },
+            shape: { type: 'triangle' },
+            opacity: {
+              value: 0.8,
+              random: true,
+              anim: { enable: true, speed: 1, opacity_min: 0.1, sync: false }
+            },
+            size: {
+              value: 5,
+              random: true,
+              anim: { enable: true, speed: 4, size_min: 0.3, sync: false }
+            },
+            line_linked: {
+              enable: true,
+              distance: 150,
+              color: '#A680A6',
+              opacity: 0.4,
+              width: 1
+            },
+            move: {
+              enable: true,
+              speed: 1.4,
+              direction: 'none',
+              random: false,
+              straight: false,
+              out_mode: 'bounce',
+              bounce: false
+            }
+          },
+          interactivity: {
+            detect_on: 'canvas',
+            events: {
+              onhover: { enable: true, mode: 'repulse' },
+              onclick: { enable: true, mode: 'push' },
+              resize: true
+            }
+          },
+          retina_detect: true
+        });
+      }
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initParticles);
+      } else {
+        initParticles();
+      }
+    })();
+  </script>
+</body>
+</html>

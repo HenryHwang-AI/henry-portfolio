@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="zh" data-lang="zh" class="notranslate" translate="no">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="google" content="notranslate">
+  <title>In the assistant year, what I can check is the funnel steps — Henry Huang</title>
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem('theme');
+        if (t === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
+        else if (t === 'light') document.documentElement.setAttribute('data-theme', 'light');
+        var lang = localStorage.getItem('lang');
+        if (lang === 'en' || lang === 'zh') {
+          document.documentElement.setAttribute('data-lang', lang);
+          document.documentElement.setAttribute('lang', lang === 'zh' ? 'zh' : 'en');
+        }
+      } catch (e) {}
+    })();
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,300;0,400;0,500;1,400&family=Spectral:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <div id="particles-js" aria-hidden="true"></div>
+
+  <header class="site-nav-wrapper">
+    <a href="../index.html" class="site-name"><svg class="site-mark" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="7.1" fill="none" stroke="currentColor" stroke-width="2.15" stroke-linecap="round" stroke-dasharray="36 9" stroke-dashoffset="8"/></svg><span>Henry Huang</span></a>
+    <button type="button" class="hamburger" aria-label="Menu" aria-expanded="false" onclick="var b=this;b.classList.toggle('active');var open=b.classList.contains('active');b.setAttribute('aria-expanded', open?'true':'false');b.parentElement.classList.toggle('is-open', open);"><span></span><span></span><span></span></button>
+    <nav class="site-nav" aria-label="Primary">
+        <a href="../index.html"><span class="lang-zh">关于</span><span class="lang-en">About</span></a>
+        <a href="../blog.html" class="active"><span class="lang-zh">博客</span><span class="lang-en">Blog</span></a>
+        <a href="../projects.html"><span class="lang-zh">项目</span><span class="lang-en">Projects</span></a>
+        <a href="../tools.html"><span class="lang-zh">工具</span><span class="lang-en">Tools</span></a>
+        <a href="../notes.html"><span class="lang-zh">笔记</span><span class="lang-en">Notes</span></a>
+      </nav>
+    <div class="nav-right">
+      <div class="social-icons" aria-label="Social">
+        <a href="#" aria-label="X / Twitter" title="X"><i class="fab fa-x-twitter"></i></a>
+        <a href="https://github.com/HenryHwang-AI" aria-label="GitHub" title="GitHub"><i class="fab fa-github"></i></a>
+        <a href="#" aria-label="LinkedIn" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+      </div>
+      <button type="button" class="icon-btn" id="lang-toggle" aria-label="Switch language">EN</button>
+      <button type="button" class="icon-btn" id="theme-toggle" aria-label="Toggle dark mode">
+        <span class="theme-label-to-dark">
+          <span class="lang-zh">深色</span><span class="lang-en">Dark</span>
+        </span>
+        <span class="theme-label-to-light">
+          <span class="lang-zh">浅色</span><span class="lang-en">Light</span>
+        </span>
+      </button>
+    </div>
+  </header>
+
+    <main class="post-page fade-up" id="post-page">
+    <article class="post-article">
+      <p class="post-meta">
+        <a class="post-back" href="../blog.html"><span class="lang-zh">← 博客</span><span class="lang-en">← Blog</span></a>
+        <span class="post-meta-sep" aria-hidden="true">·</span>
+        <span class="post-retro"><span class="lang-zh">2023 项目回顾</span><span class="lang-en">2023 retrospective</span></span>
+        <span class="post-meta-sep" aria-hidden="true">·</span>
+        <time datetime="2026-11-19"><span class="lang-zh">发表于 2026-11-19（北京时间）</span><span class="lang-en">Published 2026-11-19 (Asia/Shanghai)</span></time>
+        <span class="post-meta-sep" aria-hidden="true">·</span>
+        <span class="post-cat"><span class="lang-zh">随笔</span><span class="lang-en">Reflection</span></span>
+      </p>
+      <h1 class="post-title">
+        <span class="lang-zh">助理那年，我能核对的是漏斗步数</span>
+        <span class="lang-en">In the assistant year, what I can check is the funnel steps</span>
+      </h1>
+      <div class="post-body lang-zh">
+<p>2022 年到 2023 年，我在 Temu 跨境电商部做产品经理助理。回看这一年，句子里的动词是协助。协助商家全生命周期和核心漏斗，协助 Seller Center 在全托管赛道的商品上架、库存管理和财务对账，协助重新设计「SKU 智能映射」。映射那一项，材料里写的是减少初次发品因校验报错而流失，没有给出数字。有数字的是发品漏斗。</p>
+        <h2>三组数字各管一件事</h2>
+        <p>核心发品漏斗由 5 步收到 3 步。这量的是路径变短。商家单均商品上架耗时降低 30%。这量的是同一件商品从进入到上架所花的时间。上线后，新活跃商家的功能渗透率 85%。这量的是新活跃商家碰到了改过的功能，不是全部商家，也不是我是否决定了产品方向。</p>
+        <p>步数、耗时、渗透率不能合成一句「我主导了商家产品」。助理岗位能核对的，就是这三组和那一项没有数字的映射协助。早期说明写在 <a href="../projects.html">项目</a> 页。</p>
+        <h2>下半年是另一份工作</h2>
+        <p>2023 年 7 月到 12 月，角色换成 AI 产品经理，执行落地经营分析 Copilot。那是同一年里的下一段，不是漏斗数字的延续。5 步到 3 步、30% 和 85% 留在助理工作里，不拿去解释 Copilot 的日活，也不把 Copilot 的指标写回 Temu。一年里有两次角色，权责按原句分开。</p>
+        <p>所以 2023 的前半，我愿意写下来的是漏斗被收短、上架耗时下降、渗透率有一个发布后的读数，以及映射协助没有量化。这些是当时能指出来的改动。它们不构成 AI 产品负责人的经历。</p>
+        <h2>限定词留在数字上</h2>
+        <p>上架、库存、对账是 Seller Center 里协助迭代的三块，材料没有分别给出每块的耗时。漏斗从 5 步到 3 步，是唯一写明的步数变化。30% 挂在单均商品的上架耗时上，不是全部工单。85% 挂在上线之后的新活跃商家上。单均、上线后、新活跃，这三个限定都留着。SKU 映射只保留协助重做和没有量化。若把没有数字的映射说成一次大幅下降，就是在后来补了一个当年没有的结果。</p>
+        <p>下半年开始执行 Copilot 时，动词已经换成执行落地。两段前后相接，材料没有写漏斗方法被带进经营分析。回顾因此分成两节：第一节是步数、耗时、渗透和一项空白；第二节只标明边界，7 月以后的成果不写在这篇助理回顾里。</p>
+        <p>读这三组数字也有固定顺序。先看步数有没有变短，再看单均耗时有没有下降，最后看渗透率的人群是不是新活跃商家。不能用 85% 倒推 5 步到 3 步，也不能用 30% 去填映射那一项的空白。协助的三块业务没有独立数字，就停在协助迭代上。2022 到 2023 的助理回顾，能写的长度就是这些。发表日写在元信息里，是 2026 年 11 月 19 日，北京时间。回顾年份是 2023，不把发表日改回 2023。</p>
+      </div>
+      <div class="post-body lang-en">
+<p>From 2022 to 2023 I was a product manager assistant in Temu’s cross-border team. Looking back, the verb in the record is “assisted.” I assisted the seller lifecycle and the core funnel, assisted Seller Center work on listing, inventory, and financial reconciliation in the fully managed track, and assisted a redesign of SKU mapping. The mapping line says it was meant to reduce drop-off from validation errors on a first listing. It gives no number. The numbers sit on the listing funnel.</p>
+        <h2>Three figures, three jobs</h2>
+        <p>The core listing funnel went from 5 steps to 3. That measures a shorter path. Average time to list one item fell 30%. That measures how long the same item took to reach a listing. After launch, feature penetration among newly active sellers was 85%. That measures newly active sellers meeting the changed feature. It does not measure every seller, and it does not measure whether I set product direction.</p>
+        <p>Steps, time, and penetration do not combine into “I led the seller product.” What an assistant year can check is those three figures, plus a mapping redesign with no quantity. The early note is on the <a href="../projects.html">projects</a> page.</p>
+        <h2>The second half of the year was a different job</h2>
+        <p>From July to December 2023 the role changed to AI product manager, executing an operations-analysis Copilot. That is the next stretch of the same calendar year, not a continuation of the funnel figures. The move from 5 steps to 3, the 30%, and the 85% stay with the assistant work. They do not explain the Copilot’s daily use, and the Copilot’s metrics are not written back onto Temu. One year, two roles, kept in the original sentences.</p>
+        <p>So for the early part of 2023, what I am willing to write down is a shorter funnel, a lower listing time, a post-launch penetration reading, and an unquantified mapping assist. Those are the changes that can be pointed at. They are not an AI product owner’s record.</p>
+        <h2>The limits stay on the figures</h2>
+        <p>Listing, inventory, and reconciliation are three Seller Center areas I assisted. The record does not give a separate time for each. The funnel from 5 steps to 3 is the only step-count that is written down. The 30% is attached to the time to list one item, not to every ticket. The 85% is attached to newly active sellers after launch. Per item, after launch, and newly active all stay. SKU mapping stays an unquantified assist. Calling that unquantified redesign a large drop would add a 2023 result the year did not record.</p>
+        <p>When Copilot execution started in the second half, the verb had already changed to execution. The two stretches sit next to each other. The record does not say the funnel method was carried into operating analysis. The retrospective therefore has two sections: steps, time, penetration, and one blank; then a boundary, so results after July are not written into this assistant piece.</p>
+        <p>The three figures also have a reading order. First whether the step count got shorter, then whether time per item fell, then whether the penetration population is newly active sellers. The 85% does not prove the move from 5 steps to 3, and the 30% does not fill the blank on mapping. The three assisted areas have no separate numbers, so they stay at “assisted iteration.” That is the length of what an assistant retrospective for 2022–2023 can hold. The publication date in the header is 19 November 2026, Asia/Shanghai. The year under review is 2023. The publication date is not moved back to 2023.</p>
+      </div>
+    </article>
+    <footer class="blog-footer">
+      <a href="../blog.html" id="home-footer-link">
+        <span class="lang-zh">返回博客</span><span class="lang-en">Back to blog</span>
+      </a>
+    </footer>
+  </main>
+
+  <script src="../js/particles.min.js"></script>
+  <script>
+    (function () {
+      var root = document.documentElement;
+      var langBtn = document.getElementById('lang-toggle');
+      var themeBtn = document.getElementById('theme-toggle');
+
+      function currentLang() {
+        return root.getAttribute('data-lang') === 'en' ? 'en' : 'zh';
+      }
+
+      function setLang(lang) {
+        root.setAttribute('data-lang', lang);
+        root.setAttribute('lang', lang === 'zh' ? 'zh' : 'en');
+        langBtn.textContent = lang === 'zh' ? 'EN' : '中文';
+        try { localStorage.setItem('lang', lang); } catch (e) {}
+      }
+
+      function isDark() {
+        return root.getAttribute('data-theme') === 'dark';
+      }
+
+      function setTheme(dark) {
+        if (dark) root.setAttribute('data-theme', 'dark');
+        else root.setAttribute('data-theme', 'light');
+        try { localStorage.setItem('theme', dark ? 'dark' : 'light'); } catch (e) {}
+      }
+
+      setLang(currentLang());
+      if (!root.getAttribute('data-theme')) {
+        root.setAttribute('data-theme', 'light');
+      }
+
+      langBtn.addEventListener('click', function () {
+        setLang(currentLang() === 'zh' ? 'en' : 'zh');
+      });
+
+      themeBtn.addEventListener('click', function () {
+        setTheme(!isDark());
+      });
+
+      document.addEventListener('DOMContentLoaded', function () {
+        var page = document.getElementById('post-page');
+        if (page) {
+          requestAnimationFrame(function () {
+            page.classList.add('is-visible');
+          });
+        }
+      });
+
+      function initParticles() {
+        if (typeof particlesJS !== 'function') return;
+        particlesJS('particles-js', {
+          particles: {
+            number: { value: 8, density: { enable: true, value_area: 300 } },
+            color: { value: '#A680A6' },
+            shape: { type: 'triangle' },
+            opacity: {
+              value: 0.8,
+              random: true,
+              anim: { enable: true, speed: 1, opacity_min: 0.1, sync: false }
+            },
+            size: {
+              value: 5,
+              random: true,
+              anim: { enable: true, speed: 4, size_min: 0.3, sync: false }
+            },
+            line_linked: {
+              enable: true,
+              distance: 150,
+              color: '#A680A6',
+              opacity: 0.4,
+              width: 1
+            },
+            move: {
+              enable: true,
+              speed: 1.4,
+              direction: 'none',
+              random: false,
+              straight: false,
+              out_mode: 'bounce',
+              bounce: false
+            }
+          },
+          interactivity: {
+            detect_on: 'canvas',
+            events: {
+              onhover: { enable: true, mode: 'repulse' },
+              onclick: { enable: true, mode: 'push' },
+              resize: true
+            }
+          },
+          retina_detect: true
+        });
+      }
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initParticles);
+      } else {
+        initParticles();
+      }
+    })();
+  </script>
+</body>
+</html>
