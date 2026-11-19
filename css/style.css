@@ -484,7 +484,6 @@ ul > li::before {
   --reflection-bg: rgba(245, 158, 11, 0.12);
   --article-bg: rgba(139, 92, 246, 0.12);
   --insight-bg: rgba(14, 116, 144, 0.12);
-  --essay-bg: rgba(190, 80, 100, 0.12);
   --legend-hover-bg: rgba(0, 0, 0, 0.03);
   --legend-active-bg: rgba(0, 0, 0, 0.06);
 }
@@ -495,7 +494,6 @@ html[data-theme="dark"] {
   --reflection-bg: rgba(245, 158, 11, 0.22);
   --article-bg: rgba(139, 92, 246, 0.22);
   --insight-bg: rgba(14, 116, 144, 0.28);
-  --essay-bg: rgba(190, 80, 100, 0.28);
   --legend-hover-bg: rgba(255, 255, 255, 0.05);
   --legend-active-bg: rgba(255, 255, 255, 0.08);
 }
@@ -594,11 +592,6 @@ html[data-theme="dark"] {
   border-color: rgba(14, 116, 144, 0.5);
 }
 
-.legend-color.essay {
-  background: rgba(190, 80, 100, 0.28);
-  border-color: rgba(190, 80, 100, 0.5);
-}
-
 .blog-list {
   flex: 1;
   max-width: 620px;
@@ -669,10 +662,6 @@ html[data-theme="dark"] {
 
 .blog-entry.insight .blog-title {
   background: var(--insight-bg);
-}
-
-.blog-entry.essay .blog-title {
-  background: var(--essay-bg);
 }
 
 .blog-entry:hover .blog-title {
