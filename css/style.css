@@ -592,53 +592,9 @@ html[data-theme="dark"] {
   border-color: rgba(14, 116, 144, 0.5);
 }
 
-.blog-main {
-  flex: 1;
-  min-width: 0;
-  max-width: 680px;
-  display: flex;
-  flex-direction: column;
-}
-
-.year-legend {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 0.4rem;
-  margin: 0 0 0.85rem;
-  padding: 0 0.75rem;
-}
-
-.year-legend-label,
-.year-item,
-.blog-year {
-  font-family: var(--sans-font);
-  font-size: 0.78rem;
-  color: var(--blog-text-secondary);
-}
-
-.year-item {
-  background: transparent;
-  border: 1px solid var(--border-background-color);
-  border-radius: 999px;
-  padding: 0.2rem 0.65rem;
-  cursor: pointer;
-}
-
-.year-item.active {
-  color: var(--color);
-  border-color: var(--nav-color);
-  font-weight: 500;
-}
-
-.blog-year {
-  width: 4.6rem;
-  flex-shrink: 0;
-}
-
 .blog-list {
   flex: 1;
-  max-width: 680px;
+  max-width: 620px;
   display: flex;
   flex-direction: column;
   gap: 0.2rem;
