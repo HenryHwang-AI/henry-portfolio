@@ -109,6 +109,17 @@ body {
   opacity: 1;
 }
 
+.site-name:focus-visible {
+  outline: 1px solid currentColor;
+  outline-offset: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .site-name {
+    transition: none;
+  }
+}
+
 .site-mark {
   width: 24px;
   height: 24px;
