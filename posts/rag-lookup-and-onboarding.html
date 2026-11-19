@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="zh" data-lang="zh" class="notranslate" translate="no">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="google" content="notranslate">
+  <title>Faster lookup does not erase the five-to-six-month ramp — Henry Huang</title>
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem('theme');
+        if (t === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
+        else if (t === 'light') document.documentElement.setAttribute('data-theme', 'light');
+        var lang = localStorage.getItem('lang');
+        if (lang === 'en' || lang === 'zh') {
+          document.documentElement.setAttribute('data-lang', lang);
+          document.documentElement.setAttribute('lang', lang === 'zh' ? 'zh' : 'en');
+        }
+      } catch (e) {}
+    })();
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,300;0,400;0,500;1,400&family=Spectral:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <div id="particles-js" aria-hidden="true"></div>
+
+  <header class="site-nav-wrapper">
+    <a href="../index.html" class="site-name"><svg class="site-mark" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="7.1" fill="none" stroke="currentColor" stroke-width="2.15" stroke-linecap="round" stroke-dasharray="36 9" stroke-dashoffset="8"/></svg><span>Henry Huang</span></a>
+    <button type="button" class="hamburger" aria-label="Menu" aria-expanded="false" onclick="var b=this;b.classList.toggle('active');var open=b.classList.contains('active');b.setAttribute('aria-expanded', open?'true':'false');b.parentElement.classList.toggle('is-open', open);"><span></span><span></span><span></span></button>
+    <nav class="site-nav" aria-label="Primary">
+        <a href="../index.html"><span class="lang-zh">关于</span><span class="lang-en">About</span></a>
+        <a href="../blog.html" class="active"><span class="lang-zh">博客</span><span class="lang-en">Blog</span></a>
+        <a href="../projects.html"><span class="lang-zh">项目</span><span class="lang-en">Projects</span></a>
+        <a href="../tools.html"><span class="lang-zh">工具</span><span class="lang-en">Tools</span></a>
+        <a href="../notes.html"><span class="lang-zh">笔记</span><span class="lang-en">Notes</span></a>
+      </nav>
+    <div class="nav-right">
+      <div class="social-icons" aria-label="Social">
+        <a href="#" aria-label="X / Twitter" title="X"><i class="fab fa-x-twitter"></i></a>
+        <a href="https://github.com/HenryHwang-AI" aria-label="GitHub" title="GitHub"><i class="fab fa-github"></i></a>
+        <a href="#" aria-label="LinkedIn" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+      </div>
+      <button type="button" class="icon-btn" id="lang-toggle" aria-label="Switch language">EN</button>
+      <button type="button" class="icon-btn" id="theme-toggle" aria-label="Toggle dark mode">
+        <span class="theme-label-to-dark">
+          <span class="lang-zh">深色</span><span class="lang-en">Dark</span>
+        </span>
+        <span class="theme-label-to-light">
+          <span class="lang-zh">浅色</span><span class="lang-en">Light</span>
+        </span>
+      </button>
+    </div>
+  </header>
+
+    <main class="post-page fade-up" id="post-page">
+    <article class="post-article">
+      <p class="post-meta">
+        <a class="post-back" href="../blog.html"><span class="lang-zh">← 博客</span><span class="lang-en">← Blog</span></a>
+        <span class="post-meta-sep" aria-hidden="true">·</span>
+        <span class="post-retro"><span class="lang-zh">2024 项目回顾</span><span class="lang-en">2024 retrospective</span></span>
+        <span class="post-meta-sep" aria-hidden="true">·</span>
+        <time datetime="2026-11-19"><span class="lang-zh">发表于 2026-11-19（北京时间）</span><span class="lang-en">Published 2026-11-19 (Asia/Shanghai)</span></time>
+        <span class="post-meta-sep" aria-hidden="true">·</span>
+        <span class="post-cat"><span class="lang-zh">AI 洞察</span><span class="lang-en">AI insight</span></span>
+      </p>
+      <h1 class="post-title">
+        <span class="lang-zh">检索变快，上手的五六个月还在另一句话里</span>
+        <span class="lang-en">Faster lookup does not erase the five-to-six-month ramp</span>
+      </h1>
+      <div class="post-body lang-zh">
+<p>2024 年的客服助理里，有两套时间。一套在结果里：检索资料的时间降低 95%，提效 80% 以上。两则并陈，因为它们怎么换算，材料没有再写。另一套在问题里：新人面对 1000 多种产品、上千页说明书和合规要求，上手要 5 到 6 个月。</p>
+        <h2>快的是找资料</h2>
+        <p>95% 说明找资料变短了。80% 以上说明一份提效读数，和 95% 并列，不互相替代。日均节省人工 200 次，30 天主动留存 90% 以上，说明助理被用起来。回答准确率从 62% 到 89%，是人工标注、评测到 V4 的回答质量。这些都不是「新人还要学多久」。</p>
+        <p>5 到 6 个月写在立项时的问题上。结果里没有一个新的上手时长。我不能用检索变快，把 5 到 6 个月改写成几周。找资料的时间和学会干活的时间，是两句话。</p>
+        <h2>麻烦留在原句</h2>
+        <p>回看 2024，我会把节省下来的检索时间当成助理做到的事，把上手周期留在原来的问题句里。知识如何分域、谁维护，是另一篇的题目。这里只把两套时间分开，避免用一个百分比回答另一个问题。</p>
+        <p>我的角色是执行负责人，项目由上级立项，时间是 2024 年 2 月到 12 月。案例在 <a href="../cases/support-rag.html">多语言客服 RAG</a>。</p>
+        <h2>并陈是因为关系没写</h2>
+        <p>若只留下 95%，读者会把提效当成检索时间的同义词。材料把 95% 和 80% 以上都写下，又没有换算关系，所以两则都留。200 次是一天里少做的人工查找次数。90% 以上是 30 天里仍主动使用的比例。次数和留存回答助理有没有被用，不回答新人几个月能独立做事。5 到 6 个月面对的产品数量和页数还在。检索变快，是在这个数量级里少花找文档的时间。</p>
+        <p>学习这些产品和合规，简历没有给出缩短后的月数。2024 的回顾因此不让一个效率百分比覆盖上手周期。执行负责人的位置也限定了这句话：我推动的是已经立项的助理，不是把上手标准改写成一个新的月数。</p>
+        <p>两套时间也容易被读成因果：检索快了，上手就该变短。材料没有这句因果。95% 的主语是检索资料时间。5 到 6 个月的主语是新人上手。主语不同，谓语就不能换过去。200 次和 90% 以上的主语是使用。使用变多，也不等于学习月数变少。回看 2024，我只让相同主语的句子互相解释。上手的 5 到 6 个月不是一条失败记录，它是问题句里的期限。结果句没有声明这个期限被改写。30 天留存回答的是一个月里还在使用，不是新人从零到独立要几个月。产品是 1000 多种，说明书和合规是上千页，这两个数量级留在问题句里，都不换成月数，原样保留。发表日是 2026 年 11 月 19 日，因此可以用 2 月到 12 月的起止来回看，而不必假装写于当年 5 月。</p>
+      </div>
+      <div class="post-body lang-en">
+<p>The 2024 support assistant has two clocks. One is in the results: time spent searching materials fell 95%, and efficiency rose 80%+. They stand side by side because the record does not say how to convert one into the other. The other clock is in the problem: a new hire, facing 1,000+ products and thousands of pages of manuals and compliance, needed 5 to 6 months to get up to speed.</p>
+        <h2>What got faster is lookup</h2>
+        <p>The 95% says finding material got shorter. The 80%+ is an efficiency reading beside it, not a substitute for it. About 200 manual lookups saved per day, and 30-day active retention of 90%+, say the assistant was used. Answer accuracy from 62% to 89% is human-labeled answer quality through V4. None of these is “how long a new hire still has to learn.”</p>
+        <p>The 5 to 6 months is written in the problem at the start. The results do not give a new ramp time. I cannot turn faster lookup into a rewrite of 5 to 6 months as a few weeks. Time to find a document and time to learn the job are two sentences.</p>
+        <h2>The hard part stays in its original sentence</h2>
+        <p>Looking back at 2024, I treat the saved lookup time as something the assistant did, and I leave the ramp in the original problem sentence. How knowledge was divided and who maintained it is another essay. This one only keeps the two clocks apart, so one percentage is not asked to answer the other question.</p>
+        <p>I was the execution owner of a project chartered above me, from February to December 2024. The case is the <a href="../cases/support-rag.html">support RAG</a>.</p>
+        <h2>They sit side by side because the relation is unwritten</h2>
+        <p>If only the 95% remained, a reader would treat the efficiency gain as another name for lookup time. The record writes both 95% and 80%+, and it does not give a conversion, so both stay. Two hundred is the count of manual lookups saved in a day. 90%+ is the share still actively using it over 30 days. Count and retention answer whether the assistant was used. They do not answer how many months a new hire needs before working alone. The 5 to 6 months still face that volume of products and pages. Faster lookup means less time finding documents inside that volume.</p>
+        <p>The resume does not give a shortened month-count for learning the products and the compliance rules. This 2024 retrospective therefore does not let one efficiency percentage cover the ramp. The execution-owner role limits the sentence too: I pushed an assistant that had already been chartered. I did not rewrite the ramp standard as a new number of months.</p>
+        <p>The two clocks are also easy to read as cause: lookup got faster, so the ramp should have gotten shorter. The record does not say that. The subject of 95% is time spent searching materials. The subject of 5 to 6 months is a new hire’s ramp. Different subjects do not swap predicates. The subject of 200 and of 90%+ is use. More use does not equal fewer months of learning. Looking back at 2024, I only let sentences with the same subject explain each other. The 5 to 6 months are not a failure line. They are the term in the problem sentence. The result sentences do not say that term was rewritten. The publication date is 19 November 2026, so the February-to-December span can be reviewed without pretending the piece was written in May of that year.</p>
+      </div>
+    </article>
+    <footer class="blog-footer">
+      <a href="../blog.html" id="home-footer-link">
+        <span class="lang-zh">返回博客</span><span class="lang-en">Back to blog</span>
+      </a>
+    </footer>
+  </main>
+
+  <script src="../js/particles.min.js"></script>
+  <script>
+    (function () {
+      var root = document.documentElement;
+      var langBtn = document.getElementById('lang-toggle');
+      var themeBtn = document.getElementById('theme-toggle');
+
+      function currentLang() {
+        return root.getAttribute('data-lang') === 'en' ? 'en' : 'zh';
+      }
+
+      function setLang(lang) {
+        root.setAttribute('data-lang', lang);
+        root.setAttribute('lang', lang === 'zh' ? 'zh' : 'en');
+        langBtn.textContent = lang === 'zh' ? 'EN' : '中文';
+        try { localStorage.setItem('lang', lang); } catch (e) {}
+      }
+
+      function isDark() {
+        return root.getAttribute('data-theme') === 'dark';
+      }
+
+      function setTheme(dark) {
+        if (dark) root.setAttribute('data-theme', 'dark');
+        else root.setAttribute('data-theme', 'light');
+        try { localStorage.setItem('theme', dark ? 'dark' : 'light'); } catch (e) {}
+      }
+
+      setLang(currentLang());
+      if (!root.getAttribute('data-theme')) {
+        root.setAttribute('data-theme', 'light');
+      }
+
+      langBtn.addEventListener('click', function () {
+        setLang(currentLang() === 'zh' ? 'en' : 'zh');
+      });
+
+      themeBtn.addEventListener('click', function () {
+        setTheme(!isDark());
+      });
+
+      document.addEventListener('DOMContentLoaded', function () {
+        var page = document.getElementById('post-page');
+        if (page) {
+          requestAnimationFrame(function () {
+            page.classList.add('is-visible');
+          });
+        }
+      });
+
+      function initParticles() {
+        if (typeof particlesJS !== 'function') return;
+        particlesJS('particles-js', {
+          particles: {
+            number: { value: 8, density: { enable: true, value_area: 300 } },
+            color: { value: '#A680A6' },
+            shape: { type: 'triangle' },
+            opacity: {
+              value: 0.8,
+              random: true,
+              anim: { enable: true, speed: 1, opacity_min: 0.1, sync: false }
+            },
+            size: {
+              value: 5,
+              random: true,
+              anim: { enable: true, speed: 4, size_min: 0.3, sync: false }
+            },
+            line_linked: {
+              enable: true,
+              distance: 150,
+              color: '#A680A6',
+              opacity: 0.4,
+              width: 1
+            },
+            move: {
+              enable: true,
+              speed: 1.4,
+              direction: 'none',
+              random: false,
+              straight: false,
+              out_mode: 'bounce',
+              bounce: false
+            }
+          },
+          interactivity: {
+            detect_on: 'canvas',
+            events: {
+              onhover: { enable: true, mode: 'repulse' },
+              onclick: { enable: true, mode: 'push' },
+              resize: true
+            }
+          },
+          retina_detect: true
+        });
+      }
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initParticles);
+      } else {
+        initParticles();
+      }
+    })();
+  </script>
+</body>
+</html>

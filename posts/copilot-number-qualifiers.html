@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="zh" data-lang="zh" class="notranslate" translate="no">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="google" content="notranslate">
+  <title>Six months of execution, with the qualifier beside the number — Henry Huang</title>
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem('theme');
+        if (t === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
+        else if (t === 'light') document.documentElement.setAttribute('data-theme', 'light');
+        var lang = localStorage.getItem('lang');
+        if (lang === 'en' || lang === 'zh') {
+          document.documentElement.setAttribute('data-lang', lang);
+          document.documentElement.setAttribute('lang', lang === 'zh' ? 'zh' : 'en');
+        }
+      } catch (e) {}
+    })();
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,300;0,400;0,500;1,400&family=Spectral:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <div id="particles-js" aria-hidden="true"></div>
+
+  <header class="site-nav-wrapper">
+    <a href="../index.html" class="site-name"><svg class="site-mark" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="7.1" fill="none" stroke="currentColor" stroke-width="2.15" stroke-linecap="round" stroke-dasharray="36 9" stroke-dashoffset="8"/></svg><span>Henry Huang</span></a>
+    <button type="button" class="hamburger" aria-label="Menu" aria-expanded="false" onclick="var b=this;b.classList.toggle('active');var open=b.classList.contains('active');b.setAttribute('aria-expanded', open?'true':'false');b.parentElement.classList.toggle('is-open', open);"><span></span><span></span><span></span></button>
+    <nav class="site-nav" aria-label="Primary">
+        <a href="../index.html"><span class="lang-zh">关于</span><span class="lang-en">About</span></a>
+        <a href="../blog.html" class="active"><span class="lang-zh">博客</span><span class="lang-en">Blog</span></a>
+        <a href="../projects.html"><span class="lang-zh">项目</span><span class="lang-en">Projects</span></a>
+        <a href="../tools.html"><span class="lang-zh">工具</span><span class="lang-en">Tools</span></a>
+        <a href="../notes.html"><span class="lang-zh">笔记</span><span class="lang-en">Notes</span></a>
+      </nav>
+    <div class="nav-right">
+      <div class="social-icons" aria-label="Social">
+        <a href="#" aria-label="X / Twitter" title="X"><i class="fab fa-x-twitter"></i></a>
+        <a href="https://github.com/HenryHwang-AI" aria-label="GitHub" title="GitHub"><i class="fab fa-github"></i></a>
+        <a href="#" aria-label="LinkedIn" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+      </div>
+      <button type="button" class="icon-btn" id="lang-toggle" aria-label="Switch language">EN</button>
+      <button type="button" class="icon-btn" id="theme-toggle" aria-label="Toggle dark mode">
+        <span class="theme-label-to-dark">
+          <span class="lang-zh">深色</span><span class="lang-en">Dark</span>
+        </span>
+        <span class="theme-label-to-light">
+          <span class="lang-zh">浅色</span><span class="lang-en">Light</span>
+        </span>
+      </button>
+    </div>
+  </header>
+
+    <main class="post-page fade-up" id="post-page">
+    <article class="post-article">
+      <p class="post-meta">
+        <a class="post-back" href="../blog.html"><span class="lang-zh">← 博客</span><span class="lang-en">← Blog</span></a>
+        <span class="post-meta-sep" aria-hidden="true">·</span>
+        <span class="post-retro"><span class="lang-zh">2023 项目回顾</span><span class="lang-en">2023 retrospective</span></span>
+        <span class="post-meta-sep" aria-hidden="true">·</span>
+        <time datetime="2026-11-19"><span class="lang-zh">发表于 2026-11-19（北京时间）</span><span class="lang-en">Published 2026-11-19 (Asia/Shanghai)</span></time>
+        <span class="post-meta-sep" aria-hidden="true">·</span>
+        <span class="post-cat"><span class="lang-zh">AI 洞察</span><span class="lang-en">AI insight</span></span>
+      </p>
+      <h1 class="post-title">
+        <span class="lang-zh">执行落地的半年，数字旁边留下口径</span>
+        <span class="lang-en">Six months of execution, with the qualifier beside the number</span>
+      </h1>
+      <div class="post-body lang-zh">
+<p>2023 年 7 月到 12 月，我以 AI 产品经理执行落地经营分析 Copilot。半年不长。2026 年回看这半年，我先看每个百分比旁边缺了什么，再决定这句话能说到哪。</p>
+        <h2>四句结果，四套缺口</h2>
+        <p>运营使用日活从 31% 到 90% 以上。分母没有另行写出，所以它停在使用口径，不写成和旧报表的对照，也不写成每一个运营每天打开。异常归因准确率 95% 以上，材料里没有对照基线，我就不补一个起点。业务流程耗时减少 70%。落地范围是 1000 多名运营，并成为经营数据分析的核心工具。使用、归因、耗时、人数，各留各的句子。</p>
+        <p>产品本身是健康度、异常归因和动作建议。健康度用 8 个核心指标。日报和周报由模型生成，支持自然语言问数和主动提醒。《运营经营指标体系白皮书 V1.0》把散在 5 个系统里的 200 多个指标口径收成一处，并推动 8 张 ADS 表和血缘。这些说明半年里交付物长什么样，不自动给 95% 补上基线。</p>
+        <h2>口径写在数字旁边</h2>
+        <p>回看这次执行落地，有用的习惯是把没定义的分母和没写出的基线留在百分比旁边。70% 的耗时下降可以单独读。90% 以上的日活不可以被说圆。1000 多名是覆盖人数，不是日活的分母。案例在 <a href="../cases/ops-copilot.html">经营分析 Copilot</a>。</p>
+        <p>上半年的助理工作有自己的漏斗数字，不并进这半年。后来的项目也不借这半年的日活当起点。2023 年下半年就停在这几句带口径的结果上。</p>
+        <h2>结构事实不替百分比补洞</h2>
+        <p>原报表有 50 多个指标。健康度没有把这 50 多个原样摆进去，它用的是 8 个核心指标。这是结构。它说明交付物比原报表收过，不说明 31% 到 90% 以上因此成立。日活成不成立，要看分母。分母没写，日活就带着「以上」和这个缺口留下。归因的 95% 以上也一样：没有基线时，它是一个水平，不是一段写出的提升。耗时减少 70% 是材料里写成减少的那一项，可以按减少来读。四句不互相填缺口。</p>
+        <p>白皮书和 8 张表说明口径和血缘在这半年被写下来，方便后来复核。它们不是 95% 的对照实验，也不是日活的分母。回看执行落地，我把「数字旁边的空位」当成半年记录的一部分。</p>
+        <p>功能清单可以列完：8 个核心指标、异常归因、动作建议、日报和周报、自然语言问数、主动提醒、白皮书、8 张表。清单说明做了什么。清单上的任何一项都不携带日活分母，也不携带归因基线。回看时我把清单和百分比分成两栏，栏与栏之间不借数。8 个核心指标是健康度的宽度，50 多个是原报表的宽度，两者不要写成同一个数。这篇发表于 2026 年 11 月 19 日，回顾的是 2023 年 7 月到 12 月，不把发表日写成那半年里的某一天。</p>
+      </div>
+      <div class="post-body lang-en">
+<p>From July to December 2023 I executed an operations-analysis Copilot as an AI product manager. Six months is short. Looking back in 2026, I read what is missing beside each percentage before I decide how far the sentence can go.</p>
+        <h2>Four results, four gaps</h2>
+        <p>Operations daily active use went from 31% to 90%+. The denominator is not separately written, so the figure stays a usage reading. It is not a comparison with the old reports, and it is not “every operator opens it daily.” Anomaly-attribution accuracy is 95%+. The record has no baseline, and I do not add a starting point. Operating-process time fell 70%. The rollout was 1,000+ operators, and it became the core tool for operating analysis. Use, attribution, time, and headcount each keep their own sentence.</p>
+        <p>The product itself is health, anomaly attribution, and a suggested action. Health uses 8 core metrics. Daily and weekly reports are generated by the model, with natural-language questions and proactive reminders. The metrics white paper, V1.0, gathers 200+ definitions from 5 systems into one place, and I pushed 8 ADS tables with lineage. Those describe what the half-year shipped. They do not supply a baseline for the 95%.</p>
+        <h2>The qualifier stays next to the figure</h2>
+        <p>Looking back at that execution, the useful habit is leaving an undefined denominator and a missing baseline beside the percentage. A 70% drop in process time can be read on its own. Daily use of 90%+ cannot be rounded into a cleaner claim. 1,000+ is coverage, not the denominator of daily use. The case is the <a href="../cases/ops-copilot.html">operations Copilot</a>.</p>
+        <p>The assistant work earlier that year has its own funnel figures, and they are not folded into this half-year. Later projects do not borrow this daily-use number as their starting line. The second half of 2023 stops at these qualified results.</p>
+        <h2>Structure does not fill a hole in a percentage</h2>
+        <p>The old reports had 50+ metrics. Health did not lay those 50+ out as they were. It uses 8 core metrics. That is structure. It says the shipped view was narrower than the old report. It does not say the move from 31% to 90%+ therefore holds. Whether daily use holds depends on the denominator. The denominator is unwritten, so daily use keeps the “plus” and the gap. The same is true of attribution at 95%+: with no baseline it is a level, not a written improvement. The 70% drop in process time is the item the record calls a reduction, and it can be read as a reduction. The four sentences do not fill one another’s gaps.</p>
+        <p>The white paper and the 8 tables say definitions and lineage were written down in that half-year, so a later check has somewhere to look. They are not a controlled test of the 95%, and they are not the denominator of daily use. Looking back at the execution, I treat the empty space beside a number as part of the half-year’s record.</p>
+        <p>The feature list can be finished: 8 core metrics, anomaly attribution, suggested actions, daily and weekly reports, natural-language questions, proactive reminders, the white paper, and 8 tables. The list says what was built. No item on it carries the daily-use denominator or the attribution baseline. Looking back, I keep the list and the percentages in two columns. The columns do not lend each other numbers. This piece is published on 19 November 2026 and looks back at July–December 2023. The publication date is not written as a day inside that half-year.</p>
+      </div>
+    </article>
+    <footer class="blog-footer">
+      <a href="../blog.html" id="home-footer-link">
+        <span class="lang-zh">返回博客</span><span class="lang-en">Back to blog</span>
+      </a>
+    </footer>
+  </main>
+
+  <script src="../js/particles.min.js"></script>
+  <script>
+    (function () {
+      var root = document.documentElement;
+      var langBtn = document.getElementById('lang-toggle');
+      var themeBtn = document.getElementById('theme-toggle');
+
+      function currentLang() {
+        return root.getAttribute('data-lang') === 'en' ? 'en' : 'zh';
+      }
+
+      function setLang(lang) {
+        root.setAttribute('data-lang', lang);
+        root.setAttribute('lang', lang === 'zh' ? 'zh' : 'en');
+        langBtn.textContent = lang === 'zh' ? 'EN' : '中文';
+        try { localStorage.setItem('lang', lang); } catch (e) {}
+      }
+
+      function isDark() {
+        return root.getAttribute('data-theme') === 'dark';
+      }
+
+      function setTheme(dark) {
+        if (dark) root.setAttribute('data-theme', 'dark');
+        else root.setAttribute('data-theme', 'light');
+        try { localStorage.setItem('theme', dark ? 'dark' : 'light'); } catch (e) {}
+      }
+
+      setLang(currentLang());
+      if (!root.getAttribute('data-theme')) {
+        root.setAttribute('data-theme', 'light');
+      }
+
+      langBtn.addEventListener('click', function () {
+        setLang(currentLang() === 'zh' ? 'en' : 'zh');
+      });
+
+      themeBtn.addEventListener('click', function () {
+        setTheme(!isDark());
+      });
+
+      document.addEventListener('DOMContentLoaded', function () {
+        var page = document.getElementById('post-page');
+        if (page) {
+          requestAnimationFrame(function () {
+            page.classList.add('is-visible');
+          });
+        }
+      });
+
+      function initParticles() {
+        if (typeof particlesJS !== 'function') return;
+        particlesJS('particles-js', {
+          particles: {
+            number: { value: 8, density: { enable: true, value_area: 300 } },
+            color: { value: '#A680A6' },
+            shape: { type: 'triangle' },
+            opacity: {
+              value: 0.8,
+              random: true,
+              anim: { enable: true, speed: 1, opacity_min: 0.1, sync: false }
+            },
+            size: {
+              value: 5,
+              random: true,
+              anim: { enable: true, speed: 4, size_min: 0.3, sync: false }
+            },
+            line_linked: {
+              enable: true,
+              distance: 150,
+              color: '#A680A6',
+              opacity: 0.4,
+              width: 1
+            },
+            move: {
+              enable: true,
+              speed: 1.4,
+              direction: 'none',
+              random: false,
+              straight: false,
+              out_mode: 'bounce',
+              bounce: false
+            }
+          },
+          interactivity: {
+            detect_on: 'canvas',
+            events: {
+              onhover: { enable: true, mode: 'repulse' },
+              onclick: { enable: true, mode: 'push' },
+              resize: true
+            }
+          },
+          retina_detect: true
+        });
+      }
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initParticles);
+      } else {
+        initParticles();
+      }
+    })();
+  </script>
+</body>
+</html>
