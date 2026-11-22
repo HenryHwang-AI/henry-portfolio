@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="zh" data-lang="zh" class="notranslate" translate="no">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="google" content="notranslate">
+  <title>Bot 直聘 — Henry Huang</title>
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem('theme');
+        if (t === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
+        else if (t === 'light') document.documentElement.setAttribute('data-theme', 'light');
+        var lang = localStorage.getItem('lang');
+        if (lang === 'en' || lang === 'zh') {
+          document.documentElement.setAttribute('data-lang', lang);
+          document.documentElement.setAttribute('lang', lang === 'zh' ? 'zh' : 'en');
+        }
+      } catch (e) {}
+    })();
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,300;0,400;0,500;1,400&family=Spectral:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <div id="particles-js" aria-hidden="true"></div>
+
+  <header class="site-nav-wrapper">
+    <a href="../index.html" class="site-name"><img class="site-mark" src="../img/mark.png" alt="" width="24" height="24"><span>Henry Huang</span></a>
+    <button type="button" class="hamburger" aria-label="Menu" aria-expanded="false" onclick="var b=this;b.classList.toggle('active');var open=b.classList.contains('active');b.setAttribute('aria-expanded', open?'true':'false');b.parentElement.classList.toggle('is-open', open);"><span></span><span></span><span></span></button>
+    <nav class="site-nav" aria-label="Primary">
+        <a href="../index.html"><span class="lang-zh">关于</span><span class="lang-en">About</span></a>
+        <a href="../blog.html"><span class="lang-zh">博客</span><span class="lang-en">Blog</span></a>
+        <a href="../projects.html" class="active"><span class="lang-zh">项目</span><span class="lang-en">Projects</span></a>
+        <a href="../tools.html"><span class="lang-zh">工具</span><span class="lang-en">Tools</span></a>
+        <a href="../notes.html"><span class="lang-zh">笔记</span><span class="lang-en">Notes</span></a>
+      </nav>
+    <div class="nav-right">
+      <div class="social-icons" aria-label="Social">
+        <a href="#" aria-label="X / Twitter" title="X"><i class="fab fa-x-twitter"></i></a>
+        <a href="https://github.com/HenryHwang-AI" aria-label="GitHub" title="GitHub"><i class="fab fa-github"></i></a>
+        <a href="#" aria-label="LinkedIn" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+      </div>
+      <button type="button" class="icon-btn" id="lang-toggle" aria-label="Switch language">EN</button>
+      <button type="button" class="icon-btn" id="theme-toggle" aria-label="Toggle dark mode">
+        <span class="theme-label-to-dark">
+          <span class="lang-zh">深色</span><span class="lang-en">Dark</span>
+        </span>
+        <span class="theme-label-to-light">
+          <span class="lang-zh">浅色</span><span class="lang-en">Light</span>
+        </span>
+      </button>
+    </div>
+  </header>
+
+  <main class="post-page fade-up" id="post-page">
+    <article class="post-article">
+      <p class="post-meta">
+        <a class="post-back" href="../projects.html"><span class="lang-zh">← 项目</span><span class="lang-en">← Projects</span></a>
+        <span class="post-meta-sep" aria-hidden="true">·</span>
+        <span><span class="lang-zh">个人产品</span><span class="lang-en">Personal product</span></span>
+      </p>
+      <h1 class="post-title">
+        <span class="lang-zh">Bot 直聘</span>
+        <span class="lang-en">Bot Zhipin</span>
+      </h1>
+      <figure class="product-cover">
+        <img src="../img/bot-zhipin-cover.png" alt="" width="1200" height="630">
+        <figcaption>
+          <span class="lang-zh">分享图来自 <a href="https://bot.jiachengbo.com/" target="_blank" rel="noopener noreferrer">Bot 直聘</a>。</span>
+          <span class="lang-en">Share image from <a href="https://bot.jiachengbo.com/" target="_blank" rel="noopener noreferrer">Bot Zhipin</a>.</span>
+        </figcaption>
+      </figure>
+      <div class="post-body lang-zh">
+        <p>这是我做的一个中文 Grok Bot 模板货架。Grok Bot 的模板在 x.ai 上。想来按岗位挑一个助手的人，还是得自己读英文市场页，并猜导入之后会打开哪些权限、花掉多少额度。Bot 直聘把这些模板收成中文说明，导入前先把准备事项写在卡片上。</p>
+        <h2>货架怎么用</h2>
+        <p>首页按岗位浏览 Bot。卡片上能看到额度高低，以及要不要连账号、会不会自己跑。点「导入」会在新标签打开对应的 x.ai 模板页，在那里加入 Grok Bot。模板本身仍归原作者，能不能跑通以 x.ai 那一页为准。</p>
+        <p>除了全部列表，还有本周主推、按主题收的合集，以及把几个 Bot 编在一起的小队。小队页写明分工，也写明整套配合还没有在 Grok Bot 里实测。这里不把小队写成已经跑通的协作结果。</p>
+        <h2>旁边的两栏，和投稿</h2>
+        <p>同一站点还有 Prompt 和 Skills。Prompt 带原文；Skills 给 Claude Code、Codex 这类助手提供安装说明。另外可以装一个叫 bot-zhipin 的 skill，让助手用自然语言在这个目录里找。</p>
+        <p>做了 Bot 的人可以打开投稿页：复制提示词，生成投稿包，再用 GitHub 登录提交。站点写的是审核通过后挂上货架。我没有在这篇里把投稿从登录走到上架整段跑完。</p>
+        <p class="post-links"><a href="https://bot.jiachengbo.com/" target="_blank" rel="noopener noreferrer">打开 Bot 直聘</a></p>
+      </div>
+      <div class="post-body lang-en">
+        <p>This is a Chinese shelf of Grok Bot templates that I made. The templates themselves live on x.ai. Someone who wants an assistant shaped for a job still has to read the English marketplace and guess which permissions and how much quota an import will turn on. Bot Zhipin puts those templates into Chinese notes, and writes the prep on the card before import.</p>
+        <h2>How the shelf works</h2>
+        <p>The home page browses bots by role. A card shows whether quota use is low, medium, or high, and whether the bot needs a connected account or can run on its own. Import opens the matching x.ai template page in a new tab, where it is added to Grok Bot. The template still belongs to its author. Whether it actually runs is decided on that x.ai page.</p>
+        <p>Besides the full list there are weekly picks, themed collections, and squads that group several bots. A squad page states the split of work, and it also states that the full set has not been tested together inside Grok Bot. This page does not treat a squad as a collaboration that has already been proven.</p>
+        <h2>The other two sections, and submissions</h2>
+        <p>The same site also lists prompts and skills. Prompts include the original text. Skills give install notes for assistants such as Claude Code and Codex. A skill named bot-zhipin can be installed so an assistant can search this catalog in natural language.</p>
+        <p>Someone who has made a bot can open the submit page: copy a prompt, generate a submission pack, then sign in with GitHub to send it. The site says a listing goes up after review. I have not run that path from sign-in through to a live listing for this write-up.</p>
+        <p class="post-links"><a href="https://bot.jiachengbo.com/" target="_blank" rel="noopener noreferrer">Open Bot Zhipin</a></p>
+      </div>
+    </article>
+  </main>
+<script src="../js/particles.min.js"></script>
+  <script>
+    (function () {
+      var root = document.documentElement;
+      var langBtn = document.getElementById('lang-toggle');
+      var themeBtn = document.getElementById('theme-toggle');
+
+      function currentLang() {
+        return root.getAttribute('data-lang') === 'en' ? 'en' : 'zh';
+      }
+
+      function setLang(lang) {
+        root.setAttribute('data-lang', lang);
+        root.setAttribute('lang', lang === 'zh' ? 'zh' : 'en');
+        langBtn.textContent = lang === 'zh' ? 'EN' : '中文';
+        try { localStorage.setItem('lang', lang); } catch (e) {}
+      }
+
+      function isDark() {
+        return root.getAttribute('data-theme') === 'dark';
+      }
+
+      function setTheme(dark) {
+        if (dark) root.setAttribute('data-theme', 'dark');
+        else root.setAttribute('data-theme', 'light');
+        try { localStorage.setItem('theme', dark ? 'dark' : 'light'); } catch (e) {}
+      }
+
+      setLang(currentLang());
+      if (!root.getAttribute('data-theme')) {
+        root.setAttribute('data-theme', 'light');
+      }
+
+      langBtn.addEventListener('click', function () {
+        setLang(currentLang() === 'zh' ? 'en' : 'zh');
+      });
+
+      themeBtn.addEventListener('click', function () {
+        setTheme(!isDark());
+      });
+
+      document.querySelectorAll('.project-card[aria-disabled="true"]').forEach(function (el) {
+        el.addEventListener('click', function (e) {
+          e.preventDefault();
+        });
+      });
+
+      document.addEventListener('DOMContentLoaded', function () {
+        var page = document.getElementById('post-page') || document.getElementById('projects-page');
+        if (page) {
+          requestAnimationFrame(function () {
+            page.classList.add('is-visible');
+          });
+        }
+        var items = document.querySelectorAll('.projects-layout .project-card');
+        items.forEach(function (item, idx) {
+          item.style.opacity = '0';
+          item.style.transform = 'translateY(10px)';
+          item.style.transition = 'opacity 420ms ease, transform 420ms ease';
+          setTimeout(function () {
+            item.style.opacity = '1';
+            item.style.transform = 'none';
+          }, 80 + idx * 40);
+        });
+      });
+
+      function initParticles() {
+        if (typeof particlesJS !== 'function') return;
+        particlesJS('particles-js', {
+          particles: {
+            number: { value: 8, density: { enable: true, value_area: 300 } },
+            color: { value: '#A680A6' },
+            shape: { type: 'triangle' },
+            opacity: {
+              value: 0.8,
+              random: true,
+              anim: { enable: true, speed: 1, opacity_min: 0.1, sync: false }
+            },
+            size: {
+              value: 5,
+              random: true,
+              anim: { enable: true, speed: 4, size_min: 0.3, sync: false }
+            },
+            line_linked: {
+              enable: true,
+              distance: 150,
+              color: '#A680A6',
+              opacity: 0.4,
+              width: 1
+            },
+            move: {
+              enable: true,
+              speed: 1.4,
+              direction: 'none',
+              random: false,
+              straight: false,
+              out_mode: 'bounce',
+              bounce: false
+            }
+          },
+          interactivity: {
+            detect_on: 'canvas',
+            events: {
+              onhover: { enable: true, mode: 'repulse' },
+              onclick: { enable: true, mode: 'push' },
+              resize: true
+            }
+          },
+          retina_detect: true
+        });
+      }
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initParticles);
+      } else {
+        initParticles();
+      }
+    })();
+  </script>
+</body>
+</html>

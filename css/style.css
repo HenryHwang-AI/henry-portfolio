@@ -1283,6 +1283,35 @@ html[data-theme="dark"] {
   margin: 1.35rem 0 0;
 }
 
+.personal-product {
+  margin: 2.25rem 0 0;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--hr-color);
+}
+
+.product-cover {
+  margin: 0 0 1.25rem;
+}
+
+.product-cover img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.product-cover figcaption {
+  font-family: var(--sans-font);
+  font-size: 0.78rem;
+  color: var(--blog-text-secondary);
+  margin-top: 0.45rem;
+}
+
+.product-cover a {
+  color: var(--link-color);
+  border-bottom: 0.1em solid var(--link-background-color);
+  text-decoration: none;
+}
+
 .demo-divider {
   margin: 2.25rem 0 1.25rem;
   padding-top: 1.5rem;
