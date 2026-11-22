@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="zh" data-lang="zh" class="notranslate" translate="no">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="google" content="notranslate">
+  <title>电商平台智能选品经营系统 — Henry Huang</title>
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem('theme');
+        if (t === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
+        else if (t === 'light') document.documentElement.setAttribute('data-theme', 'light');
+        var lang = localStorage.getItem('lang');
+        if (lang === 'en' || lang === 'zh') {
+          document.documentElement.setAttribute('data-lang', lang);
+          document.documentElement.setAttribute('lang', lang === 'zh' ? 'zh' : 'en');
+        }
+      } catch (e) {}
+    })();
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,300;0,400;0,500;1,400&family=Spectral:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <div id="particles-js" aria-hidden="true"></div>
+  <header class="site-nav-wrapper">
+    <a href="../index.html" class="site-name"><img class="site-mark" src="../img/mark.png" alt="" width="24" height="24"><span>Henry Huang</span></a>
+    <button type="button" class="hamburger" aria-label="Menu" aria-expanded="false" onclick="var b=this;b.classList.toggle('active');var open=b.classList.contains('active');b.setAttribute('aria-expanded', open?'true':'false');b.parentElement.classList.toggle('is-open', open);"><span></span><span></span><span></span></button>
+    <nav class="site-nav" aria-label="Primary">
+        <a href="../index.html"><span class="lang-zh">关于</span><span class="lang-en">About</span></a>
+        <a href="../blog.html"><span class="lang-zh">博客</span><span class="lang-en">Blog</span></a>
+        <a href="../projects.html" class="active"><span class="lang-zh">项目</span><span class="lang-en">Projects</span></a>
+        <a href="../tools.html"><span class="lang-zh">工具</span><span class="lang-en">Tools</span></a>
+        <a href="../notes.html"><span class="lang-zh">笔记</span><span class="lang-en">Notes</span></a>
+      </nav>
+    <div class="nav-right">
+      <div class="social-icons" aria-label="Social">
+        <a href="#" aria-label="X / Twitter" title="X"><i class="fab fa-x-twitter"></i></a>
+        <a href="https://github.com/HenryHwang-AI" aria-label="GitHub" title="GitHub"><i class="fab fa-github"></i></a>
+        <a href="#" aria-label="LinkedIn" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+      </div>
+      <button type="button" class="icon-btn" id="lang-toggle" aria-label="Switch language">EN</button>
+      <button type="button" class="icon-btn" id="theme-toggle" aria-label="Toggle dark mode">
+        <span class="theme-label-to-dark"><span class="lang-zh">深色</span><span class="lang-en">Dark</span></span>
+        <span class="theme-label-to-light"><span class="lang-zh">浅色</span><span class="lang-en">Light</span></span>
+      </button>
+    </div>
+  </header>
+
+  <main class="post-page fade-up" id="post-page">
+    <article class="post-article">
+      <p class="post-meta">
+        <a class="post-back" href="../projects.html"><span class="lang-zh">← 项目</span><span class="lang-en">← Projects</span></a>
+        <span class="post-meta-sep" aria-hidden="true">·</span>
+        <span><span class="lang-zh">服务设计</span><span class="lang-en">Service design</span></span>
+      </p>
+      <h1 class="post-title">
+        <span class="lang-zh">电商平台智能选品经营系统</span>
+        <span class="lang-en">Ecommerce selection and operating system</span>
+      </h1>
+
+      <div class="post-body lang-zh">
+        <p>这是给电商平台类目运营和采销的一条产品服务路径。选品助手作为单点工具，已经有真实业务基础。完整的多 Agent 路径把洞察、选品、供给、定价、内容、上架、流量和诊断接成同一条链路，并用历史数据做整段回放。这条路径还没有进入生产，线上增量效果尚待验证。</p>
+        <p>要一起抬高的是新品动销率、GMV 和毛利，同时压低滞销库存。路径上盯的业务口径是新品 30 天动销率、GMV、毛利、退货率和库存周转天数；过程口径是选品采纳率、人工修改率、上架一次通过率和链路耗时。</p>
+
+        <h2>业务问题</h2>
+        <p>一次选品要同时看需求、竞品、供给、价格、内容和投放。材料散落各处时，改了一个价格或一版详情，事后说不清是哪一版商品、哪一版价格、哪一版内容带来的结果。缺的不是再做一个选品页，而是一条能往下执行、又能把结论追回证据和版本的服务。</p>
+        <p>所以后面的步骤不靠“再分析一次”。需求不完整就不进入选品；人选确认后才询价备货；成本没锁定不进入定价；价格和内容都就绪、合规通过后才上架；每次投放绑定商品、价格和内容版本；结果对不上版本，不做强结论；数据不足就交给人复核。GMV、毛利和库存周转一起看，不单追一个数。</p>
+
+        <h2>路径外面的接口</h2>
+        <div class="role-block">
+          <h3>运营与采销工作台</h3>
+          <p>录入选品需求，确认选品清单，处理异常。缺信息的需求从这里退回。</p>
+        </div>
+        <div class="role-block">
+          <h3>Bad Case 反馈入口</h3>
+          <p>业务可以主动反馈。运行异常自动回收。这里也放 AI 结果和人工修改的对照，供后面归因。</p>
+        </div>
+        <div class="role-block">
+          <h3>供应商协同门户</h3>
+          <p>询报价、寄样品、收资质证照、拿交期回执。供给动作不在运营后台里假装完成。</p>
+        </div>
+        <div class="role-block">
+          <h3>电商业务平台</h3>
+          <p>承接商品发布和平台审核，以及搜索、推荐、广告、活动投放。回传状态和经营数据。</p>
+        </div>
+        <div class="role-block">
+          <h3>经营看板与策略中心</h3>
+          <p>看动销率、GMV、毛利、退货率、库存周转、人工修改率和 Bad Case。诊断从这里的结果出发，不从感觉出发。</p>
+        </div>
+
+        <h2>谁在编排</h2>
+        <p>流程编排管阶段进入、并行等待、回执轮询、超时返回和断点续跑。Agent Coordinator 拆任务、组装上下文、调度各个 Agent、汇合结果，并按问题环节做策略路由。</p>
+        <p>硬约束写在编排旁边，不写在某一步的提示词里：毛利底线、采购预算、库存上限、合规红线，以及低置信度必须停下来给人。供给侧适配询价、样品和资质回执；平台侧适配发布、投放、状态查询和数据回收。趋势检索、评论挖掘、内容生成、销量预测和归因分析是这条路径调用的能力，结论仍要回到证据。</p>
+
+        <h2>九步交接</h2>
+        <ol class="path-list">
+          <li class="path-step">
+            <p class="path-kicker">00 · 确定性规则，无 Agent</p>
+            <h3>选品需求进入与校验</h3>
+            <p class="path-out">阶段产出：选品需求就绪</p>
+            <p>核对经营目标（类目、目标人群、价格带、GMV 与毛利）、经营约束（采购预算、毛利底线、库存上限、上新周期）和平台规则（类目准入、资质要求）。信息要完整、真实，并且能用于选品和上架。缺了就退回业务人员。</p>
+          </li>
+          <li class="path-step">
+            <p class="path-kicker">01 · TrendAgent</p>
+            <h3>市场洞察与机会发现</h3>
+            <p class="path-out">阶段产出：机会点清单就绪</p>
+            <p>读站内搜索词、热销榜、加购收藏和站外趋势，看竞品数量、价格带分布、头部集中度和新品存活率，并从问答、差评里聚类未满足的需求。机会点按需求增速、竞争强度和供给空白评分。每个机会点附可追溯证据。</p>
+          </li>
+          <li class="path-step">
+            <p class="path-kicker">02 · SelectAgent</p>
+            <h3>选品评估与人工决策</h3>
+            <p class="path-out">阶段产出：选品清单已确认，修改原因已沉淀</p>
+            <p>机会点收成候选 SKU，对照相似商品和历史同类表现，按需求、竞争、利润空间、供给可得和合规风险打分。建议带上决策依据、销量预测区间、风险提示和置信度。人确认之后，才允许询价和备货。没有可用供给，退回重选。</p>
+          </li>
+          <li class="path-step">
+            <p class="path-kicker">03 · SupplyAgent</p>
+            <h3>供给核验与成本锁定</h3>
+            <p class="path-out">阶段产出：供给与成本已锁定</p>
+            <p>按历史合作、资质、产能和履约评分匹配供应商。询价轮询报价、起订量、交期和账期，状态是已报价、议价中或超时。样品结论、质检报告和证照由人验收。到手成本按采购价、物流、仓储和平台扣点测算。成本没锁定，不进入定价。</p>
+          </li>
+          <li class="path-step">
+            <p class="path-kicker">04 · PriceAgent 与 ContentAgent，AND 汇合</p>
+            <h3>定价与内容并行准备</h3>
+            <p class="path-out">阶段产出：价格 × 内容候选已就绪</p>
+            <p>两边同时做，都完成才进入上架。PriceAgent 做竞品比价和价格带定位，守住毛利底线和促销空间，给出日常价、活动价、券后价，以及建议售价、活动价和备货计划，并写下价格弹性假设和置信度。ContentAgent 决定怎么讲、给谁看：标题和搜索关键词、主图、副图和短视频脚本、从评论痛点提炼的卖点、详情页 A/B/C 版本，以及内容版本和目标人群的对应。</p>
+          </li>
+          <li class="path-step">
+            <p class="path-kicker">05 · ComplianceAgent 与 ListingAgent</p>
+            <h3>合规质检与商品上架</h3>
+            <p class="path-out">阶段产出：上架完成，或失败退回人工</p>
+            <p>质检看禁限售词、广告法极限词、图片侵权和类目资质，并核对类目、属性、规格、价格、库存和文图。低于毛利线、合规高风险或低置信度，必须人工复核。通过后向业务平台生成发布任务并发起审核，按秒轮询通过、驳回、处理中或超时。驳回则返回修正，不把失败记成已上架。</p>
+          </li>
+          <li class="path-step">
+            <p class="path-kicker">06 · TrafficAgent</p>
+            <h3>流量承接与冷启动</h3>
+            <p class="path-out">阶段产出：流量方案开始执行</p>
+            <p>策略候选包括新品冷启动、高毛利优先，以及把高转化内容放量。渠道和预算写明活动报名、预算和观察窗口，投放本身走业务平台上的搜索、推荐、广告和活动。每个任务绑定具体的商品、价格和内容版本，后面的效果才比得了。运行中按 GMV、毛利和广告成本决定加量、降量或暂停。加推、补货、调价、汰换清仓是商品生命周期上的人工决策。</p>
+          </li>
+          <li class="path-step">
+            <p class="path-kicker">07 · MetricsAgent</p>
+            <h3>全数据回收与可比评估</h3>
+            <p class="path-out">阶段产出：经营结果就绪</p>
+            <p>交易链路回收曝光、点击、加购、成交、GMV、毛利和广告成本。售后回收退货率、退货原因、评价和客服问询。供给回收动销率、库存周转、缺货和滞销。评估前先确认可比范围和数据质量：样本量、观察窗口、数据是否完整。版本对不上，不做强结论；数据不足，进入人工复核。</p>
+          </li>
+          <li class="path-step">
+            <p class="path-kicker">08 · DiagnosisAgent 与 Coordinator</p>
+            <h3>经营诊断、策略路由与链路验证</h3>
+            <p class="path-out">阶段产出：可执行调整方案，或已验证的经验</p>
+            <p>诊断覆盖选品、供给、价格、内容、上架和流量，例如高流量低收益、高退货、滞销。方案写明证据、问题环节、目标 Agent 和下一步动作。用真实历史数据回放整条九步链路，或做小范围验证。达到预期，把经验沉淀下来；没达到，登记 Bad Case，补充证据后重新归因。</p>
+            <p>策略按问题环节回写，不广播给所有 Agent：流量问题回到 TrafficAgent，内容回到 ContentAgent，价格回到 PriceAgent，供给回到 SupplyAgent，选品回到 SelectAgent。</p>
+          </li>
+        </ol>
+
+        <h2>人工把关</h2>
+        <p>人不是在最后看一眼结果。缺信息的需求退回录入的人。选品清单要人确认，修改原因留下来。样品、质检报告和证照要人验收。低于毛利线、合规高风险、低置信度，上架前必审。上架失败退回人工。流量运行中的加推、补货、调价和汰换清仓由人决定。数据不足或结果不可比，不做自动结论。</p>
+
+        <h2>例外与回写</h2>
+        <p>没有可用供给，就回到重选，不往下锁一个空成本。平台审核驳回，回到修正，不进入投放。回执会轮询，超时要返回，中断后从断点续跑。经营结果出来之后，闭环是：诊断出产品环节，指定目标 Agent，给出调整方案，用历史回放或小范围验证，达标就沉淀，不达标就继续改。</p>
+
+        <h2>证据留在哪里</h2>
+        <p>路径底下有一层记录，供回放和复核：九步走到哪、哪一次人工确认；趋势、竞品、评论痛点和历史同类表现；供应商、报价、到手成本和交期履约；价格带、价格弹性、内容版本，以及卖点和人群的对应；上架与投放记录；GMV、毛利、退货、周转和观察窗口；还有 Agent 的输入输出、人工修改原因、Bad Case 和已经验证过的策略。</p>
+        <p>设计价值在这条边界：自动的部分负责把证据收齐、把版本对齐、把下一跳交给该负责的 Agent；会花钱、会违规、会改库存的决定，停在人这里。</p>
+      </div>
+
+      <div class="post-body lang-en">
+        <p>This is a service path for category operators and buyers on an ecommerce platform. The selection assistant, as a single-point tool, already has a real business basis. The full multi-agent path joins insight, selection, supply, pricing, content, listing, traffic, and diagnosis, and replays the whole chain on historical data. That path has not entered production. Its incremental effect online is still to be verified.</p>
+        <p>The path is aimed at a higher sell-through on new items, higher GMV, and higher margin, with less unsold inventory. The business measures it names are 30-day sell-through on new items, GMV, margin, return rate, and days of inventory. The process measures are selection acceptance, the rate of human edits, first-pass listing approval, and time through the chain.</p>
+
+        <h2>The business problem</h2>
+        <p>One selection decision has to hold demand, competitors, supply, price, content, and traffic at the same time. When those materials sit apart, a changed price or a new detail page cannot later be tied to a specific item version, price version, and content version. Another selection screen does not fix that. The missing piece is a service that can move forward, and that can trace a conclusion back to evidence and to a version.</p>
+        <p>Later steps are gated, not “analyzed again.” Incomplete demand does not enter selection. Inquiry and stocking wait for a person to confirm the list. Pricing waits until cost is locked. Listing waits until price and content are both ready and compliance has passed. Every traffic task is bound to an item, a price, and a content version. A result that cannot be matched to that version does not support a strong conclusion. Thin data goes to a person. GMV, margin, and inventory turns are read together.</p>
+
+        <h2>The interfaces around the path</h2>
+        <div class="role-block">
+          <h3>Operator and buyer desk</h3>
+          <p>Enter a selection demand, confirm the list, and handle exceptions. Incomplete demands return here.</p>
+        </div>
+        <div class="role-block">
+          <h3>Bad-case intake</h3>
+          <p>Operators can file a case. Runtime exceptions are collected automatically. AI output and human edits are kept side by side for later diagnosis.</p>
+        </div>
+        <div class="role-block">
+          <h3>Supplier portal</h3>
+          <p>Quotes, samples, licenses, and delivery receipts. Supply work is not marked done inside the operator console.</p>
+        </div>
+        <div class="role-block">
+          <h3>Commerce platform</h3>
+          <p>Publishes the item, runs platform review, and places it in search, recommendations, ads, and campaigns. Status and operating data come back.</p>
+        </div>
+        <div class="role-block">
+          <h3>Operating board and strategy desk</h3>
+          <p>Sell-through, GMV, margin, returns, inventory turns, human-edit rate, and bad cases. Diagnosis starts from these results.</p>
+        </div>
+
+        <h2>Who orchestrates</h2>
+        <p>The flow runner handles stage entry, waiting on parallel work, polling receipts, returning on timeout, and resuming from a breakpoint. The Agent Coordinator splits the task, assembles context, schedules each agent, joins the results, and routes a strategy to the step that owns the problem.</p>
+        <p>Hard constraints sit beside the orchestrator, not inside one prompt: margin floor, purchasing budget, inventory cap, compliance red lines, and low confidence, which must stop for a person. A supply adapter covers quotes, samples, and license receipts. A platform adapter covers publish, traffic execution, status checks, and data return. Trend search, review mining, content generation, sales forecast, and attribution are capabilities the path calls. A conclusion still has to land on evidence.</p>
+
+        <h2>Nine handoffs</h2>
+        <ol class="path-list">
+          <li class="path-step">
+            <p class="path-kicker">00 · Deterministic rules, no agent</p>
+            <h3>Demand enters and is checked</h3>
+            <p class="path-out">Stage output: selection demand is ready</p>
+            <p>Check the commercial target (category, audience, price band, GMV and margin), the operating constraints (purchasing budget, margin floor, inventory cap, launch cycle), and the platform rules (category access, qualifications). The demand has to be complete, real, and usable for selection and listing. If it is not, it goes back to the operator.</p>
+          </li>
+          <li class="path-step">
+            <p class="path-kicker">01 · TrendAgent</p>
+            <h3>Market insight and opportunities</h3>
+            <p class="path-out">Stage output: the opportunity list is ready</p>
+            <p>Read on-site queries, bestseller lists, add-to-cart and saves, and off-site trends. Look at competitor count, price-band spread, how concentrated the leaders are, and how new items survive. Cluster unmet demand from questions and bad reviews. Score each opportunity by demand growth, competitive intensity, and supply gap. Each one carries evidence that can be traced.</p>
+          </li>
+          <li class="path-step">
+            <p class="path-kicker">02 · SelectAgent</p>
+            <h3>Selection review and a human decision</h3>
+            <p class="path-out">Stage output: the list is confirmed, and the reasons for edits are kept</p>
+            <p>Turn opportunities into candidate SKUs. Compare them with similar items and with how that kind of item has performed. Score demand, competition, margin room, whether supply can be had, and compliance risk. The suggestion includes the basis for the decision, a sales-forecast range, a risk note, and a confidence. Inquiry and stocking wait until a person confirms. If no supply is usable, the path returns to selection.</p>
+          </li>
+          <li class="path-step">
+            <p class="path-kicker">03 · SupplyAgent</p>
+            <h3>Supply check and cost lock</h3>
+            <p class="path-out">Stage output: supply and cost are locked</p>
+            <p>Match suppliers on past work, qualifications, capacity, and fulfillment. Poll quotes, minimum order, lead time, and payment terms: quoted, in negotiation, or timed out. A person accepts the sample result, the quality report, and the licenses. Landed cost is purchase price plus logistics, warehousing, and platform fees. Pricing does not start until that cost is locked.</p>
+          </li>
+          <li class="path-step">
+            <p class="path-kicker">04 · PriceAgent and ContentAgent, joined with AND</p>
+            <h3>Price and content prepared together</h3>
+            <p class="path-out">Stage output: a price × content candidate is ready</p>
+            <p>The two run in parallel. Listing waits for both. PriceAgent compares competitors and places the item in a price band, holds the margin floor and the room for promotion, and proposes an everyday price, a campaign price, a price after coupons, plus a stocking plan. It also records the elasticity assumption and its confidence. ContentAgent decides how to say it and who it is for: title and search terms, hero image, secondary images, and a short-video script; selling points taken from review pain; detail-page versions A, B, and C; and which content version maps to which audience.</p>
+          </li>
+          <li class="path-step">
+            <p class="path-kicker">05 · ComplianceAgent and ListingAgent</p>
+            <h3>Compliance check and listing</h3>
+            <p class="path-out">Stage output: listed, or returned to a person</p>
+            <p>The check covers banned and restricted terms, extreme advertising claims, image infringement, and category qualifications, then the category, attributes, specs, price, inventory, and copy. Below the margin floor, high compliance risk, or low confidence must be reviewed by a person. After that, a publish task is sent to the commerce platform and review is polled: passed, rejected, in progress, or timed out. A rejection returns for a fix. It is not recorded as listed.</p>
+          </li>
+          <li class="path-step">
+            <p class="path-kicker">06 · TrafficAgent</p>
+            <h3>Traffic pickup and cold start</h3>
+            <p class="path-out">Stage output: a traffic plan starts</p>
+            <p>Candidate strategies include a cold start for the new item, a preference for high margin, and scaling the content that converts. The channel-and-budget block names campaign entry, a budget, and an observation window. The placement itself runs on the commerce platform: search, recommendations, ads, and campaigns. Each task is bound to a specific item, price, and content version, so a later result can be compared. While it runs, GMV, margin, and ad cost decide whether to scale up, scale down, or pause. A push, a replenishment, a price change, or a clearance is a human decision on the item’s life cycle.</p>
+          </li>
+          <li class="path-step">
+            <p class="path-kicker">07 · MetricsAgent</p>
+            <h3>Full data return and a comparable read</h3>
+            <p class="path-out">Stage output: operating results are ready</p>
+            <p>The transaction path returns impressions, clicks, add-to-cart, orders, GMV, margin, and ad cost. After-sales returns the return rate, return reasons, reviews, and support questions. Supply returns sell-through, inventory turns, stockouts, and unsold stock. Before a judgment, confirm the comparable range and the data quality: sample size, observation window, and whether the data is complete. If the version does not match, there is no strong conclusion. If the data is thin, a person reviews it.</p>
+          </li>
+          <li class="path-step">
+            <p class="path-kicker">08 · DiagnosisAgent and Coordinator</p>
+            <h3>Diagnosis, strategy routing, and a chain check</h3>
+            <p class="path-out">Stage output: an actionable adjustment, or a verified lesson</p>
+            <p>Diagnosis covers selection, supply, price, content, listing, and traffic: high traffic that earns little, a high return rate, unsold stock. The plan names the evidence, the step at fault, the target agent, and the next action. The check is a replay of the nine-step chain on real historical data, or a small-scope test. If it meets the aim, the lesson is kept. If it does not, it is filed as a bad case and diagnosed again after more evidence.</p>
+            <p>Strategy writes back to the agent that owns the step, not to every agent. Traffic goes to TrafficAgent, content to ContentAgent, price to PriceAgent, supply to SupplyAgent, and selection to SelectAgent.</p>
+          </li>
+        </ol>
+
+        <h2>Where a person decides</h2>
+        <p>A person is not a final glance. Incomplete demand goes back to the person who entered it. The selection list needs a confirmation, and the reason for an edit is kept. Samples, quality reports, and licenses need a person. Below the margin floor, high compliance risk, and low confidence are reviewed before listing. A failed listing returns to a person. During traffic, a push, a replenishment, a price change, and a clearance are human decisions. Thin or incomparable data does not become an automatic conclusion.</p>
+
+        <h2>Exceptions and write-back</h2>
+        <p>No usable supply means a return to selection, not a locked cost on an empty source. A rejected platform review means a return for a fix, not a move into traffic. Receipts are polled, a timeout returns, and a break resumes from the breakpoint. After the operating result, the loop is: name the product step, name the target agent, propose an adjustment, replay history or run a small test, then keep the lesson or change it again.</p>
+
+        <h2>Where the evidence sits</h2>
+        <p>Under the path is a record for replay and review: which of the nine steps has been reached, and which human confirmation happened; trends, competitors, review pain, and past performance of similar items; suppliers, quotes, landed cost, and delivery; price bands, elasticity, content versions, and which selling point maps to which audience; listing and traffic records; GMV, margin, returns, turns, and the observation window; and the agents’ inputs and outputs, reasons for human edits, bad cases, and strategies already verified.</p>
+        <p>The design value is that boundary. The automatic part collects the evidence, lines up the version, and hands the next jump to the agent that owns it. Decisions that spend money, cross a compliance line, or change inventory stop with a person.</p>
+      </div>
+
+      <p class="post-links">
+        <a href="../projects.html"><span class="lang-zh">返回项目列表</span><span class="lang-en">Back to projects</span></a>
+      </p>
+    </article>
+    <footer class="blog-footer"><a href="../projects.html"><span class="lang-zh">返回项目</span><span class="lang-en">Back to projects</span></a></footer>
+  </main>
+
+<script src="../js/particles.min.js"></script>
+  <script>
+    (function () {
+      var root = document.documentElement;
+      var langBtn = document.getElementById('lang-toggle');
+      var themeBtn = document.getElementById('theme-toggle');
+      function currentLang() { return root.getAttribute('data-lang') === 'en' ? 'en' : 'zh'; }
+      function setLang(lang) {
+        root.setAttribute('data-lang', lang);
+        root.setAttribute('lang', lang === 'zh' ? 'zh' : 'en');
+        langBtn.textContent = lang === 'zh' ? 'EN' : '中文';
+        try { localStorage.setItem('lang', lang); } catch (e) {}
+      }
+      function isDark() { return root.getAttribute('data-theme') === 'dark'; }
+      function setTheme(dark) {
+        if (dark) root.setAttribute('data-theme', 'dark');
+        else root.setAttribute('data-theme', 'light');
+        try { localStorage.setItem('theme', dark ? 'dark' : 'light'); } catch (e) {}
+      }
+      setLang(currentLang());
+      if (!root.getAttribute('data-theme')) root.setAttribute('data-theme', 'light');
+      langBtn.addEventListener('click', function () { setLang(currentLang() === 'zh' ? 'en' : 'zh'); });
+      themeBtn.addEventListener('click', function () { setTheme(!isDark()); });
+      document.addEventListener('DOMContentLoaded', function () {
+        var page = document.getElementById('post-page') || document.getElementById('projects-page');
+        if (page) requestAnimationFrame(function () { page.classList.add('is-visible'); });
+      });
+      function initParticles() {
+        if (typeof particlesJS !== 'function') return;
+        particlesJS('particles-js', {
+          particles: {
+            number: { value: 8, density: { enable: true, value_area: 300 } },
+            color: { value: '#A680A6' },
+            shape: { type: 'triangle' },
+            opacity: { value: 0.8, random: true, anim: { enable: true, speed: 1, opacity_min: 0.1, sync: false } },
+            size: { value: 5, random: true, anim: { enable: true, speed: 4, size_min: 0.3, sync: false } },
+            line_linked: { enable: true, distance: 150, color: '#A680A6', opacity: 0.4, width: 1 },
+            move: { enable: true, speed: 1.4, direction: 'none', random: false, straight: false, out_mode: 'bounce', bounce: false }
+          },
+          interactivity: { detect_on: 'canvas', events: { onhover: { enable: true, mode: 'repulse' }, onclick: { enable: true, mode: 'push' }, resize: true } },
+          retina_detect: true
+        });
+      }
+      if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', initParticles);
+      else initParticles();
+    })();
+  </script>
+</body>
+</html>

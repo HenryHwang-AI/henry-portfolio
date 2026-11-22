@@ -1283,10 +1283,51 @@ html[data-theme="dark"] {
   margin: 1.35rem 0 0;
 }
 
+.service-design,
 .personal-product {
   margin: 2.25rem 0 0;
   padding-top: 1.5rem;
   border-top: 1px solid var(--hr-color);
+}
+
+.path-list {
+  list-style: none;
+  margin: 0.25rem 0 1.25rem;
+  padding: 0;
+}
+
+.path-step {
+  margin: 0 0 0.35rem;
+  padding: 0.85rem 0 0.35rem;
+  border-top: 1px solid var(--hr-color);
+}
+
+.path-kicker,
+.path-out {
+  font-family: var(--sans-font);
+  font-size: 0.75rem;
+  letter-spacing: 0.04em;
+  color: var(--blog-text-secondary);
+  margin: 0 0 0.3rem;
+}
+
+.path-step h3,
+.role-block h3 {
+  font-family: var(--serif-font);
+  font-size: 1.05rem;
+  font-weight: 500;
+  line-height: 1.35;
+  margin: 0 0 0.35rem;
+  color: var(--color);
+}
+
+.role-block {
+  margin: 0 0 0.95rem;
+}
+
+.role-block p,
+.path-step p {
+  margin: 0 0 0.45rem;
 }
 
 .product-cover {
